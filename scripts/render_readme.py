@@ -52,7 +52,7 @@ Every result below is rendered from saved command output in [docs/results](docs/
 
 Load sweep, including engine admission through all ordered effects and drain:
 
-| Workflows | Step effects | Workflows / second | First-claim p50 ms | First-claim p99 ms | Lost / duplicate effects |
+| Workflows | Step effects | Workflows / second | First-claim p50 ms | First-claim p99 ms | Lost workflows / duplicate effects |
 |---|---|---|---|---|---|
 {rows}
 
@@ -107,6 +107,7 @@ Read [DESIGN.md](docs/DESIGN.md), [ADRs](docs/adr), [migration provenance](docs/
 - Operator sessions are local to the API process; SDKs use a separate provisioned bearer token. Hosted TLS and Secure cookies are required. The demo database role can migrate schema; production should separate migration credentials from runtime permissions.
 - Async OpenTelemetry export is verified, but spans can be lost on crashes and there is no long-term trace backend. Postgres state/events are authoritative.
 - The long campaign uses the same production engine and fault-harness sources as the final implementation; [source equality hashes](docs/results/campaign-source.json) record this boundary. SDK/UI and optional embedded serve mode are separately tested.
+- Security scans report no affected Go call paths/imported packages and no frontend advisories in the saved run. The Go module graph still carries an advisory for the unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. See [verbose scanner output](docs/results/security-verbose.log). This is not a claim of a zero-advisory module graph.
 - Live demo: **not deployed**. The optional free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
 
 ## Next

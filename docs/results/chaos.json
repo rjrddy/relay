@@ -1,56 +1,56 @@
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.016673200104166667,
-  "elapsed_seconds": 60.023520375,
-  "enqueue_start_p50_ms": 4.527,
-  "enqueue_start_p99_ms": 1905.28884,
+  "elapsed_hours": 0.016685658472222222,
+  "elapsed_seconds": 60.0683705,
+  "enqueue_start_p50_ms": 4.805,
+  "enqueue_start_p99_ms": 2261.12005,
   "faults": [
     {
-      "elapsed_seconds": 0.133092666,
+      "elapsed_seconds": 0.153362958,
       "kind": "process_exit_after_claim"
     },
     {
-      "elapsed_seconds": 0.153545333,
+      "elapsed_seconds": 0.172802375,
       "kind": "process_exit_after_commit"
     },
     {
-      "elapsed_seconds": 0.358501916,
+      "elapsed_seconds": 0.37776,
       "kind": "database_transport_partition_begin"
     },
     {
-      "elapsed_seconds": 0.709632333,
+      "elapsed_seconds": 0.728835125,
       "kind": "database_transport_partition_end"
     },
     {
-      "elapsed_seconds": 0.809684208,
+      "elapsed_seconds": 0.828864958,
       "kind": "database_transport_delay_begin"
     },
     {
-      "elapsed_seconds": 1.610684875,
+      "elapsed_seconds": 1.629013,
       "kind": "database_transport_delay_end"
     },
     {
-      "elapsed_seconds": 31.811090416,
+      "elapsed_seconds": 31.8296655,
       "kind": "database_transport_partition_begin"
     },
     {
-      "elapsed_seconds": 32.162159083,
+      "elapsed_seconds": 32.180722208,
       "kind": "database_transport_partition_end"
     },
     {
-      "elapsed_seconds": 32.262368916,
+      "elapsed_seconds": 32.281383791,
       "kind": "database_transport_delay_begin"
     },
     {
-      "elapsed_seconds": 33.06265825,
+      "elapsed_seconds": 33.082033,
       "kind": "database_transport_delay_end"
     }
   ],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
   "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
-  "step_effects": 4170,
+  "step_effects": 4218,
   "workers": 4,
-  "workflows": 1390,
-  "workflows_per_second": 23.157588747142857
+  "workflows": 1406,
+  "workflows_per_second": 23.40666124778597
 }

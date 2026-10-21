@@ -1,0 +1,5 @@
+Provisioned RELAY_PASSWORD without displaying its value.
+Provisioned RELAY_API_TOKEN without displaying its value.
+Provisioned RELAY_SEED without displaying its value.
+Operator credentials are in ignored .env.vercel-operator; do not commit it.
+Evidence hosting remains active. Use --enable after configuring DATABASE_URL.

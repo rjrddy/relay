@@ -144,13 +144,13 @@ Status: **partial — live deployment and complete hour audit export are outstan
 | No unmeasured result claims | PASS on manual review | generated README, explicit measurement boundaries, independent raw-event/latency audit |
 | Completed screen recording | PASS | demo.webm and measured media duration in demo-probe.json |
 | Full hour audit export | FAIL | hour-export-status.json; original command exited 1 after reconciliation; paginated fix passes short run, hour not rerun |
-| Hosted live demo | FAIL / not deployed | deploy/render.yaml is preparation, not a live URL |
+| Hosted live demo | PARTIAL | Vercel hosts recorded demo/evidence; live API/daemon await production DATABASE_URL; docs/VERCEL.md |
 
 The dependency gate reports no affected Go call paths/imported packages and no frontend advisories in the saved run. There is a module-scope advisory for an unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. The verbose report is retained. No advisory is silently ignored or relabeled as a clean module graph.
 
 Limits include an ordered synthetic pipeline, one authoritative Postgres primary, a central admission/configuration bottleneck, bounded retries with visible dead letters, no arbitrary remote-effect exactly-once guarantee, no tenant isolation or automated backup/retention, and no hosted performance claim. The worker-transport fault and real storage-sync-call delay are precisely scoped; neither is a multi-region database consensus or physical-device benchmark.
 
-The campaign source record proves that the final production engine, worker and fault-proxy files match the sustained run; export-only harness changes are recorded separately. SDK/UI and optional embedded serve mode are independently tested. Stop for review before Pulse.
+The campaign source record proves that the final production engine, worker and fault-proxy files match the sustained run; export-only harness changes are recorded separately. SDK/UI, optional embedded serve mode and the separate hosted entrypoint/shared-session adapter are independently tested. The hour campaign did not measure hosted HTTP/auth performance. Stop for review before Pulse.
 """
 Path("docs/QUALITY.md").write_text(quality)
 manifest = {

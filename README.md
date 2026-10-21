@@ -12,9 +12,9 @@ Every result below is rendered from saved command output in [docs/results](docs/
 
 | Proof | Observed result | Evidence |
 |---|---|---|
-| Unit / integration / property / race checks | 18 tests passed, 0 failures | [test summary](docs/results/tests.json), [raw events](docs/results/tests.jsonl) |
+| Unit / integration / property / race checks | 20 tests passed, 0 failures | [test summary](docs/results/tests.json), [raw events](docs/results/tests.jsonl) |
 | Sustained chaos campaign | 67,688 workflows / 203,064 effects over 1.000288 measured wall-clock hours; 0 lost workflows / 0 duplicate effects | [campaign](docs/results/chaos-hour.json), [reconciliation](docs/results/chaos-hour-reconciliation.json), [recovered audit prefix](docs/results/chaos-hour-events-prefix.jsonl.gz), [export failure](docs/results/hour-export-status.json) |
-| Short chaos campaign | 1,390 workflows, 0 lost / 0 duplicate effects in 60.024 seconds | [result](docs/results/chaos.json), [raw reconciliation](docs/results/chaos-reconciliation.json) |
+| Short chaos campaign | 1,406 workflows, 0 lost / 0 duplicate effects in 60.068 seconds | [result](docs/results/chaos.json), [raw reconciliation](docs/results/chaos-reconciliation.json) |
 | Linux storage-sync fault | 12 of 12 scheduled workflows completed; 0 duplicate effects | [raw rows](docs/results/linux-storage/storage-fault.json), [Postgres log](docs/results/linux-storage/storage-fault.log) |
 | Browser recovery and operator flow | lost acknowledgement deduplicated; completed prefix preserved; page errors: 0 | [browser result](docs/results/browser.json), [original prefix](docs/results/browser-before-replay.json) |
 | Actual screen recording | 90.52 seconds | [video](docs/results/demo.webm), [ffprobe output](docs/results/demo-probe.json) |
@@ -25,9 +25,9 @@ Load sweep, including engine admission through all ordered effects and drain:
 
 | Workflows | Step effects | Workflows / second | First-claim p50 ms | First-claim p99 ms | Lost workflows / duplicate effects |
 |---|---|---|---|---|---|
-| 100 | 300 | 156.49 | 420.89 | 430.28 | 0 / 0 |
-| 500 | 1500 | 319.98 | 335.67 | 447.25 | 0 / 0 |
-| 1000 | 3000 | 101.05 | 6047.79 | 7539.97 | 0 / 0 |
+| 100 | 300 | 140.78 | 449.97 | 459.13 | 0 / 0 |
+| 500 | 1500 | 194.11 | 461.81 | 603.51 | 0 / 0 |
+| 1000 | 3000 | 83.30 | 6240.86 | 9356.35 | 0 / 0 |
 
 [Full required gate](docs/results/checks.log) runs `make lint test bench`; [environment/source hashes](docs/results/checks.json) and [database durability settings](docs/results/database-environment.json) describe the measurement environment. Native trace export is disabled; export overhead and HTTP API throughput are **not measured**. First-claim latency uses the stored database enqueue and first-claim timestamps. It excludes waiting to enter admission, HTTP transport and worker instructions after the claim; request-to-handler-start latency is not measured. It includes queueing and requested schedule delay; raw reconciliation also records schedule-adjusted latency. This is a burst/steady synthetic workload, not a hard real-time SLO.
 
@@ -77,12 +77,12 @@ Read [DESIGN.md](docs/DESIGN.md), [ADRs](docs/adr), [migration provenance](docs/
 - Lease epochs survive replay. Completed prefix effects are retained. Bounded attempts can intentionally terminate work in dead letters; a dead letter is not relabeled as success or silently discarded.
 - Pause is a transaction barrier for new claims and internal effect commits. It cannot undo already committed work. Rollout changes affect claim eligibility.
 - No multitenant isolation, database-replica failover, cross-region consensus, external-effect exactly-once guarantee or automated retention/backup is implemented.
-- Operator sessions are local to the API process; SDKs use a separate provisioned bearer token. Hosted TLS and Secure cookies are required. The demo database role can migrate schema; production should separate migration credentials from runtime permissions.
+- Default local operator sessions live in the API process. The hosted entrypoint uses revocable hashed sessions in its dedicated Postgres schema so login/logout crosses instances; SDKs use a separate provisioned bearer token. Hosted TLS and Secure cookies are required. The demo database role can migrate schema; production should separate migration credentials from runtime permissions.
 - Async OpenTelemetry export is verified, but spans can be lost on crashes and there is no long-term trace backend. Postgres state/events are authoritative.
 - The hour protocol reconciliation completed, but the command exited 1 when the full audit export timed out. Complete reconciliation and worker logs survive; the event stream is an incomplete recovered prefix. The exporter now pages with a separate deadline and passes the short gate; the hour was not rerun.
 - The long campaign uses the same production engine, worker and fault-proxy sources as the final implementation; [source equality hashes](docs/results/campaign-source.json) record this boundary. SDK/UI and optional embedded serve mode are separately tested.
 - Security scans report no affected Go call paths/imported packages and no frontend advisories in the saved run. The Go module graph still carries an advisory for the unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. See [verbose scanner output](docs/results/security-verbose.log). This is not a claim of a zero-advisory module graph.
-- The [Vercel site](https://relay-brown-six.vercel.app) hosts recorded evidence and the demo video. The interactive engine is **not deployed**; it requires hosted Postgres and provisioned service credentials. The optional free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
+- The [Vercel site](https://relay-brown-six.vercel.app) hosts recorded evidence and the demo video. The interactive engine is **not deployed**; it requires hosted Postgres and provisioned service credentials. The [prepared Vercel live mode](docs/VERCEL.md) uses a separate daemon and awaits the existing database URL. The optional alternate free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
 
 ## Next
 

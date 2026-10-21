@@ -1,9 +1,9 @@
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.00043406163194444444,
-  "elapsed_seconds": 1.562621875,
-  "enqueue_start_p50_ms": 335.6655,
-  "enqueue_start_p99_ms": 447.24802,
+  "elapsed_hours": 0.0007155079977777778,
+  "elapsed_seconds": 2.5758287920000003,
+  "enqueue_start_p50_ms": 461.812,
+  "enqueue_start_p99_ms": 603.507,
   "faults": [],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
@@ -11,5 +11,5 @@
   "step_effects": 1500,
   "workers": 4,
   "workflows": 500,
-  "workflows_per_second": 319.97504194672814
+  "workflows_per_second": 194.11228011461716
 }

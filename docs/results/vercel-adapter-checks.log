@@ -1,0 +1,43 @@
+.venv/bin/python scripts/check_go_format.py "/tmp/relay-toolchain/go/bin/go"
+/tmp/relay-toolchain/go/bin/go vet ./...
+npm run lint --prefix apps/web
+
+> relay-console@0.1.0 lint
+> tsc --noEmit
+
+npm exec --prefix apps/web -- prettier --check apps/web/src
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m ruff check sdk/python scripts
+All checks passed!
+.venv/bin/python -m ruff format --check sdk/python scripts
+11 files already formatted
+/tmp/relay-toolchain/go/bin/go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
+.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
+{
+  "passed": 20,
+  "failed": 0,
+  "tests": [
+    "TestHostedSchemaIsolatedAndReentrant",
+    "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestAmbiguousEnqueueRetriesSameRequest",
+    "TestIdempotencyCapacityConflict",
+    "TestLeaseFencingAndAtomicEffects",
+    "TestConcurrentAdmissionAndClaims",
+    "TestDelayPauseRolloutAndRollback",
+    "TestDeadLetterReplayPreservesPreviousEffect",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
+    "TestCrashBudgetEventuallyDeadLetters",
+    "TestBackoffAndCohortProperties",
+    "TestWaitForLockCannotReviveExpiredLease",
+    "TestEffectAndStepRollbackTogether",
+    "TestConcurrentCompletionCommitsOnlyOnce",
+    "TestCookieAuthCSRFValidationAndLogout",
+    "TestSDKHTTPAndDatabaseErrors",
+    "TestEmbeddedServiceCompletesAndShutsDown",
+    "TestLoginRateLimit",
+    "TestUnknownRouteDoesNotLeakFiles",
+    "TestDurableSessionsAcrossInstancesAndLogout"
+  ],
+  "failures": []
+}

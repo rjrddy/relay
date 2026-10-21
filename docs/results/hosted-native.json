@@ -1,0 +1,11 @@
+{
+  "health": "pass",
+  "isolated_schema": "relay_vercel_v1",
+  "api_and_independent_worker": true,
+  "duplicate_created": false,
+  "effects": 3,
+  "receipt": 84,
+  "trace_ids_nonzero": true,
+  "evidence_and_console_routes": true,
+  "run": "bb0018654f37d72a8bd8d77e101a7540"
+}

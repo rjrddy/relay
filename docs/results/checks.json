@@ -1,11 +1,11 @@
 {
   "command": "make lint test bench",
   "exit_code": 0,
-  "started_unix": 1792559316.178389,
-  "elapsed_seconds": 90.22939491271973,
+  "started_unix": 1792621331.4863849,
+  "elapsed_seconds": 95.5263421535492,
   "platform": "macOS-15.2-arm64-arm-64bit-Mach-O",
   "go": "go version go1.27.3 darwin/arm64",
-  "source_head": "1b2afdb2c24546e9a74752ad8c734801965e4a93",
+  "source_head": "798cb1384c019eb9625f54f8cc43ad3b9d2234b1",
   "otel_export_enabled": false,
   "core_source_sha256": {
     "internal/engine/engine.go": "ba3649b67784c47203353490f3b17ffbd33a5962232434703ef2a287a2be7848",

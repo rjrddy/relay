@@ -1,14 +1,15 @@
 {
-  "passed": 18,
+  "passed": 20,
   "failed": 0,
   "tests": [
+    "TestHostedSchemaIsolatedAndReentrant",
     "TestIdempotencyCapacityConflict",
     "TestLeaseFencingAndAtomicEffects",
     "TestConcurrentAdmissionAndClaims",
     "TestDelayPauseRolloutAndRollback",
     "TestDeadLetterReplayPreservesPreviousEffect",
-    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestCrashBudgetEventuallyDeadLetters",
     "TestBackoffAndCohortProperties",
     "TestAmbiguousEnqueueRetriesSameRequest",
@@ -19,7 +20,8 @@
     "TestSDKHTTPAndDatabaseErrors",
     "TestEmbeddedServiceCompletesAndShutsDown",
     "TestLoginRateLimit",
-    "TestUnknownRouteDoesNotLeakFiles"
+    "TestUnknownRouteDoesNotLeakFiles",
+    "TestDurableSessionsAcrossInstancesAndLogout"
   ],
   "failures": []
 }

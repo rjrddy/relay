@@ -1,3 +1,11 @@
+From /Users/rajreddy/dev/outreach/flagships/relay
+   1b2afdb..798cb13  main       -> origin/main
+error: The following untracked working tree files would be overwritten by merge:
+	docs/results/tests.json
+	docs/results/tests.jsonl
+Please move or remove them before you merge.
+Aborting
+Updating 1b2afdb..798cb13
 /tmp/relay-toolchain/go/bin/go build -trimpath -o bin/relay ./cmd/relay
 npm run build --prefix apps/web
 
@@ -12,7 +20,7 @@ computing gzip size...
 dist/index.html                   0.44 kB │ gzip:  0.31 kB
 dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.57 kB
 dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
-✓ built in 435ms
+✓ built in 675ms
 .venv/bin/python scripts/check_go_format.py "/tmp/relay-toolchain/go/bin/go"
 /tmp/relay-toolchain/go/bin/go vet ./...
 npm run lint --prefix apps/web
@@ -33,16 +41,16 @@ All checks passed!
   "passed": 18,
   "failed": 0,
   "tests": [
-    "TestClientPreservesIdempotencyAndSurfacesConflict",
-    "TestAmbiguousEnqueueRetriesSameRequest",
     "TestIdempotencyCapacityConflict",
     "TestLeaseFencingAndAtomicEffects",
     "TestConcurrentAdmissionAndClaims",
     "TestDelayPauseRolloutAndRollback",
     "TestDeadLetterReplayPreservesPreviousEffect",
     "TestExpiredLeaseCannotHeartbeatOrComplete",
+    "TestClientPreservesIdempotencyAndSurfacesConflict",
     "TestCrashBudgetEventuallyDeadLetters",
     "TestBackoffAndCohortProperties",
+    "TestAmbiguousEnqueueRetriesSameRequest",
     "TestWaitForLockCannotReviveExpiredLease",
     "TestEffectAndStepRollbackTogether",
     "TestConcurrentCompletionCommitsOnlyOnce",

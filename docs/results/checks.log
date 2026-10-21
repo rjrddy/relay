@@ -11,20 +11,21 @@ All matched files use Prettier code style!
 .venv/bin/python -m ruff check sdk/python scripts
 All checks passed!
 .venv/bin/python -m ruff format --check sdk/python scripts
-11 files already formatted
+13 files already formatted
 /tmp/relay-toolchain/go/bin/go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
 .venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
 {
-  "passed": 18,
+  "passed": 20,
   "failed": 0,
   "tests": [
+    "TestHostedSchemaIsolatedAndReentrant",
     "TestIdempotencyCapacityConflict",
     "TestLeaseFencingAndAtomicEffects",
     "TestConcurrentAdmissionAndClaims",
     "TestDelayPauseRolloutAndRollback",
     "TestDeadLetterReplayPreservesPreviousEffect",
-    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestCrashBudgetEventuallyDeadLetters",
     "TestBackoffAndCohortProperties",
     "TestAmbiguousEnqueueRetriesSameRequest",
@@ -35,7 +36,8 @@ All checks passed!
     "TestSDKHTTPAndDatabaseErrors",
     "TestEmbeddedServiceCompletesAndShutsDown",
     "TestLoginRateLimit",
-    "TestUnknownRouteDoesNotLeakFiles"
+    "TestUnknownRouteDoesNotLeakFiles",
+    "TestDurableSessionsAcrossInstancesAndLogout"
   ],
   "failures": []
 }
@@ -53,14 +55,14 @@ computing gzip size...
 dist/index.html                   0.44 kB │ gzip:  0.31 kB
 dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.57 kB
 dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
-✓ built in 560ms
+✓ built in 739ms
 /tmp/relay-toolchain/go/bin/go run ./cmd/bench --jobs 100 --out load-100
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.0001775104513888889,
-  "elapsed_seconds": 0.639037625,
-  "enqueue_start_p50_ms": 420.8895,
-  "enqueue_start_p99_ms": 430.28409,
+  "elapsed_hours": 0.0001973104283333333,
+  "elapsed_seconds": 0.710317542,
+  "enqueue_start_p50_ms": 449.9735,
+  "enqueue_start_p99_ms": 459.1298,
   "faults": [],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
@@ -68,15 +70,15 @@ dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
   "step_effects": 300,
   "workers": 4,
   "workflows": 100,
-  "workflows_per_second": 156.48530867020543
+  "workflows_per_second": 140.78210671587215
 }
 /tmp/relay-toolchain/go/bin/go run ./cmd/bench --jobs 500 --out load-500
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.00043406163194444444,
-  "elapsed_seconds": 1.562621875,
-  "enqueue_start_p50_ms": 335.6655,
-  "enqueue_start_p99_ms": 447.24802,
+  "elapsed_hours": 0.0007155079977777778,
+  "elapsed_seconds": 2.5758287920000003,
+  "enqueue_start_p50_ms": 461.812,
+  "enqueue_start_p99_ms": 603.507,
   "faults": [],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
@@ -84,15 +86,15 @@ dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
   "step_effects": 1500,
   "workers": 4,
   "workflows": 500,
-  "workflows_per_second": 319.97504194672814
+  "workflows_per_second": 194.11228011461716
 }
 /tmp/relay-toolchain/go/bin/go run ./cmd/bench --jobs 1000 --out load-1000
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.0027488274075,
-  "elapsed_seconds": 9.895778667,
-  "enqueue_start_p50_ms": 6047.7855,
-  "enqueue_start_p99_ms": 7539.9709,
+  "elapsed_hours": 0.0033347616899999997,
+  "elapsed_seconds": 12.005142084,
+  "enqueue_start_p50_ms": 6240.8595000000005,
+  "enqueue_start_p99_ms": 9356.3522,
   "faults": [],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
@@ -100,62 +102,62 @@ dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
   "step_effects": 3000,
   "workers": 4,
   "workflows": 1000,
-  "workflows_per_second": 101.05318981463836
+  "workflows_per_second": 83.29763971163342
 }
 /tmp/relay-toolchain/go/bin/go run ./cmd/bench --jobs 300 --chaos --duration 60s --out chaos
 {
   "duplicate_effects": 0,
-  "elapsed_hours": 0.016673200104166667,
-  "elapsed_seconds": 60.023520375,
-  "enqueue_start_p50_ms": 4.527,
-  "enqueue_start_p99_ms": 1905.28884,
+  "elapsed_hours": 0.016685658472222222,
+  "elapsed_seconds": 60.0683705,
+  "enqueue_start_p50_ms": 4.805,
+  "enqueue_start_p99_ms": 2261.12005,
   "faults": [
     {
-      "elapsed_seconds": 0.133092666,
+      "elapsed_seconds": 0.153362958,
       "kind": "process_exit_after_claim"
     },
     {
-      "elapsed_seconds": 0.153545333,
+      "elapsed_seconds": 0.172802375,
       "kind": "process_exit_after_commit"
     },
     {
-      "elapsed_seconds": 0.358501916,
+      "elapsed_seconds": 0.37776,
       "kind": "database_transport_partition_begin"
     },
     {
-      "elapsed_seconds": 0.709632333,
+      "elapsed_seconds": 0.728835125,
       "kind": "database_transport_partition_end"
     },
     {
-      "elapsed_seconds": 0.809684208,
+      "elapsed_seconds": 0.828864958,
       "kind": "database_transport_delay_begin"
     },
     {
-      "elapsed_seconds": 1.610684875,
+      "elapsed_seconds": 1.629013,
       "kind": "database_transport_delay_end"
     },
     {
-      "elapsed_seconds": 31.811090416,
+      "elapsed_seconds": 31.8296655,
       "kind": "database_transport_partition_begin"
     },
     {
-      "elapsed_seconds": 32.162159083,
+      "elapsed_seconds": 32.180722208,
       "kind": "database_transport_partition_end"
     },
     {
-      "elapsed_seconds": 32.262368916,
+      "elapsed_seconds": 32.281383791,
       "kind": "database_transport_delay_begin"
     },
     {
-      "elapsed_seconds": 33.06265825,
+      "elapsed_seconds": 33.082033,
       "kind": "database_transport_delay_end"
     }
   ],
   "incorrect_receipts": 0,
   "lost_workflows": 0,
   "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
-  "step_effects": 4170,
+  "step_effects": 4218,
   "workers": 4,
-  "workflows": 1390,
-  "workflows_per_second": 23.157588747142857
+  "workflows": 1406,
+  "workflows_per_second": 23.40666124778597
 }

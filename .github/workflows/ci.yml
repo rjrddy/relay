@@ -60,4 +60,8 @@ jobs:
         if: always()
         with:
           name: relay-ci-evidence
-          path: docs/results/
+          path: |
+            docs/results/tests.json
+            docs/results/tests.jsonl
+            docs/results/ci-chaos*
+            docs/results/container-ci/

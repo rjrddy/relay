@@ -16,10 +16,12 @@ Status: **partial — live deployment and complete hour audit export are outstan
 | No unmeasured result claims | PASS on manual review | generated README, explicit measurement boundaries, independent raw-event/latency audit |
 | Completed screen recording | PASS | demo.webm and measured media duration in demo-probe.json |
 | Full hour audit export | FAIL | hour-export-status.json; original command exited 1 after reconciliation; paginated fix passes short run, hour not rerun |
-| Hosted live demo | FAIL / not deployed | deploy/render.yaml is preparation, not a live URL |
+| Hosted live demo | PARTIAL: recorded demo/evidence on Vercel; live engine not deployed | deploy/render.yaml is preparation, not a live URL |
 
 The dependency gate reports no affected Go call paths/imported packages and no frontend advisories in the saved run. There is a module-scope advisory for an unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. The verbose report is retained. No advisory is silently ignored or relabeled as a clean module graph.
 
 Limits include an ordered synthetic pipeline, one authoritative Postgres primary, a central admission/configuration bottleneck, bounded retries with visible dead letters, no arbitrary remote-effect exactly-once guarantee, no tenant isolation or automated backup/retention, and no hosted performance claim. The worker-transport fault and real storage-sync-call delay are precisely scoped; neither is a multi-region database consensus or physical-device benchmark.
 
 The campaign source record proves that the final production engine, worker and fault-proxy files match the sustained run; export-only harness changes are recorded separately. SDK/UI and optional embedded serve mode are independently tested. Stop for review before Pulse.
+
+Vercel publication: https://relay-brown-six.vercel.app. Public desktop/mobile/filter checks are saved in docs/results/vercel.json. This does not close the live-engine hosting gap.

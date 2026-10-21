@@ -33,7 +33,7 @@ text = f"""# Relay
 
 Keep ordered workflow steps recoverable after worker and connection failures without repeating committed internal effects.
 
-**Status: partial — live deployment and complete hour audit export are outstanding.** [Public repository](https://github.com/rjrddy/relay) · [Demo recording](https://raw.githubusercontent.com/rjrddy/relay/main/docs/results/demo.webm) · [Interview kit](INTERVIEW.md).
+**Status: partial — live deployment and complete hour audit export are outstanding.** [Hosted demo and evidence](https://relay-brown-six.vercel.app) · [Public repository](https://github.com/rjrddy/relay) · [Demo recording](https://raw.githubusercontent.com/rjrddy/relay/main/docs/results/demo.webm) · [Interview kit](INTERVIEW.md).
 
 ## Results
 
@@ -109,7 +109,7 @@ Read [DESIGN.md](docs/DESIGN.md), [ADRs](docs/adr), [migration provenance](docs/
 - The hour protocol reconciliation completed, but the command exited 1 when the full audit export timed out. Complete reconciliation and worker logs survive; the event stream is an incomplete recovered prefix. The exporter now pages with a separate deadline and passes the short gate; the hour was not rerun.
 - The long campaign uses the same production engine, worker and fault-proxy sources as the final implementation; [source equality hashes](docs/results/campaign-source.json) record this boundary. SDK/UI and optional embedded serve mode are separately tested.
 - Security scans report no affected Go call paths/imported packages and no frontend advisories in the saved run. The Go module graph still carries an advisory for the unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. See [verbose scanner output](docs/results/security-verbose.log). This is not a claim of a zero-advisory module graph.
-- Live demo: **not deployed**. The optional free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
+- The [Vercel site](https://relay-brown-six.vercel.app) hosts recorded evidence and the demo video. The interactive engine is **not deployed**; it requires hosted Postgres and provisioned service credentials. The optional free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
 
 ## Next
 

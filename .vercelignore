@@ -1,0 +1,10 @@
+.git
+.cache
+.venv
+bin
+apps/web/node_modules
+apps/web/dist
+docs/results/*worker*
+docs/results/*events*
+docs/results/ci-code.log
+docs/results/linux-storage

@@ -40,3 +40,5 @@ CREATE TABLE IF NOT EXISTS events (
  trace_id text NOT NULL DEFAULT '', span_id text NOT NULL DEFAULT ''
 );
 CREATE INDEX IF NOT EXISTS run_events ON events(run_id,seq);
+
+CREATE INDEX IF NOT EXISTS unfinished_runs ON runs(state) WHERE state='running';

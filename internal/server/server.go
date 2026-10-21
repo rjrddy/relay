@@ -1,6 +1,7 @@
 package server
 
 import (
+	"context"
 	"crypto/rand"
 	"crypto/sha256"
 	"crypto/subtle"
@@ -313,7 +314,9 @@ func (s *Server) Handler() http.Handler {
 		http.ServeFile(w, r, path)
 	})
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx := propagation.TraceContext{}.Extract(r.Context(), propagation.HeaderCarrier(r.Header))
+		requestCtx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+		defer cancel()
+		ctx := propagation.TraceContext{}.Extract(requestCtx, propagation.HeaderCarrier(r.Header))
 		ctx, span := otel.Tracer("relay").Start(ctx, "http.request")
 		defer span.End()
 		w.Header().Set("X-Content-Type-Options", "nosniff")

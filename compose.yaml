@@ -51,7 +51,7 @@ services:
       otel:
         condition: service_started
   otel:
-    image: otel/opentelemetry-collector:0.123.0
+    image: otel/opentelemetry-collector:0.163.1
     command: ["--config=/etc/otel.yaml"]
     volumes:
       - ./observability/otel.yaml:/etc/otel.yaml:ro

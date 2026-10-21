@@ -70,6 +70,7 @@ func Open(ctx context.Context, dsn string) (*Engine, error) {
 		return nil, err
 	}
 	cfg.MaxConns = 16
+	cfg.ConnConfig.ConnectTimeout = 3 * time.Second
 	// Bound lock waits, statement waits and abandoned transactions independently of worker timeouts.
 	cfg.ConnConfig.RuntimeParams["statement_timeout"] = "5000"
 	cfg.ConnConfig.RuntimeParams["lock_timeout"] = "2000"

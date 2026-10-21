@@ -25,6 +25,7 @@ for key in (
 assert reconciled["runs"] == reconciled["done"] == long["workflows"]
 assert reconciled["effects"] == long["step_effects"] == long["workflows"] * 3
 counts = collections.Counter()
+owner_claims = collections.Counter()
 run_ids = set()
 last_seq = 0
 with gzip.open(out / "chaos-hour-events.jsonl.gz", "rt") as stream:
@@ -33,11 +34,18 @@ with gzip.open(out / "chaos-hour-events.jsonl.gz", "rt") as stream:
         assert row["seq"] > last_seq
         last_seq = row["seq"]
         counts[row["kind"]] += 1
+        if row["kind"] == "claimed":
+            owner_claims[row["owner"]] += 1
         run_ids.add(row["run_id"])
 assert counts["enqueued"] == long["workflows"]
 assert counts["committed"] == long["step_effects"]
 assert counts["dead"] == 0 and len(run_ids) == long["workflows"]
 values = sorted(row["enqueue_start_ms"] for row in reconciled["latencies"])
+assert len(values) == long["workflows"]
+assert math.isclose(long["elapsed_hours"], long["elapsed_seconds"] / 3600, rel_tol=1e-12)
+assert math.isclose(
+    long["workflows_per_second"], long["workflows"] / long["elapsed_seconds"], rel_tol=1e-12
+)
 
 
 def quantile(q: float) -> float:
@@ -51,6 +59,7 @@ assert math.isclose(quantile(0.99), long["enqueue_start_p99_ms"], abs_tol=1e-8)
 audit = {
     "workflows": len(run_ids),
     "event_counts": dict(counts),
+    "owner_claim_counts": dict(owner_claims),
     "last_sequence": last_seq,
     "latency_rows": len(values),
     "recomputed_p50_ms": quantile(0.5),

@@ -23,7 +23,7 @@ rows = "\n".join(
 )
 if long:
     campaign = f"{long['workflows']:,} workflows / {long['step_effects']:,} effects over {long['elapsed_hours']:.6f} measured wall-clock hours; {long['lost_workflows']} lost workflows / {long['duplicate_effects']} duplicate effects"
-    long_notes = f"The long run lasted {long['elapsed_seconds']:.3f} seconds with {long['workers']} steady worker processes. Its p99 enqueue-to-first-claim was {long['enqueue_start_p99_ms']:.2f} ms. Fault timing is recorded in the result, not inferred from simulated time."
+    long_notes = f"The long run lasted {long['elapsed_seconds']:.3f} seconds with {long['workers']} configured steady worker processes. Its p99 enqueue-to-first-claim was {long['enqueue_start_p99_ms']:.2f} ms. Fault timing is recorded in the result, not inferred from simulated time."
 else:
     campaign = "not measured — sustained campaign still running"
     long_notes = "Do not treat an in-progress campaign as a completed durability result."
@@ -56,7 +56,7 @@ Load sweep, including engine admission through all ordered effects and drain:
 |---|---|---|---|---|---|
 {rows}
 
-[Full required gate](docs/results/checks.log) runs `make lint test bench`; [environment/source hashes](docs/results/checks.json) and [database durability settings](docs/results/database-environment.json) describe the measurement environment. Native trace export is disabled; export overhead and HTTP API throughput are **not measured**. First-claim latency includes queueing and requested schedule delay; raw reconciliation also records schedule-adjusted latency. This is a burst/steady synthetic workload, not a hard real-time SLO.
+[Full required gate](docs/results/checks.log) runs `make lint test bench`; [environment/source hashes](docs/results/checks.json) and [database durability settings](docs/results/database-environment.json) describe the measurement environment. Native trace export is disabled; export overhead and HTTP API throughput are **not measured**. First-claim latency uses the stored database enqueue and first-claim timestamps. It excludes waiting to enter admission, HTTP transport and worker instructions after the claim; request-to-handler-start latency is not measured. It includes queueing and requested schedule delay; raw reconciliation also records schedule-adjusted latency. This is a burst/steady synthetic workload, not a hard real-time SLO.
 
 The chaos harness terminates real worker processes after claim and after commit, then repeatedly closes/delays worker-to-Postgres TCP connections. The producer/observer stays directly connected so it can independently reconcile. A process exiting after observing commit is not falsely labeled a network-dropped COMMIT acknowledgement. The separate browser experiment replaces a real successful admission response with a failure, reloads, and proves the retry acknowledges the existing run. The storage experiment delays actual fsync/fdatasync calls, not a simulated timer in a handler; it is not a failing physical-device benchmark.
 

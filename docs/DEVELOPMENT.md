@@ -8,7 +8,7 @@ Run make setup build after installing the toolchain declared in go.mod. Supply a
 
 Latency boundaries:
 
-- Enqueue-to-first-claim includes queueing and any requested schedule delay. The raw reconciliation also records schedule-adjusted latency.
+- Enqueue-to-first-claim uses database enqueue and claim timestamps. It excludes waiting to enter admission, HTTP transport and instructions after claim. Request-to-handler-start latency is not measured. It includes queueing and any requested schedule delay. The raw reconciliation also records schedule-adjusted latency.
 - Workflow throughput includes admission, the ordered step pipeline, retries, faults and drain. It is not single-handler CPU throughput or an HTTP API benchmark.
 - Trace export is disabled in the native benchmark environment; exporter overhead is not measured. The independent Compose test verifies actual OpenTelemetry export.
 - The native database and application share this development machine with verification tasks. These are reproducible workload observations, not dedicated-host production capacity claims.

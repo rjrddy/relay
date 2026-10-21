@@ -1,6 +1,7 @@
 """Standard-library SDK with bounded, idempotent enqueue retries."""
 
 import hashlib
+import http.client
 import json
 import time
 import urllib.error
@@ -65,7 +66,13 @@ class Client:
             except APIError as error:
                 if error.status not in (429, 502, 503, 504) or attempt == 4:
                     raise
-            except (urllib.error.URLError, TimeoutError):
+            except (
+                urllib.error.URLError,
+                TimeoutError,
+                ConnectionError,
+                http.client.IncompleteRead,
+                json.JSONDecodeError,
+            ):
                 if attempt == 4:
                     raise
             jitter = int.from_bytes(hashlib.sha256(key.encode()).digest()[:2], "big") % 41

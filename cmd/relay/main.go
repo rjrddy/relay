@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"sync"
 	"syscall"
 	"time"
 
@@ -64,23 +65,7 @@ func run() error {
 	case "migrate":
 		return nil
 	case "seed":
-		for i := 0; i < 18; i++ {
-			input := engine.Input{Value: int64(100 + i), WorkMS: 80}
-			attempts := 4
-			if i%5 == 0 {
-				input.FailUntil = 1
-			}
-			if i == 17 {
-				input.FailUntil = 2
-				attempts = 2
-			}
-			_, _, err = e.Enqueue(ctx, engine.Request{Key: fmt.Sprintf("seed-v1-%d", i), Input: input, DelayMS: (i % 3) * 200, MaxAttempts: attempts})
-			if err != nil && !errors.Is(err, engine.ErrCapacity) {
-				return err
-			}
-		}
-		slog.Info("synthetic_seed_complete")
-		return nil
+		return seed(ctx, e)
 	case "worker":
 		flags := flag.NewFlagSet("worker", flag.ContinueOnError)
 		crash := flags.String("crash-phase", "", "test-only claim or commit crash")
@@ -109,6 +94,29 @@ func run() error {
 		}
 		return err
 	case "serve":
+		if os.Getenv("RELAY_SEED") == "1" {
+			if err := seed(ctx, e); err != nil {
+				return err
+			}
+		}
+		serviceCtx, serviceCancel := context.WithCancel(ctx)
+		var workers sync.WaitGroup
+		defer func() { serviceCancel(); workers.Wait() }()
+		if value := os.Getenv("RELAY_EMBEDDED_WORKERS"); value != "" {
+			count, err := strconv.Atoi(value)
+			if err != nil || count < 0 || count > 4 {
+				return errors.New("invalid embedded worker count")
+			}
+			for i := 0; i < count; i++ {
+				workers.Add(1)
+				go func() {
+					defer workers.Done()
+					w := worker.Worker{Engine: e, ID: "embedded-" + engine.ID()}
+					w.Loop(serviceCtx)
+				}()
+			}
+		}
+
 		web := os.Getenv("RELAY_WEB")
 		if web == "" {
 			web = "apps/web/dist"
@@ -141,6 +149,26 @@ func run() error {
 	default:
 		return errors.New("unknown command")
 	}
+}
+func seed(ctx context.Context, e *engine.Engine) error {
+	for i := 0; i < 18; i++ {
+		input := engine.Input{Value: int64(100 + i), WorkMS: 80}
+		attempts := 4
+		if i%5 == 0 {
+			input.FailUntil = 1
+		}
+		if i == 17 {
+			input.FailUntil = 2
+			attempts = 2
+		}
+		_, _, err := e.Enqueue(ctx, engine.Request{Key: fmt.Sprintf("seed-v1-%d", i), Input: input, DelayMS: (i % 3) * 200, MaxAttempts: attempts})
+		if err != nil && !errors.Is(err, engine.ErrCapacity) {
+			return err
+		}
+	}
+
+	slog.Info("synthetic_seed_complete")
+	return nil
 }
 func main() {
 	slog.SetDefault(slog.New(slog.NewJSONHandler(os.Stdout, nil)))

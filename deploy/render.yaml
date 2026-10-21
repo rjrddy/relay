@@ -1,0 +1,28 @@
+# Optional free demo blueprint. Nothing is deployed by checking this file in.
+services:
+  - type: web
+    name: relay-workflows
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: relay-demo-db
+          property: connectionString
+      - key: RELAY_PASSWORD
+        generateValue: true
+      - key: RELAY_API_TOKEN
+        generateValue: true
+      - key: RELAY_EMBEDDED_WORKERS
+        value: "2"
+      - key: RELAY_SEED
+        value: "1"
+      - key: COOKIE_SECURE
+        value: "1"
+databases:
+  - name: relay-demo-db
+    databaseName: relay
+    user: relay
+    plan: free
+    ipAllowList: []

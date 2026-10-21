@@ -95,7 +95,7 @@ func (c *Client) Enqueue(ctx context.Context, r Request) (Receipt, error) {
 		}
 		var api *APIError
 		var transport *url.Error
-		retryable := false
+		retryable := errors.Is(last, io.EOF) || errors.Is(last, io.ErrUnexpectedEOF)
 		if errors.As(last, &api) {
 			retryable = api.Status == 429 || api.Status == 502 || api.Status == 503 || api.Status == 504
 		}

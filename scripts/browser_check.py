@@ -24,6 +24,11 @@ with sync_playwright() as p:
     page.get_by_label("Operator password").fill(os.environ["RELAY_PASSWORD"])
     page.get_by_role("button", name="Enter workspace").click()
     page.get_by_role("heading", name="Every step accounted for.").wait_for()
+    page.evaluate(
+        """async()=>{const session=await(await fetch('/api/session')).json();const c=await(await fetch('/api/control')).json();await fetch('/api/control',{method:'PUT',headers:{'Content-Type':'application/json','X-CSRF-Token':session.csrf},body:JSON.stringify({...c,paused:false,rollout:100})});}"""
+    )
+    page.reload()
+    page.get_by_role("heading", name="Every step accounted for.").wait_for()
     ambiguous = {}
 
     def lose_ack(route):
@@ -38,6 +43,7 @@ with sync_playwright() as p:
     page.route("**/api/runs", lose_ack)
     page.get_by_role("button", name="Enqueue workflow", exact=False).click()
     page.get_by_role("button", name="Retry pending workflow", exact=False).wait_for()
+    page.get_by_role("alert").filter(has_text="injected acknowledgement loss").wait_for()
     page.unroute("**/api/runs", lose_ack)
     page.reload()
     with page.expect_response(

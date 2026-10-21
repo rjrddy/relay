@@ -1,0 +1,13 @@
+.cache/
+.venv
+.venv/
+.env
+.env.*
+!.env.example
+bin/
+apps/web/node_modules/
+apps/web/dist/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+data/

@@ -1,0 +1,25 @@
+{
+  "workflows": 67688,
+  "event_export_complete": false,
+  "event_counts_scope": "recovered complete-line prefix only",
+  "event_counts": {
+    "enqueued": 26462,
+    "claimed": 81438,
+    "committed": 79384,
+    "retry_scheduled": 2035
+  },
+  "owner_claim_counts": {
+    "crash-claim": 1,
+    "crash-commit": 1,
+    "worker-0": 20205,
+    "worker-1": 20315,
+    "worker-2": 20131,
+    "worker-3": 20785
+  },
+  "last_sequence": 189319,
+  "latency_rows": 67688,
+  "recomputed_p50_ms": 2.901,
+  "recomputed_p99_ms": 273.4413100000018,
+  "reconciliation_invariants": "pass",
+  "source_boundary": "production engine and worker-transport campaign"
+}

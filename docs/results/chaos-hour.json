@@ -1,0 +1,1864 @@
+{
+  "duplicate_effects": 0,
+  "elapsed_hours": 1.0002881685069445,
+  "elapsed_seconds": 3601.037406625,
+  "enqueue_start_p50_ms": 2.901,
+  "enqueue_start_p99_ms": 273.44130999999976,
+  "faults": [
+    {
+      "elapsed_seconds": 0.551411833,
+      "kind": "process_exit_after_claim"
+    },
+    {
+      "elapsed_seconds": 0.572335,
+      "kind": "process_exit_after_commit"
+    },
+    {
+      "elapsed_seconds": 0.776152583,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1.127289416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1.22748575,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2.028558458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 32.229015333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 32.579703041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 32.679712166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 33.480209375,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 63.680617166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 64.031844458,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 64.13186525,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 64.932234791,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 95.132786625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 95.482988333,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 95.583494,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 96.384448875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 126.584633291,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 126.935719208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 127.035987375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 127.836535125,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 158.040167333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 158.391382083,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 158.491439625,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 159.291703375,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 189.492029125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 189.843098958,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 189.943179833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 190.743622625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 220.944489916,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 221.295548833,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 221.3958765,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 222.196422166,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 252.396964375,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 252.748320166,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 252.848413833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 253.648553625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 283.848865916,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 284.199912208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 284.299996541,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 285.100136125,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 315.300573625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 315.651394625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 315.751450791,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 316.5517555,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 346.752768291,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 347.103798291,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 347.203839666,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 348.004054041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 378.204568416,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 378.555628916,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 378.655925291,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 379.456414625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 409.6569365,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 410.007991041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 410.108253416,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 410.908946083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 441.109823916,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 441.460118666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 441.56027325,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 442.360397208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 472.561792791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 472.912293875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 473.012634458,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 473.812837375,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 504.013439166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 504.363480625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 504.46354875,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 505.263733208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 535.464142958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 535.815333708,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 535.915627125,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 536.716799708,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 566.917656583,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 567.267992583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 567.368018208,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 568.168330916,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 598.368974708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 598.719328125,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 598.819393833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 599.620469791,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 629.820965708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 630.172064833,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 630.272398541,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 631.072865791,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 661.273670625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 661.623701666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 661.7237265,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 662.523771083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 692.724195958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 693.074694083,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 693.174759083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 693.97532025,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 724.175819,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 724.526612875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 724.626667916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 725.426760083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 755.6270265,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 755.978073375,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 756.078135708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 756.878435625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 787.079378166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 787.4303055,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 787.53044525,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 788.331344708,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 818.532499166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 818.883265791,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 818.983410041,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 819.783607875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 849.984212375,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 850.335065583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 850.4353455,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 851.235497125,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 881.436255125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 881.787289791,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 881.887491083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 882.6879185,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 912.888729791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 913.239786875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 913.339815833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 914.140308875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 944.340730041,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 944.690875541,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 944.791230375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 945.591460083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 975.791929291,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 976.142866625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 976.243752541,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 977.044331583,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1007.244818916,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1007.595268458,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1007.695309416,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1008.495463375,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1038.69595825,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1039.046162125,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1039.146697333,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1039.946780125,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1070.147330333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1070.498382708,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1070.598491833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1071.398833708,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1101.599305958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1101.950347875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1102.050408041,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1102.851492666,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1133.05249775,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1133.403574291,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1133.503596166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1134.303820958,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1164.504435541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1164.855267583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1164.955321125,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1165.755485041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1195.955855666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1196.306436875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1196.406479083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1197.207173541,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1227.40820325,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1227.760803375,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1227.8609595,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1228.661200083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1258.861916458,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1259.211963625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1259.312267916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1260.113325833,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1290.314625333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1290.664930375,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1290.764950041,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1291.56557125,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1321.766347375,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1322.116974583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1322.217187583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1323.017255916,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1353.217672791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1353.567893875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1353.6679245,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1354.468236041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1384.668591333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1385.018793791,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1385.118869791,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1385.919443666,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1416.119745166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1416.470797666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1416.570814833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1417.370991208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1447.571978,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1447.922869791,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1448.022894833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1448.823695583,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1479.025701208,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1479.376716666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1479.476986166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1480.27738775,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1510.478113875,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1510.829153625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1510.929176375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1511.730627208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1541.931240666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1542.282309208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1542.382428583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1543.184243291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1573.384513666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1573.735469041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1573.835937083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1574.636966875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1604.837311125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1605.188378041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1605.28839175,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1606.088456166,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1636.28882625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1636.638899791,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1636.738977083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1637.539053166,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1667.739553958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1668.089618625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1668.189759625,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1668.989864458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1699.191397,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1699.54218225,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1699.642589166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1700.442729416,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1730.643808958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1730.994884333,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1731.095487458,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1731.895637458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1762.095960833,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1762.446457125,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1762.546474416,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1763.347073875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1793.547487,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1793.898562875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1793.998861416,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1794.799296291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1825.000200083,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1825.351246125,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1825.451309583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1826.251604666,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1856.452064583,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1856.803125416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1856.9031885,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1857.704465291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1887.905191958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1888.255686375,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1888.35569725,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1889.156234583,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1919.356564125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1919.707617166,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1919.807664375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1920.607742958,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1950.808131791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1951.159241583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1951.259269916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1952.060024875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 1982.260614083,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1982.61064875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1982.710806083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1983.510869,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2013.711726125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2014.062797,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2014.162900625,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2014.963186583,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2045.163708291,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2045.514195333,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2045.6143345,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2046.415280041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2076.615734125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2076.965875291,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2077.065918708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2077.86644875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2108.067189708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2108.4180285,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2108.518065166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2109.318570041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2139.519206666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2139.870303083,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2139.970352041,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2140.770600041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2170.972358708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2171.322929541,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2171.422952583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2172.22300475,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2202.423909166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2202.774991416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2202.875060375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2203.675532916,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2233.875895958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2234.226945041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2234.327215708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2235.139868291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2265.360531333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2265.711369666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2265.811483833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2266.612553291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2296.813738791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2297.164884416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2297.264924583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2298.065452333,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2328.289034958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2328.639119291,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2328.739224833,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2329.539280625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2359.742035416,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2360.092223416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2360.192251291,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2360.993366833,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2391.193876125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2391.544930125,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2391.645062166,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2392.445480458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2422.646405708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2422.99754675,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2423.097708958,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2423.8977995,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2454.09799725,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2454.44819325,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2454.548279375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2455.349213791,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2485.550443666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2485.901362541,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2486.002013125,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2486.803131,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2517.007539958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2517.358304708,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2517.458517916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2518.259133208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2548.459655,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2548.810660916,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2548.910701791,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2549.710807666,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2579.911079666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2580.262213833,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2580.362464666,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2581.162610833,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2611.363598541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2611.71449,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2611.814547125,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2612.614879541,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2642.815028583,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2643.165098166,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2643.265109708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2644.065263791,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2674.265573541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2674.616624708,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2674.717142083,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2675.518152208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2705.718862708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2706.070114541,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2706.170171375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2706.971216541,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2737.172050333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2737.522584416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2737.622613333,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2738.42283025,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2768.623367625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2768.973886708,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2769.07404075,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2769.874114041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2800.075087708,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2800.426154375,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2800.52654975,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2801.327152875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2831.528275958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2831.8786625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2831.97877575,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2832.778853625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2862.979705083,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2863.330379208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2863.430537375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2864.230811041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2894.431207333,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2894.782281083,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2894.882821125,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2895.683921875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2925.8842635,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2926.235394208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2926.33544375,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2927.135497041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2957.335937666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2957.687053541,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2957.787503583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2958.588612083,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 2988.7892175,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 2989.1404105,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 2989.240694416,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 2990.041500333,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3020.241896791,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3020.592061875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3020.692479583,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3021.492931458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3051.693935541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3052.044702041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3052.1448565,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3052.945492625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3083.145744541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3083.495827916,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3083.596258708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3084.396516333,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3114.597589125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3114.948684625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3115.049036958,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3115.849694,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3146.0501555,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3146.4086745,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3146.508974,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3147.30944625,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3177.5103005,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3177.860606208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3177.960903291,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3178.761272416,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3208.961808166,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3209.312923416,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3209.412932791,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3210.214025583,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3240.415006833,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3240.765148458,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3240.865530541,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3241.665981291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3271.866973125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3272.217354666,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3272.317428666,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3273.118185166,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3303.318670625,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3303.669006583,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3303.769094875,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3304.569344875,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3334.769549958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3335.119682625,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3335.219965708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3336.020212333,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3366.220775083,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3366.571795333,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3366.6718235,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3367.471987291,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3397.672822541,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3398.023858041,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3398.123881916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3398.924571375,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3429.124893375,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3429.475977291,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3429.5760265,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3430.376270041,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3460.577247375,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3460.927379083,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3461.027392958,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3461.827496166,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3492.027875666,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3492.37893825,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3492.479150041,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3493.279613416,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3523.480081125,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3523.830471208,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3523.930798666,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3524.731181458,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3554.931527916,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3555.282560166,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3555.382670708,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3556.182862208,
+      "kind": "database_transport_delay_end"
+    },
+    {
+      "elapsed_seconds": 3586.383466958,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 3586.734553875,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 3586.834641916,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 3587.635007041,
+      "kind": "database_transport_delay_end"
+    }
+  ],
+  "incorrect_receipts": 0,
+  "lost_workflows": 0,
+  "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
+  "step_effects": 203064,
+  "workers": 4,
+  "workflows": 67688,
+  "workflows_per_second": 18.7968055748244
+}

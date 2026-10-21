@@ -1,0 +1,14 @@
+{
+  "credential_presence": {
+    "RENDER_API_KEY": false,
+    "FLY_API_TOKEN": false,
+    "RAILWAY_TOKEN": false,
+    "RAILWAY_API_TOKEN": false
+  },
+  "cli_presence": {
+    "render": false,
+    "fly": false,
+    "flyctl": false,
+    "railway": false
+  }
+}

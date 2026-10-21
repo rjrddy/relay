@@ -1,0 +1,25 @@
+{
+  "passed": 18,
+  "failed": 0,
+  "tests": [
+    "TestIdempotencyCapacityConflict",
+    "TestLeaseFencingAndAtomicEffects",
+    "TestConcurrentAdmissionAndClaims",
+    "TestDelayPauseRolloutAndRollback",
+    "TestDeadLetterReplayPreservesPreviousEffect",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
+    "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestCrashBudgetEventuallyDeadLetters",
+    "TestBackoffAndCohortProperties",
+    "TestAmbiguousEnqueueRetriesSameRequest",
+    "TestWaitForLockCannotReviveExpiredLease",
+    "TestEffectAndStepRollbackTogether",
+    "TestConcurrentCompletionCommitsOnlyOnce",
+    "TestCookieAuthCSRFValidationAndLogout",
+    "TestSDKHTTPAndDatabaseErrors",
+    "TestEmbeddedServiceCompletesAndShutsDown",
+    "TestLoginRateLimit",
+    "TestUnknownRouteDoesNotLeakFiles"
+  ],
+  "failures": []
+}

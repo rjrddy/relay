@@ -1,0 +1,2409 @@
+{
+  "workflows": 12,
+  "completed": 12,
+  "duplicate_effects": 0,
+  "elapsed_seconds": 19.744133470999998,
+  "injection": "LD_PRELOAD delays each real fsync/fdatasync call before invoking libc; not a hardware-disk benchmark",
+  "raw_result_rows": [
+    {
+      "run": {
+        "id": "95fb586c954a24ce844b657153fde196",
+        "input": {
+          "value": 0,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 68,
+        "idem_key": "storage-12425a3689254dc5a94ed34e7a2f7dc6",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.006977+00:00",
+        "fingerprint": "332827a8b931fe352f8f17f0b55930050a975b9e8b4b10e9143530c44ce9575b",
+        "traceparent": "00-8475781ed2a6c6b345cb14970e050a21-72b2092c660cd0e4-01",
+        "completed_at": "2026-10-21T04:09:10.201354+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.006977+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.006977+00:00",
+          "completed_at": "2026-10-21T04:08:59.37376+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:08:59.08345+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:03.020642+00:00",
+          "completed_at": "2026-10-21T04:09:06.591984+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:02.682806+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:06.59209+00:00",
+          "completed_at": "2026-10-21T04:09:10.201199+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:09.900437+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.007529+00:00",
+          "seq": 144,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 0,
+          "span_id": "72b2092c660cd0e4",
+          "position": -1,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:08:59.083621+00:00",
+          "seq": 156,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "585a16a97c3def73",
+          "position": 0,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:08:59.373998+00:00",
+          "seq": 158,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "44318fcbc4856ff9",
+          "position": 0,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:02.682922+00:00",
+          "seq": 180,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "c84600d094723d97",
+          "position": 1,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:02.983806+00:00",
+          "seq": 182,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "49da55d3d30b0e38",
+          "position": 1,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:06.291499+00:00",
+          "seq": 204,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 2,
+          "span_id": "512696ffde8ed82d",
+          "position": 1,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:06.592247+00:00",
+          "seq": 206,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 2,
+          "span_id": "838f149aaa2097ba",
+          "position": 1,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:09.90056+00:00",
+          "seq": 228,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "64e9198efbb68de9",
+          "position": 2,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        },
+        {
+          "at": "2026-10-21T04:09:10.201467+00:00",
+          "seq": 230,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "attempt": 1,
+          "span_id": "3b4edd24e603ac60",
+          "position": 2,
+          "trace_id": "8475781ed2a6c6b345cb14970e050a21"
+        }
+      ],
+      "effects": [
+        {
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "position": 0,
+          "committed_at": "2026-10-21T04:08:59.373657+00:00"
+        },
+        {
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:06.591868+00:00"
+        },
+        {
+          "result": 0,
+          "run_id": "95fb586c954a24ce844b657153fde196",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:10.201105+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "105fcc5c2164d1891142203efe591e1e",
+        "input": {
+          "value": 1,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 68,
+        "idem_key": "storage-683a603190a849f7b0d6f45af45a9b2b",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.008995+00:00",
+        "fingerprint": "fe149ed960a1d92dc41c09644da76773fa323efe85f1a777127a721969851015",
+        "traceparent": "00-d1e1db035fe3f7d7af1dedd0eb1b79d5-a5ba437061d6d6d7-01",
+        "completed_at": "2026-10-21T04:09:10.351784+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.008995+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 1,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.008995+00:00",
+          "completed_at": "2026-10-21T04:08:59.524391+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:08:59.233684+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 2,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:03.167955+00:00",
+          "completed_at": "2026-10-21T04:09:06.742284+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:02.833142+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 2,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:06.74238+00:00",
+          "completed_at": "2026-10-21T04:09:10.351609+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:10.050792+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.009298+00:00",
+          "seq": 145,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 0,
+          "span_id": "a5ba437061d6d6d7",
+          "position": -1,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:08:59.233811+00:00",
+          "seq": 157,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "46dd56a2f9183331",
+          "position": 0,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:08:59.524757+00:00",
+          "seq": 159,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "ef283f525f231b12",
+          "position": 0,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:02.833258+00:00",
+          "seq": 181,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "0f69c53408ceefe2",
+          "position": 1,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:03.134093+00:00",
+          "seq": 183,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "6b990eef86fe0f39",
+          "position": 1,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:06.441579+00:00",
+          "seq": 205,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 2,
+          "span_id": "661ce94ce257ebac",
+          "position": 1,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:06.742502+00:00",
+          "seq": 207,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 2,
+          "span_id": "4c81cf0005cf277c",
+          "position": 1,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:10.050906+00:00",
+          "seq": 229,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "451f78ae8a91abf9",
+          "position": 2,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        },
+        {
+          "at": "2026-10-21T04:09:10.35191+00:00",
+          "seq": 231,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "attempt": 1,
+          "span_id": "102b2910da3bdf48",
+          "position": 2,
+          "trace_id": "d1e1db035fe3f7d7af1dedd0eb1b79d5"
+        }
+      ],
+      "effects": [
+        {
+          "result": 1,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "position": 0,
+          "committed_at": "2026-10-21T04:08:59.524251+00:00"
+        },
+        {
+          "result": 2,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:06.742192+00:00"
+        },
+        {
+          "result": 2,
+          "run_id": "105fcc5c2164d1891142203efe591e1e",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:10.351511+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "21fde9b7dd48969e00065078932274c8",
+        "input": {
+          "value": 2,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 65,
+        "idem_key": "storage-44d04f9e1bac423fa827369b72576868",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.01069+00:00",
+        "fingerprint": "a248e441f274d69b0638fec6a537ada53963e5e974500d437717018b5e0063d8",
+        "traceparent": "00-a251b7ff05d51ec7bb44df3d78d68eb4-eb5b20a7f078f4fb-01",
+        "completed_at": "2026-10-21T04:09:10.802851+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.010691+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 2,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.010691+00:00",
+          "completed_at": "2026-10-21T04:08:59.975368+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:08:59.674686+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 4,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:03.625725+00:00",
+          "completed_at": "2026-10-21T04:09:07.193439+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:03.2843+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 4,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:07.193543+00:00",
+          "completed_at": "2026-10-21T04:09:10.802694+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:10.501993+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.011036+00:00",
+          "seq": 146,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 0,
+          "span_id": "eb5b20a7f078f4fb",
+          "position": -1,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:08:59.674822+00:00",
+          "seq": 160,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "24da39b1dba04a8d",
+          "position": 0,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:08:59.975586+00:00",
+          "seq": 162,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "00eb5833cfdd756a",
+          "position": 0,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:03.284441+00:00",
+          "seq": 184,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "3aa138f72518631b",
+          "position": 1,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:03.58484+00:00",
+          "seq": 186,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "ce0b0f6ef2b079dc",
+          "position": 1,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:06.892822+00:00",
+          "seq": 208,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 2,
+          "span_id": "9954d90021ee97e2",
+          "position": 1,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:07.193665+00:00",
+          "seq": 210,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 2,
+          "span_id": "4e5d91bb486c1218",
+          "position": 1,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:10.502117+00:00",
+          "seq": 232,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "5fd2f41b3282f4ad",
+          "position": 2,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        },
+        {
+          "at": "2026-10-21T04:09:10.80293+00:00",
+          "seq": 234,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "attempt": 1,
+          "span_id": "c822c21ac5219396",
+          "position": 2,
+          "trace_id": "a251b7ff05d51ec7bb44df3d78d68eb4"
+        }
+      ],
+      "effects": [
+        {
+          "result": 2,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "position": 0,
+          "committed_at": "2026-10-21T04:08:59.975263+00:00"
+        },
+        {
+          "result": 4,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:07.193336+00:00"
+        },
+        {
+          "result": 4,
+          "run_id": "21fde9b7dd48969e00065078932274c8",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:10.802601+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "d847f619d99c8f2de44c63d0f09c4c1a",
+        "input": {
+          "value": 3,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 7,
+        "idem_key": "storage-bd638e5c61594146b6e35e915d1a99f9",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.012495+00:00",
+        "fingerprint": "63b067ca2db8a285c4b96f2c9202723016614f1b153248d4a3fff50a88fa8f33",
+        "traceparent": "00-f216b4416a6d04f77f61465f7e267d00-5286029cadc354c2-01",
+        "completed_at": "2026-10-21T04:09:10.953413+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.012495+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 3,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.012495+00:00",
+          "completed_at": "2026-10-21T04:09:00.126559+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:08:59.975205+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 6,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:03.774293+00:00",
+          "completed_at": "2026-10-21T04:09:07.343719+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:03.434558+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 6,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:07.343821+00:00",
+          "completed_at": "2026-10-21T04:09:10.953235+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:10.65234+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.012905+00:00",
+          "seq": 147,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 0,
+          "span_id": "5286029cadc354c2",
+          "position": -1,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:08:59.975334+00:00",
+          "seq": 161,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "95c0d885323b057d",
+          "position": 0,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:00.126782+00:00",
+          "seq": 163,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "3b217a9b4ba8ae54",
+          "position": 0,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:03.434672+00:00",
+          "seq": 185,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "90a6b248c09249eb",
+          "position": 1,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:03.735423+00:00",
+          "seq": 187,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "dd1340d979fe2515",
+          "position": 1,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:07.042865+00:00",
+          "seq": 209,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 2,
+          "span_id": "fb84d235133d1aa5",
+          "position": 1,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:07.343959+00:00",
+          "seq": 211,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 2,
+          "span_id": "d0ff37d1bced112e",
+          "position": 1,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:10.652452+00:00",
+          "seq": 233,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "d0716649090c5f8a",
+          "position": 2,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        },
+        {
+          "at": "2026-10-21T04:09:10.953501+00:00",
+          "seq": 235,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "attempt": 1,
+          "span_id": "bdc07f2e5121ee50",
+          "position": 2,
+          "trace_id": "f216b4416a6d04f77f61465f7e267d00"
+        }
+      ],
+      "effects": [
+        {
+          "result": 3,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:00.126458+00:00"
+        },
+        {
+          "result": 6,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:07.343622+00:00"
+        },
+        {
+          "result": 6,
+          "run_id": "d847f619d99c8f2de44c63d0f09c4c1a",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:10.953108+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "959317b3b0986d7575a02f9dbf535ada",
+        "input": {
+          "value": 4,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 92,
+        "idem_key": "storage-1ae523215a3d4d9b9d0d9c1a65dedeec",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.01407+00:00",
+        "fingerprint": "5bc8c56b6b360084fea8ffaf2029de91f149d3d49afcf5c5b3489a6ee9b6750a",
+        "traceparent": "00-b66f60bcae4b399b01a21e440752baa5-ef0c39e4e5efca12-01",
+        "completed_at": "2026-10-21T04:09:11.405151+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.01407+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 4,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.01407+00:00",
+          "completed_at": "2026-10-21T04:09:00.577431+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:00.277071+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 8,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:04.226336+00:00",
+          "completed_at": "2026-10-21T04:09:07.794711+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:03.885829+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 8,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:07.794815+00:00",
+          "completed_at": "2026-10-21T04:09:11.404984+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:11.104277+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.014344+00:00",
+          "seq": 148,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 0,
+          "span_id": "ef0c39e4e5efca12",
+          "position": -1,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:00.277194+00:00",
+          "seq": 164,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "1b11399ccc1ea9c4",
+          "position": 0,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:00.577657+00:00",
+          "seq": 166,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "c94007c719396163",
+          "position": 0,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:03.885966+00:00",
+          "seq": 188,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "b201b34afc5e5e2d",
+          "position": 1,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:04.186461+00:00",
+          "seq": 190,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "098f1ecb237668a5",
+          "position": 1,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:07.494235+00:00",
+          "seq": 212,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 2,
+          "span_id": "f441019a1336ef0a",
+          "position": 1,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:07.79495+00:00",
+          "seq": 214,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 2,
+          "span_id": "811a938530c7afe4",
+          "position": 1,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:11.10442+00:00",
+          "seq": 236,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "297561b6a1c54f56",
+          "position": 2,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        },
+        {
+          "at": "2026-10-21T04:09:11.405237+00:00",
+          "seq": 238,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "attempt": 1,
+          "span_id": "39029512155cb013",
+          "position": 2,
+          "trace_id": "b66f60bcae4b399b01a21e440752baa5"
+        }
+      ],
+      "effects": [
+        {
+          "result": 4,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:00.577337+00:00"
+        },
+        {
+          "result": 8,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:07.794616+00:00"
+        },
+        {
+          "result": 8,
+          "run_id": "959317b3b0986d7575a02f9dbf535ada",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:11.404852+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "752588c1a005a75f195239bd99c30554",
+        "input": {
+          "value": 5,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 57,
+        "idem_key": "storage-e432cd1026ac4f2aa18c52765dccd40b",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.015549+00:00",
+        "fingerprint": "69e49edcd61dc97c99021cbc344db5908786316443a17f27313d9072cfb578d8",
+        "traceparent": "00-d27e9a6cbce38361f860c38cbb96a321-da86160f31754e3f-01",
+        "completed_at": "2026-10-21T04:09:11.555639+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.015549+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 5,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.015549+00:00",
+          "completed_at": "2026-10-21T04:09:00.727987+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:00.427214+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 10,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:04.365761+00:00",
+          "completed_at": "2026-10-21T04:09:07.945105+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:04.036174+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 10,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:07.9452+00:00",
+          "completed_at": "2026-10-21T04:09:11.555471+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:11.254656+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.01582+00:00",
+          "seq": 149,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 0,
+          "span_id": "da86160f31754e3f",
+          "position": -1,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:00.427341+00:00",
+          "seq": 165,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "02c6a3ee972d38dc",
+          "position": 0,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:00.728213+00:00",
+          "seq": 167,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "11f2b98ffa428fee",
+          "position": 0,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:04.036303+00:00",
+          "seq": 189,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "a4f7d97fdfc114d7",
+          "position": 1,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:04.336892+00:00",
+          "seq": 191,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "7ddb8c9ef054e611",
+          "position": 1,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:07.644346+00:00",
+          "seq": 213,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 2,
+          "span_id": "d9954089a10a3097",
+          "position": 1,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:07.945317+00:00",
+          "seq": 215,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 2,
+          "span_id": "cfe734954786a161",
+          "position": 1,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:11.25477+00:00",
+          "seq": 237,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "f1b0f1f503989007",
+          "position": 2,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        },
+        {
+          "at": "2026-10-21T04:09:11.555725+00:00",
+          "seq": 239,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "attempt": 1,
+          "span_id": "ce011a08de8ea5b7",
+          "position": 2,
+          "trace_id": "d27e9a6cbce38361f860c38cbb96a321"
+        }
+      ],
+      "effects": [
+        {
+          "result": 5,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:00.727876+00:00"
+        },
+        {
+          "result": 10,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:07.945013+00:00"
+        },
+        {
+          "result": 10,
+          "run_id": "752588c1a005a75f195239bd99c30554",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:11.555371+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+        "input": {
+          "value": 6,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 37,
+        "idem_key": "storage-af4691b2759a45ed9aa451797a447932",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.016897+00:00",
+        "fingerprint": "1a4e6e19ce7eaefbdc7dc91740c04274967a1e11d5730036e59bc1f389bb03c0",
+        "traceparent": "00-61f15e2af457191c3afa64ee3a31484e-5d4c3179218dfad2-01",
+        "completed_at": "2026-10-21T04:09:12.006717+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.016897+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 6,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.016897+00:00",
+          "completed_at": "2026-10-21T04:09:01.178721+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:00.878385+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 12,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:04.831721+00:00",
+          "completed_at": "2026-10-21T04:09:08.396144+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:04.487282+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 12,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:08.396249+00:00",
+          "completed_at": "2026-10-21T04:09:12.006562+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:11.705788+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.017148+00:00",
+          "seq": 150,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 0,
+          "span_id": "5d4c3179218dfad2",
+          "position": -1,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:00.878503+00:00",
+          "seq": 168,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "e701a327d65a2e3c",
+          "position": 0,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:01.178959+00:00",
+          "seq": 170,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "67488e225f3c122b",
+          "position": 0,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:04.487411+00:00",
+          "seq": 192,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "b0369243fd94c09e",
+          "position": 1,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:04.787851+00:00",
+          "seq": 194,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "5701c454e1fdba77",
+          "position": 1,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:08.095638+00:00",
+          "seq": 216,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 2,
+          "span_id": "887612358474a0a2",
+          "position": 1,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:08.396385+00:00",
+          "seq": 218,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 2,
+          "span_id": "71dc2dd1574c8d56",
+          "position": 1,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:11.70591+00:00",
+          "seq": 240,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "1f791e44ce826ff1",
+          "position": 2,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        },
+        {
+          "at": "2026-10-21T04:09:12.006799+00:00",
+          "seq": 242,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "attempt": 1,
+          "span_id": "f0d3583ac19e56e8",
+          "position": 2,
+          "trace_id": "61f15e2af457191c3afa64ee3a31484e"
+        }
+      ],
+      "effects": [
+        {
+          "result": 6,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:01.178628+00:00"
+        },
+        {
+          "result": 12,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:08.396035+00:00"
+        },
+        {
+          "result": 12,
+          "run_id": "6a7be3ff14af7c04eafd82e42bbc7f24",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:12.006463+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+        "input": {
+          "value": 7,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 12,
+        "idem_key": "storage-d38afb8159ed4da8bcfc5e6a35449aa3",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.018338+00:00",
+        "fingerprint": "fbfc9ee23e3ac32937f239781aeb95dec3323e480ef126d17093726734bd204b",
+        "traceparent": "00-0e50187ca021e71859e8dd43f84de18f-363a2b25b9137380-01",
+        "completed_at": "2026-10-21T04:09:12.157072+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.018338+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 7,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.018338+00:00",
+          "completed_at": "2026-10-21T04:09:01.329334+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:01.028656+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 14,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:04.978108+00:00",
+          "completed_at": "2026-10-21T04:09:08.547478+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:04.63744+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 14,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:08.547591+00:00",
+          "completed_at": "2026-10-21T04:09:12.156872+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:11.856074+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.018717+00:00",
+          "seq": 151,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 0,
+          "span_id": "363a2b25b9137380",
+          "position": -1,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:01.028885+00:00",
+          "seq": 169,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "26c0c4f6f6ef0377",
+          "position": 0,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:01.329567+00:00",
+          "seq": 171,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "90be9dc767cda285",
+          "position": 0,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:04.637562+00:00",
+          "seq": 193,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "db6c40eb0e053819",
+          "position": 1,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:04.938232+00:00",
+          "seq": 195,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "b72bfa93c6e8cea2",
+          "position": 1,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:08.396143+00:00",
+          "seq": 217,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 2,
+          "span_id": "4985783f5ddb274b",
+          "position": 1,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:08.54775+00:00",
+          "seq": 219,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 2,
+          "span_id": "749701a77c6ff3e2",
+          "position": 1,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:11.85619+00:00",
+          "seq": 241,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "1c608e9b727b1cf6",
+          "position": 2,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        },
+        {
+          "at": "2026-10-21T04:09:12.157168+00:00",
+          "seq": 243,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "attempt": 1,
+          "span_id": "5cc698b4172b76c5",
+          "position": 2,
+          "trace_id": "0e50187ca021e71859e8dd43f84de18f"
+        }
+      ],
+      "effects": [
+        {
+          "result": 7,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:01.329229+00:00"
+        },
+        {
+          "result": 14,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:08.547372+00:00"
+        },
+        {
+          "result": 14,
+          "run_id": "d4d1ac45ab250ff8c7e9521b33a9768d",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:12.156742+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "2b0a28756e50d964ab2206be4e8dfb85",
+        "input": {
+          "value": 8,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 29,
+        "idem_key": "storage-a135a2d4d937412aaba0e8db06243fb8",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.019804+00:00",
+        "fingerprint": "994618a42e91ac134ac68a1d81640fbd3c63fc258887147a69db5b3c2bcc442a",
+        "traceparent": "00-128a5f14126b147a9c8761b8aaff9c02-6f47b91601732ba8-01",
+        "completed_at": "2026-10-21T04:09:12.608167+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.019804+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 8,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.019804+00:00",
+          "completed_at": "2026-10-21T04:09:01.781514+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:01.479596+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 16,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:05.431143+00:00",
+          "completed_at": "2026-10-21T04:09:08.998506+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:05.088664+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 16,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:08.998629+00:00",
+          "completed_at": "2026-10-21T04:09:12.60796+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:12.30716+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.020103+00:00",
+          "seq": 152,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 0,
+          "span_id": "6f47b91601732ba8",
+          "position": -1,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:01.479721+00:00",
+          "seq": 172,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "d00c755123fd37e9",
+          "position": 0,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:01.782072+00:00",
+          "seq": 174,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "a792b7d319f172d1",
+          "position": 0,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:05.088784+00:00",
+          "seq": 196,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "54470a2910410b6f",
+          "position": 1,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:05.389264+00:00",
+          "seq": 198,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "498afde2c7b73e72",
+          "position": 1,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:08.697825+00:00",
+          "seq": 220,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 2,
+          "span_id": "70857a4bb950f562",
+          "position": 1,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:08.998758+00:00",
+          "seq": 222,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 2,
+          "span_id": "3ed477c0fc3449fe",
+          "position": 1,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:12.307278+00:00",
+          "seq": 244,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "d2990c03857732cd",
+          "position": 2,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        },
+        {
+          "at": "2026-10-21T04:09:12.608264+00:00",
+          "seq": 246,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "attempt": 1,
+          "span_id": "509e26a83ab9efac",
+          "position": 2,
+          "trace_id": "128a5f14126b147a9c8761b8aaff9c02"
+        }
+      ],
+      "effects": [
+        {
+          "result": 8,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:01.781227+00:00"
+        },
+        {
+          "result": 16,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:08.998408+00:00"
+        },
+        {
+          "result": 16,
+          "run_id": "2b0a28756e50d964ab2206be4e8dfb85",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:12.607849+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "d20f557ebc1c620fa445c7c4fa4789a6",
+        "input": {
+          "value": 9,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 73,
+        "idem_key": "storage-acb8c6da6f5f4cc7b3ae8d82c133b929",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.021265+00:00",
+        "fingerprint": "a1bf0b8e9d2326f8fae95d3f0332a5b6b112fe5dc9c6a75f9bfda95e50de24ae",
+        "traceparent": "00-647fdf3a45bb86681c1f51003e6826f1-799076af333945c8-01",
+        "completed_at": "2026-10-21T04:09:12.758455+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.021265+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 9,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.021265+00:00",
+          "completed_at": "2026-10-21T04:09:01.931058+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:01.629977+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 18,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:05.585584+00:00",
+          "completed_at": "2026-10-21T04:09:09.148799+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:05.238736+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 18,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:09.148928+00:00",
+          "completed_at": "2026-10-21T04:09:12.758298+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:12.457532+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.021539+00:00",
+          "seq": 153,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 0,
+          "span_id": "799076af333945c8",
+          "position": -1,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:01.630103+00:00",
+          "seq": 173,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "04df20a7bab917e3",
+          "position": 0,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:01.93137+00:00",
+          "seq": 175,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "74193437bf8e8491",
+          "position": 0,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:05.238855+00:00",
+          "seq": 197,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "87cda373f4bca466",
+          "position": 1,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:05.539714+00:00",
+          "seq": 199,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "1c9d6f632ea0c0c4",
+          "position": 1,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:08.847977+00:00",
+          "seq": 221,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 2,
+          "span_id": "165e09d7a4de2e2c",
+          "position": 1,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:09.149115+00:00",
+          "seq": 223,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 2,
+          "span_id": "e9a5cd922b7d5fbe",
+          "position": 1,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:12.457658+00:00",
+          "seq": 245,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "a5a9773be6c1ce0b",
+          "position": 2,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        },
+        {
+          "at": "2026-10-21T04:09:12.758537+00:00",
+          "seq": 247,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "attempt": 1,
+          "span_id": "840cf1f6271a43a4",
+          "position": 2,
+          "trace_id": "647fdf3a45bb86681c1f51003e6826f1"
+        }
+      ],
+      "effects": [
+        {
+          "result": 9,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:01.930896+00:00"
+        },
+        {
+          "result": 18,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:09.148693+00:00"
+        },
+        {
+          "result": 18,
+          "run_id": "d20f557ebc1c620fa445c7c4fa4789a6",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:12.758202+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "66b16c1a5b9341c66667ac315cc02341",
+        "input": {
+          "value": 10,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 58,
+        "idem_key": "storage-846e22e58f314c56b7c43b4b385e520a",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.022582+00:00",
+        "fingerprint": "fc14027718c8b60a86d3bd0b0fe625411a39bfe8355d26d42a2c8bb00414e21c",
+        "traceparent": "00-d03129151311c6c90bc796b1a44eeb29-be6e20cda02d5dea-01",
+        "completed_at": "2026-10-21T04:09:13.209592+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.022582+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 10,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.022582+00:00",
+          "completed_at": "2026-10-21T04:09:02.382197+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:02.08146+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 20,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:06.029496+00:00",
+          "completed_at": "2026-10-21T04:09:09.599902+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:05.690046+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "state": "done",
+          "result": 20,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:09.60003+00:00",
+          "completed_at": "2026-10-21T04:09:13.209437+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:12.908401+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.022849+00:00",
+          "seq": 154,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 0,
+          "span_id": "be6e20cda02d5dea",
+          "position": -1,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:02.081589+00:00",
+          "seq": 176,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "30c4ea6df2b3f8b2",
+          "position": 0,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:02.382505+00:00",
+          "seq": 178,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "ddd092b3d333e1a1",
+          "position": 0,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:05.69019+00:00",
+          "seq": 200,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "2f38c697b2a61eeb",
+          "position": 1,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:05.990613+00:00",
+          "seq": 202,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "40b4e6811312e2f6",
+          "position": 1,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:09.299308+00:00",
+          "seq": 224,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 2,
+          "span_id": "6fedc6aa93b9d043",
+          "position": 1,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:09.600173+00:00",
+          "seq": 226,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 2,
+          "span_id": "3e3aeb95bc9d844c",
+          "position": 1,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:12.908526+00:00",
+          "seq": 248,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "767cf22f25980b2f",
+          "position": 2,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        },
+        {
+          "at": "2026-10-21T04:09:13.209673+00:00",
+          "seq": 250,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "73468aadec986998c405a5977104d51a",
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "attempt": 1,
+          "span_id": "8ef80b60bbf53845",
+          "position": 2,
+          "trace_id": "d03129151311c6c90bc796b1a44eeb29"
+        }
+      ],
+      "effects": [
+        {
+          "result": 10,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:02.382082+00:00"
+        },
+        {
+          "result": 20,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:09.599785+00:00"
+        },
+        {
+          "result": 20,
+          "run_id": "66b16c1a5b9341c66667ac315cc02341",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:13.209338+00:00"
+        }
+      ]
+    },
+    {
+      "run": {
+        "id": "a3e7356003f883e1f635d68c73dec1ec",
+        "input": {
+          "value": 11,
+          "work_ms": 0,
+          "fail_until": 1,
+          "permanent_failure": false
+        },
+        "state": "done",
+        "cohort": 91,
+        "idem_key": "storage-10915ded2c9348eaba2c00c312bfb7ff",
+        "definition": "synthetic-pipeline-v1",
+        "enqueued_at": "2026-10-21T04:08:54.024002+00:00",
+        "fingerprint": "d590e0cdb5975c86019a1df2f3f301b4b6330e646e736ac492bdcb14a76f8666",
+        "traceparent": "00-3568b19b49b4280f9cac040b1664e3fc-93cb3aca92b10250-01",
+        "completed_at": "2026-10-21T04:09:13.359784+00:00",
+        "scheduled_at": "2026-10-21T04:08:59.024002+00:00"
+      },
+      "steps": [
+        {
+          "name": "validate",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 11,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempts": 1,
+          "position": 0,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:08:59.024002+00:00",
+          "completed_at": "2026-10-21T04:09:02.532413+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:02.231703+00:00"
+        },
+        {
+          "name": "calculate",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 22,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempts": 2,
+          "position": 1,
+          "last_error": "synthetic_retry",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:06.186828+00:00",
+          "completed_at": "2026-10-21T04:09:09.750414+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:05.840352+00:00"
+        },
+        {
+          "name": "receipt",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "state": "done",
+          "result": 22,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempts": 1,
+          "position": 2,
+          "last_error": "",
+          "lease_until": null,
+          "available_at": "2026-10-21T04:09:09.750558+00:00",
+          "completed_at": "2026-10-21T04:09:13.35964+00:00",
+          "max_attempts": 8,
+          "first_started": "2026-10-21T04:09:13.058913+00:00"
+        }
+      ],
+      "events": [
+        {
+          "at": "2026-10-21T04:08:54.024283+00:00",
+          "seq": 155,
+          "kind": "enqueued",
+          "epoch": 0,
+          "owner": "",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 0,
+          "span_id": "93cb3aca92b10250",
+          "position": -1,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:02.231822+00:00",
+          "seq": 177,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "bfb75df69d66d665",
+          "position": 0,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:02.532692+00:00",
+          "seq": 179,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "047679bcb2eaa32f",
+          "position": 0,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:05.840469+00:00",
+          "seq": 201,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "d04aaa153b533f05",
+          "position": 1,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:06.140962+00:00",
+          "seq": 203,
+          "kind": "retry_scheduled",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "1c16f54def740abd",
+          "position": 1,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:09.449575+00:00",
+          "seq": 225,
+          "kind": "claimed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 2,
+          "span_id": "b72e78a6515b23b5",
+          "position": 1,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:09.750796+00:00",
+          "seq": 227,
+          "kind": "committed",
+          "epoch": 2,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 2,
+          "span_id": "fc40584ab1ec509b",
+          "position": 1,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:13.059057+00:00",
+          "seq": 249,
+          "kind": "claimed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "a6776a33e1cfeab7",
+          "position": 2,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        },
+        {
+          "at": "2026-10-21T04:09:13.359867+00:00",
+          "seq": 251,
+          "kind": "committed",
+          "epoch": 1,
+          "owner": "aead22e28fb2b97c9d42e19bcdd6bd67",
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "attempt": 1,
+          "span_id": "3447460d1a5e81b2",
+          "position": 2,
+          "trace_id": "3568b19b49b4280f9cac040b1664e3fc"
+        }
+      ],
+      "effects": [
+        {
+          "result": 11,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "position": 0,
+          "committed_at": "2026-10-21T04:09:02.532314+00:00"
+        },
+        {
+          "result": 22,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "position": 1,
+          "committed_at": "2026-10-21T04:09:09.750293+00:00"
+        },
+        {
+          "result": 22,
+          "run_id": "a3e7356003f883e1f635d68c73dec1ec",
+          "position": 2,
+          "committed_at": "2026-10-21T04:09:13.359549+00:00"
+        }
+      ]
+    }
+  ]
+}

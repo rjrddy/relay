@@ -33,7 +33,7 @@ text = f"""# Relay
 
 Keep ordered workflow steps recoverable after worker and connection failures without repeating committed internal effects.
 
-**Status: partial — live deployment is outstanding.** [Public repository](https://github.com/rjrddy/relay) · [Demo recording](https://raw.githubusercontent.com/rjrddy/relay/main/docs/results/demo.webm) · [Interview kit](INTERVIEW.md).
+**Status: partial — live deployment and complete hour audit export are outstanding.** [Public repository](https://github.com/rjrddy/relay) · [Demo recording](https://raw.githubusercontent.com/rjrddy/relay/main/docs/results/demo.webm) · [Interview kit](INTERVIEW.md).
 
 ## Results
 
@@ -42,7 +42,7 @@ Every result below is rendered from saved command output in [docs/results](docs/
 | Proof | Observed result | Evidence |
 |---|---|---|
 | Unit / integration / property / race checks | {tests["passed"]} tests passed, {tests["failed"]} failures | [test summary](docs/results/tests.json), [raw events](docs/results/tests.jsonl) |
-| Sustained chaos campaign | {campaign} | [campaign](docs/results/chaos-hour.json), [reconciliation](docs/results/chaos-hour-reconciliation.json), [compressed audit events](docs/results/chaos-hour-events.jsonl.gz) |
+| Sustained chaos campaign | {campaign} | [campaign](docs/results/chaos-hour.json), [reconciliation](docs/results/chaos-hour-reconciliation.json), [recovered audit prefix](docs/results/chaos-hour-events-prefix.jsonl.gz), [export failure](docs/results/hour-export-status.json) |
 | Short chaos campaign | {short["workflows"]:,} workflows, {short["lost_workflows"]} lost / {short["duplicate_effects"]} duplicate effects in {short["elapsed_seconds"]:.3f} seconds | [result](docs/results/chaos.json), [raw reconciliation](docs/results/chaos-reconciliation.json) |
 | Linux storage-sync fault | {storage["completed"]} of {storage["workflows"]} scheduled workflows completed; {storage["duplicate_effects"]} duplicate effects | [raw rows](docs/results/linux-storage/storage-fault.json), [Postgres log](docs/results/linux-storage/storage-fault.log) |
 | Browser recovery and operator flow | lost acknowledgement deduplicated; completed prefix preserved; page errors: {len(browser["page_errors"])} | [browser result](docs/results/browser.json), [original prefix](docs/results/browser-before-replay.json) |
@@ -106,7 +106,8 @@ Read [DESIGN.md](docs/DESIGN.md), [ADRs](docs/adr), [migration provenance](docs/
 - No multitenant isolation, database-replica failover, cross-region consensus, external-effect exactly-once guarantee or automated retention/backup is implemented.
 - Operator sessions are local to the API process; SDKs use a separate provisioned bearer token. Hosted TLS and Secure cookies are required. The demo database role can migrate schema; production should separate migration credentials from runtime permissions.
 - Async OpenTelemetry export is verified, but spans can be lost on crashes and there is no long-term trace backend. Postgres state/events are authoritative.
-- The long campaign uses the same production engine and fault-harness sources as the final implementation; [source equality hashes](docs/results/campaign-source.json) record this boundary. SDK/UI and optional embedded serve mode are separately tested.
+- The hour protocol reconciliation completed, but the command exited 1 when the full audit export timed out. Complete reconciliation and worker logs survive; the event stream is an incomplete recovered prefix. The exporter now pages with a separate deadline and passes the short gate; the hour was not rerun.
+- The long campaign uses the same production engine, worker and fault-proxy sources as the final implementation; [source equality hashes](docs/results/campaign-source.json) record this boundary. SDK/UI and optional embedded serve mode are separately tested.
 - Security scans report no affected Go call paths/imported packages and no frontend advisories in the saved run. The Go module graph still carries an advisory for the unimported OpenPGP package in golang.org/x/crypto; Relay uses scrypt. See [verbose scanner output](docs/results/security-verbose.log). This is not a claim of a zero-advisory module graph.
 - Live demo: **not deployed**. The optional free-host mode embeds workers in the web process; processing stops while that instance sleeps, and the database is subject to provider lifetime/storage limits. Hosted performance is not measured. All original repositories remain intact.
 

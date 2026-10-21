@@ -1,0 +1,9 @@
+{
+  "sdk_idempotency": true,
+  "conflict_status": 409,
+  "run": "689f9221125992dd9b9c9aa7f605b51c",
+  "completed_steps": 3,
+  "receipt": 42,
+  "event_trace_ids_nonzero": true,
+  "elapsed_seconds": 2.394979067999998
+}

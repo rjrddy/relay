@@ -1,0 +1,15 @@
+{
+  "duplicate_effects": 0,
+  "elapsed_hours": 0.0027488274075,
+  "elapsed_seconds": 9.895778667,
+  "enqueue_start_p50_ms": 6047.7855,
+  "enqueue_start_p99_ms": 7539.9709,
+  "faults": [],
+  "incorrect_receipts": 0,
+  "lost_workflows": 0,
+  "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
+  "step_effects": 3000,
+  "workers": 4,
+  "workflows": 1000,
+  "workflows_per_second": 101.05318981463836
+}

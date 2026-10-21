@@ -1,0 +1,11 @@
+{
+  "clone_command": "git clone --no-local /Users/rajreddy/dev/outreach/flagships/relay /tmp/relay-fresh-clone",
+  "initial_command": "make setup build lint test",
+  "final_command": "make build lint test",
+  "verified_head": "1b2afdb2c24546e9a74752ad8c734801965e4a93",
+  "application_sources_match_current": true,
+  "tests": 18,
+  "exit_code": 0,
+  "dependencies": "independent virtualenv, node_modules, GOPATH and GOCACHE",
+  "docker": "real Linux Compose verification recorded separately"
+}

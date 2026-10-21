@@ -1,0 +1,26 @@
+{
+  "run": "773543c4422df9b15b21119f6ba2b8e3",
+  "actions": [
+    "login",
+    "lost admission acknowledgement recovered after reload",
+    "pause",
+    "enqueue while paused",
+    "resume",
+    "dead letter",
+    "replay failed step",
+    "completed prefix preserved",
+    "publish rollout",
+    "rollback",
+    "demo burst",
+    "trace-linked timeline",
+    "desktop and mobile layout"
+  ],
+  "page_errors": [],
+  "desktop_overflow": false,
+  "mobile_overflow": false,
+  "final_receipt": 84,
+  "completed_prefix_preserved": true,
+  "ambiguous_admission_deduplicated": true,
+  "effects": 3,
+  "elapsed_seconds": 90.92463545803912
+}

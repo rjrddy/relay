@@ -1,0 +1,10 @@
+{
+  "protocol_reconciliation": "pass",
+  "long_command_exit_code": 1,
+  "full_audit_export": "incomplete",
+  "error": "SQLSTATE 57014 statement timeout after successful reconciliation",
+  "prefix_records": 189319,
+  "original_truncated_export": "chaos-hour-events.partial.gz",
+  "recovery": "schema was cleaned by original harness; missing tail cannot be recovered",
+  "fix": "keyset pagination and separate export deadline; tested by make lint test bench; hour not rerun"
+}

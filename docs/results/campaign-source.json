@@ -1,0 +1,15 @@
+{
+  "campaign_source_head": "13a95ee9c343a35002f793d9ae01c38367039cbf",
+  "sha256": {
+    "internal/engine/engine.go": "ba3649b67784c47203353490f3b17ffbd33a5962232434703ef2a287a2be7848",
+    "internal/engine/views.go": "194223ca9b98b47f1425421e518c3a36af65b162f21eba5073456c75d78ffe27",
+    "internal/worker/worker.go": "899e95175a31019cdc5e6cbe4cbdb58f1cb5e2ad48c9684fc73c69d7e9dfb7a4",
+    "migrations/schema.sql": "fd98dc78904d2bb793b5e8189eff9e3c5724ef325f18178e33966a815f7b0119",
+    "cmd/bench/main.go": "f78edf5eef9a65c8687f0836aefd40731c7fcc480777b4fdd9f70e9567f00dc0",
+    "internal/faultproxy/proxy.go": "2161d9007393f102757e876e337c3405b6d17db763cf6452c879f396b5ba3e01"
+  },
+  "boundary": "SDK, UI and optional serve-mode changes are outside this worker-engine campaign",
+  "production_engine_worker_and_faultproxy_unchanged": true,
+  "post_measurement_export_fix": "export-recovery-fix.patch",
+  "current_benchmark_sha256": "87753144db0eaf47facae89d3f10eeaa8f2d995fde961e49cb2ed97af16a23e3"
+}

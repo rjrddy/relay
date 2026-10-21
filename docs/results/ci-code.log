@@ -1,0 +1,1120 @@
+verify	Set up job	﻿2026-10-21T05:08:41.3566153Z Current runner version: '2.338.0'
+verify	Set up job	2026-10-21T05:08:41.3586375Z ##[group]Runner Image Provisioner
+verify	Set up job	2026-10-21T05:08:41.3586950Z Hosted Compute Agent
+verify	Set up job	2026-10-21T05:08:41.3587418Z Version: 20261015.610
+verify	Set up job	2026-10-21T05:08:41.3587836Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+verify	Set up job	2026-10-21T05:08:41.3588677Z Build Date: 2026-10-14T17:06:54Z
+verify	Set up job	2026-10-21T05:08:41.3589159Z Worker ID: {837c86aa-7334-4baa-9900-aecd49be943d}
+verify	Set up job	2026-10-21T05:08:41.3589602Z Region: centralus
+verify	Set up job	2026-10-21T05:08:41.3590008Z Cloud: Azure
+verify	Set up job	2026-10-21T05:08:41.3590505Z ##[endgroup]
+verify	Set up job	2026-10-21T05:08:41.3591420Z ##[group]Operating System
+verify	Set up job	2026-10-21T05:08:41.3591836Z Ubuntu
+verify	Set up job	2026-10-21T05:08:41.3592161Z 26.04.1
+verify	Set up job	2026-10-21T05:08:41.3592530Z LTS
+verify	Set up job	2026-10-21T05:08:41.3592853Z ##[endgroup]
+verify	Set up job	2026-10-21T05:08:41.3593223Z ##[group]Runner Image
+verify	Set up job	2026-10-21T05:08:41.3593682Z Image: ubuntu-26.04
+verify	Set up job	2026-10-21T05:08:41.3594051Z Version: 20261018.168.1
+verify	Set up job	2026-10-21T05:08:41.3594784Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261018.168/images/ubuntu/Ubuntu2604-Readme.md
+verify	Set up job	2026-10-21T05:08:41.3596000Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261018.168
+verify	Set up job	2026-10-21T05:08:41.3596710Z ##[endgroup]
+verify	Set up job	2026-10-21T05:08:41.3597413Z ##[group]GITHUB_TOKEN Permissions
+verify	Set up job	2026-10-21T05:08:41.3598914Z Contents: read
+verify	Set up job	2026-10-21T05:08:41.3599334Z Metadata: read
+verify	Set up job	2026-10-21T05:08:41.3599750Z ##[endgroup]
+verify	Set up job	2026-10-21T05:08:41.3601405Z Secret source: Actions
+verify	Set up job	2026-10-21T05:08:41.3602116Z Cache mode: write
+verify	Set up job	2026-10-21T05:08:41.3602831Z Prepare workflow directory
+verify	Set up job	2026-10-21T05:08:41.3926854Z Prepare all required actions
+verify	Set up job	2026-10-21T05:08:41.3959205Z Getting action download info
+verify	Set up job	2026-10-21T05:08:41.6243063Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+verify	Set up job	2026-10-21T05:08:41.7227550Z Download action repository 'actions/setup-go@v5' (SHA:40f1582b2485089dde7abd97c1529aa768e1baff)
+verify	Set up job	2026-10-21T05:08:42.1314657Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+verify	Set up job	2026-10-21T05:08:42.2203998Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+verify	Set up job	2026-10-21T05:08:42.3099280Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+verify	Set up job	2026-10-21T05:08:42.5092511Z Complete job name: verify
+verify	Initialize containers	﻿2026-10-21T05:08:42.5445782Z ##[group]Checking docker version
+verify	Initialize containers	2026-10-21T05:08:42.5454226Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+verify	Initialize containers	2026-10-21T05:08:42.6413428Z '1.54'
+verify	Initialize containers	2026-10-21T05:08:42.6430051Z Docker daemon API version: '1.54'
+verify	Initialize containers	2026-10-21T05:08:42.6430804Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+verify	Initialize containers	2026-10-21T05:08:42.6585606Z '1.54'
+verify	Initialize containers	2026-10-21T05:08:42.6601254Z Docker client API version: '1.54'
+verify	Initialize containers	2026-10-21T05:08:42.6606400Z ##[endgroup]
+verify	Initialize containers	2026-10-21T05:08:42.6608640Z ##[group]Clean up resources from previous jobs
+verify	Initialize containers	2026-10-21T05:08:42.6612102Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=049afd"
+verify	Initialize containers	2026-10-21T05:08:42.6747579Z ##[command]/usr/bin/docker network prune --force --filter "label=049afd"
+verify	Initialize containers	2026-10-21T05:08:42.6878259Z ##[endgroup]
+verify	Initialize containers	2026-10-21T05:08:42.6878642Z ##[group]Create local container network
+verify	Initialize containers	2026-10-21T05:08:42.6886141Z ##[command]/usr/bin/docker network create --label 049afd github_network_0e98f6414b9a4437a402ff7a3343e283
+verify	Initialize containers	2026-10-21T05:08:42.7686353Z 9989a8cc6d52885db0bef745c684792ba791b9248299b0159cb3177981cac21d
+verify	Initialize containers	2026-10-21T05:08:42.7708814Z ##[endgroup]
+verify	Initialize containers	2026-10-21T05:08:42.7728499Z ##[group]Starting postgres service container
+verify	Initialize containers	2026-10-21T05:08:42.7743808Z ##[command]/usr/bin/docker pull postgres:17
+verify	Initialize containers	2026-10-21T05:08:43.2991196Z 17: Pulling from library/postgres
+verify	Initialize containers	2026-10-21T05:08:43.4908530Z f2be67225471: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4909660Z e0428ef87eb8: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4910515Z 90d33c82e6b4: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4911200Z a5bccd2244f9: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4911806Z 633cb7982454: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4912376Z 2ab475e318db: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4914252Z d38aaa71d21a: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4914824Z 0ec7842b4287: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4915538Z c9b382b1f732: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4916134Z 99b43abe6052: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4916753Z 0f6d195ee345: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4917389Z bee16f784947: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4918056Z d1b142a2d3ac: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.4918672Z 515b4b00cc07: Pulling fs layer
+verify	Initialize containers	2026-10-21T05:08:43.5885988Z a5bccd2244f9: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.5887208Z 515b4b00cc07: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6920491Z bee16f784947: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6921837Z 90d33c82e6b4: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6922846Z 633cb7982454: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6929513Z d38aaa71d21a: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6932518Z e0428ef87eb8: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.6945606Z 99b43abe6052: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.7880795Z 2ab475e318db: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.7883568Z 0f6d195ee345: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.7884997Z dbfab41aea6a: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.8909158Z c9b382b1f732: Download complete
+verify	Initialize containers	2026-10-21T05:08:43.8910985Z d1b142a2d3ac: Download complete
+verify	Initialize containers	2026-10-21T05:08:44.0897022Z 24468b3cc01f: Download complete
+verify	Initialize containers	2026-10-21T05:08:44.0898349Z f2be67225471: Download complete
+verify	Initialize containers	2026-10-21T05:08:44.9887720Z 0ec7842b4287: Download complete
+verify	Initialize containers	2026-10-21T05:08:44.9939088Z e0428ef87eb8: Pull complete
+verify	Initialize containers	2026-10-21T05:08:44.9984854Z f2be67225471: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.0957720Z c9b382b1f732: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.1982187Z 0f6d195ee345: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.2923191Z d1b142a2d3ac: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.3920116Z bee16f784947: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.3932076Z 633cb7982454: Pull complete
+verify	Initialize containers	2026-10-21T05:08:45.3953427Z 2ab475e318db: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.6888817Z 515b4b00cc07: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.6920916Z 0ec7842b4287: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.7884350Z a5bccd2244f9: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.7889889Z 90d33c82e6b4: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.7896979Z d38aaa71d21a: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.8424945Z 99b43abe6052: Pull complete
+verify	Initialize containers	2026-10-21T05:08:46.8425860Z Digest: sha256:c469d92cbb89e123ba7c2c7c1a8815572943584085c37b007bacb43150a8c9e4
+verify	Initialize containers	2026-10-21T05:08:46.8426962Z Status: Downloaded newer image for postgres:17
+verify	Initialize containers	2026-10-21T05:08:46.8451086Z docker.io/library/postgres:17
+verify	Initialize containers	2026-10-21T05:08:46.8524155Z ##[command]/usr/bin/docker create --name 12502b45d1e34af19004d096f32ef20a_postgres17_b3faa2 --label 049afd --network github_network_0e98f6414b9a4437a402ff7a3343e283 --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U relaytest -d relaytest" --health-interval 2s --health-timeout 2s --health-retries 20 -e "POSTGRES_USER=relaytest" -e "POSTGRES_PASSWORD=synthetic-ci-database-only" -e "POSTGRES_DB=relaytest" -e GITHUB_ACTIONS=true -e CI=true postgres:17
+verify	Initialize containers	2026-10-21T05:08:53.9505933Z b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:53.9533281Z ##[command]/usr/bin/docker start b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:54.1699125Z b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:54.1722265Z ##[command]/usr/bin/docker ps --all --filter id=b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+verify	Initialize containers	2026-10-21T05:08:54.2006253Z b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d Up Less than a second (health: starting)
+verify	Initialize containers	2026-10-21T05:08:54.2033437Z ##[command]/usr/bin/docker port b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:54.2201685Z 5432/tcp -> 0.0.0.0:5432
+verify	Initialize containers	2026-10-21T05:08:54.2210830Z 5432/tcp -> [::]:5432
+verify	Initialize containers	2026-10-21T05:08:54.2238336Z ##[endgroup]
+verify	Initialize containers	2026-10-21T05:08:54.2245031Z ##[group]Waiting for all services to be ready
+verify	Initialize containers	2026-10-21T05:08:54.2254969Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:54.2380690Z starting
+verify	Initialize containers	2026-10-21T05:08:54.2403145Z postgres service is starting, waiting 2 seconds before checking again.
+verify	Initialize containers	2026-10-21T05:08:56.2405639Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Initialize containers	2026-10-21T05:08:56.2526888Z healthy
+verify	Initialize containers	2026-10-21T05:08:56.2547067Z postgres service is healthy.
+verify	Initialize containers	2026-10-21T05:08:56.2547400Z ##[endgroup]
+verify	Run actions/checkout@v4	﻿2026-10-21T05:08:56.2733355Z ##[group]Run actions/checkout@v4
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2733629Z with:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2733761Z   repository: rjrddy/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735248Z   token: ***
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735374Z   ssh-strict: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735502Z   ssh-user: git
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735636Z   persist-credentials: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735775Z   clean: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2735907Z   sparse-checkout-cone-mode: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736080Z   fetch-depth: 1
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736206Z   fetch-tags: false
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736331Z   show-progress: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736457Z   lfs: false
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736574Z   submodules: false
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736703Z   set-safe-directory: true
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2736851Z   allow-unsafe-pr-checkout: false
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2737062Z env:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2737407Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.2737604Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3449643Z Syncing repository: rjrddy/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3451298Z ##[group]Getting Git version info
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3451626Z Working directory is '/home/runner/work/relay/relay'
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3452115Z [command]/usr/bin/git version
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3452357Z git version 2.55.0
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3453492Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3464226Z Temporarily overriding HOME='/home/runner/work/_temp/22356925-4df7-4030-84c8-64d23e9f6be4' before making global git config changes
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3464980Z Adding repository directory to the temporary git global config as a safe directory
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3465533Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/relay/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3524760Z Deleting the contents of '/home/runner/work/relay/relay'
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3527416Z ##[group]Initializing the repository
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3531824Z [command]/usr/bin/git init /home/runner/work/relay/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3652519Z hint: Using 'master' as the name for the initial branch. This default branch name
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3653237Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3653910Z hint: to use in all of your new repositories, which will suppress this warning,
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3654381Z hint: call:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3654730Z hint:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3655170Z hint: 	git config --global init.defaultBranch <name>
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3655638Z hint:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3656048Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3656687Z hint: 'development'. The just-created branch can be renamed via this command:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3657187Z hint:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3657534Z hint: 	git branch -m <name>
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3657906Z hint:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3658332Z hint: Disable this message with "git config set advice.defaultBranchName false"
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3659012Z Initialized empty Git repository in /home/runner/work/relay/relay/.git/
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3665496Z [command]/usr/bin/git remote add origin https://github.com/rjrddy/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3717741Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3718268Z ##[group]Disabling automatic garbage collection
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3721126Z [command]/usr/bin/git config --local gc.auto 0
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3765325Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3765711Z ##[group]Setting up auth
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3766955Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.3797735Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4208441Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4237565Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4469533Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4499092Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4729169Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4796109Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4796543Z ##[group]Fetching the repository
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.4802669Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1b2afdb2c24546e9a74752ad8c734801965e4a93:refs/remotes/origin/main
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8247699Z From https://github.com/rjrddy/relay
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8248248Z  * [new ref]         1b2afdb2c24546e9a74752ad8c734801965e4a93 -> origin/main
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8251921Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8252323Z ##[group]Determining the checkout info
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8254324Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8258925Z [command]/usr/bin/git sparse-checkout disable
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8389970Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8422207Z ##[group]Checking out the ref
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8426195Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8512483Z Switched to a new branch 'main'
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8513412Z branch 'main' set up to track 'origin/main'.
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8519643Z ##[endgroup]
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8563523Z [command]/usr/bin/git log -1 --format=%H
+verify	Run actions/checkout@v4	2026-10-21T05:08:56.8586804Z 1b2afdb2c24546e9a74752ad8c734801965e4a93
+verify	Run actions/setup-go@v5	﻿2026-10-21T05:08:56.8791834Z ##[group]Run actions/setup-go@v5
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8792011Z with:
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8792145Z   go-version-file: go.mod
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8792287Z   cache: false
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8792415Z   check-latest: false
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8793872Z   token: ***
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8794002Z env:
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8794305Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.8794522Z ##[endgroup]
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.9714419Z Setup go version spec 1.27.3
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.9720529Z Attempting to download 1.27.3...
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.9797946Z (node:2557) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Run actions/setup-go@v5	2026-10-21T05:08:56.9798675Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Run actions/setup-go@v5	2026-10-21T05:08:57.6098656Z matching 1.27.3...
+verify	Run actions/setup-go@v5	2026-10-21T05:08:57.6121216Z Acquiring 1.27.3 from https://github.com/actions/go-versions/releases/download/1.27.3-39437817176/go-1.27.3-linux-x64.tar.gz
+verify	Run actions/setup-go@v5	2026-10-21T05:08:58.0371206Z Extracting Go...
+verify	Run actions/setup-go@v5	2026-10-21T05:08:58.0476536Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/1402e2f3-3e21-43ca-8ac7-2b54affa9f95 -f /home/runner/work/_temp/06c5136a-de82-4370-9892-c33bc1553c40
+verify	Run actions/setup-go@v5	2026-10-21T05:08:58.9851787Z Successfully extracted go to /home/runner/work/_temp/1402e2f3-3e21-43ca-8ac7-2b54affa9f95
+verify	Run actions/setup-go@v5	2026-10-21T05:08:58.9852300Z Adding to the cache ...
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3591089Z Successfully cached go to /opt/hostedtoolcache/go/1.27.3/x64
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3592876Z Added go to the path
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3595149Z Successfully set up Go version 1.27.3
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3823765Z go version go1.27.3 linux/amd64
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3824288Z 
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.3824620Z ##[group]go env
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719036Z AR='ar'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719317Z CC='gcc'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719450Z CGO_CFLAGS='-O2 -g'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719605Z CGO_CPPFLAGS=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719737Z CGO_CXXFLAGS='-O2 -g'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5719876Z CGO_ENABLED='1'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720032Z CGO_FFLAGS='-O2 -g'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720376Z CGO_LDFLAGS='-O2 -g'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720553Z CXX='g++'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720669Z GCCGO='gccgo'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720787Z GO111MODULE=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5720903Z GOAMD64='v1'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721019Z GOARCH='amd64'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721139Z GOAUTH='netrc'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721265Z GOBIN='/home/runner/go/bin'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721430Z GOCACHE='/home/runner/.cache/go-build'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721591Z GOCACHEPROG=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721733Z GODEBUG=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5721897Z GOENV='/home/runner/.config/go/env'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5722044Z GOEXE=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5722153Z GOEXPERIMENT=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5722283Z GOFIPS140='off'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5722397Z GOFLAGS=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5722782Z GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build3981568446=/tmp/go-build -gno-record-gcc-switches'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723163Z GOHOSTARCH='amd64'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723293Z GOHOSTOS='linux'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723416Z GOINSECURE=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723575Z GOMOD='/home/runner/work/relay/relay/go.mod'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723762Z GOMODCACHE='/home/runner/go/pkg/mod'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5723923Z GONOPROXY=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724038Z GONOSUMDB=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724153Z GOOS='linux'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724273Z GOPACKAGESDRIVER=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724409Z GOPATH='/home/runner/go'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724562Z GOPRIVATE=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724730Z GOPROXY='https://proxy.golang.org,direct'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5724954Z GOROOT='/opt/hostedtoolcache/go/1.27.3/x64'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725126Z GOSUMDB='sum.golang.org'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725270Z GOTELEMETRY='local'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725445Z GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725627Z GOTMPDIR=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725743Z GOTOOLCHAIN='auto'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5725930Z GOTOOLDIR='/opt/hostedtoolcache/go/1.27.3/x64/pkg/tool/linux_amd64'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5726397Z GOVCS=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5726517Z GOVERSION='go1.27.3'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5726645Z GOWORK=''
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5726772Z PKG_CONFIG='pkg-config'
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5726858Z 
+verify	Run actions/setup-go@v5	2026-10-21T05:09:03.5727265Z ##[endgroup]
+verify	Run actions/setup-node@v4	﻿2026-10-21T05:09:03.5937739Z ##[group]Run actions/setup-node@v4
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5937921Z with:
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5938043Z   node-version: 22
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5938172Z   cache: npm
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5956502Z   cache-dependency-path: apps/web/package-lock.json
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5956743Z   always-auth: false
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5956882Z   check-latest: false
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5958286Z   token: ***
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5958410Z env:
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5958740Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.5958940Z ##[endgroup]
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.6918602Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.6921288Z (node:2758) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.6921677Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Run actions/setup-node@v4	2026-10-21T05:09:03.6923317Z ##[group]Environment details
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.0119811Z node: v22.23.3
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.0120065Z npm: 10.9.9
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.0120531Z yarn: 1.22.22
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.0121324Z ##[endgroup]
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.0132768Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.2924102Z /home/runner/.npm
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.4356810Z Cache hit for: node-cache-Linux-x64-npm-3fa1b7ad2a77a55e25f193b5a0fcef64aa5dd6d661602ff18cbc54c8c8251f4c
+verify	Run actions/setup-node@v4	2026-10-21T05:09:04.4415013Z (node:2758) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify	Run actions/setup-node@v4	2026-10-21T05:09:05.1861332Z Received 16454655 of 16454655 (100.0%), 25.4 MBs/sec
+verify	Run actions/setup-node@v4	2026-10-21T05:09:05.1861651Z Cache Size: ~16 MB (16454655 B)
+verify	Run actions/setup-node@v4	2026-10-21T05:09:05.1877950Z [command]/usr/bin/tar -xf /home/runner/work/_temp/4662d08b-655d-4962-9601-8374fde45e4c/cache.tzst -P -C /home/runner/work/relay/relay --use-compress-program unzstd
+verify	Run actions/setup-node@v4	2026-10-21T05:09:05.2142871Z Cache restored successfully
+verify	Run actions/setup-node@v4	2026-10-21T05:09:05.2154044Z Cache restored from key: node-cache-Linux-x64-npm-3fa1b7ad2a77a55e25f193b5a0fcef64aa5dd6d661602ff18cbc54c8c8251f4c
+verify	Run actions/setup-python@v5	﻿2026-10-21T05:09:05.2477779Z ##[group]Run actions/setup-python@v5
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2477984Z with:
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2478115Z   python-version: 3.13
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2478254Z   check-latest: false
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2479606Z   token: ***
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2479738Z   update-environment: true
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2479899Z   allow-prereleases: false
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2480042Z   freethreaded: false
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2480307Z env:
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2480680Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.2480889Z ##[endgroup]
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.3449083Z ##[group]Installed versions
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.3532269Z (node:2827) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.3533212Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.3533743Z Successfully set up CPython (3.13.16)
+verify	Run actions/setup-python@v5	2026-10-21T05:09:05.3534254Z ##[endgroup]
+verify	Run make setup build lint test	﻿2026-10-21T05:09:05.3778141Z ##[group]Run make setup build lint test
+verify	Run make setup build lint test	2026-10-21T05:09:05.3778430Z ^[[36;1mmake setup build lint test^[[0m
+verify	Run make setup build lint test	2026-10-21T05:09:05.4218825Z shell: /usr/bin/bash -e {0}
+verify	Run make setup build lint test	2026-10-21T05:09:05.4219172Z env:
+verify	Run make setup build lint test	2026-10-21T05:09:05.4219749Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run make setup build lint test	2026-10-21T05:09:05.4220029Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make setup build lint test	2026-10-21T05:09:05.4220386Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Run make setup build lint test	2026-10-21T05:09:05.4220640Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make setup build lint test	2026-10-21T05:09:05.4220874Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make setup build lint test	2026-10-21T05:09:05.4221105Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make setup build lint test	2026-10-21T05:09:05.4221339Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Run make setup build lint test	2026-10-21T05:09:05.4221538Z ##[endgroup]
+verify	Run make setup build lint test	2026-10-21T05:09:05.4412487Z python3 -m venv .venv
+verify	Run make setup build lint test	2026-10-21T05:09:10.0510720Z .venv/bin/python -m pip install --upgrade pip
+verify	Run make setup build lint test	2026-10-21T05:09:10.3012245Z Requirement already satisfied: pip in ./.venv/lib/python3.13/site-packages (26.2.1)
+verify	Run make setup build lint test	2026-10-21T05:09:10.3847870Z Collecting pip
+verify	Run make setup build lint test	2026-10-21T05:09:10.4333996Z   Downloading pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:10.4471999Z Downloading pip-26.2.2-py3-none-any.whl (1.8 MB)
+verify	Run make setup build lint test	2026-10-21T05:09:10.5007620Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 55.7 MB/s  0:00:00
+verify	Run make setup build lint test	2026-10-21T05:09:10.5197903Z Installing collected packages: pip
+verify	Run make setup build lint test	2026-10-21T05:09:10.5198416Z   Attempting uninstall: pip
+verify	Run make setup build lint test	2026-10-21T05:09:10.5214865Z     Found existing installation: pip 26.2.1
+verify	Run make setup build lint test	2026-10-21T05:09:10.5440661Z     Uninstalling pip-26.2.1:
+verify	Run make setup build lint test	2026-10-21T05:09:10.5483096Z       Successfully uninstalled pip-26.2.1
+verify	Run make setup build lint test	2026-10-21T05:09:11.1310601Z Successfully installed pip-26.2.2
+verify	Run make setup build lint test	2026-10-21T05:09:11.1784397Z .venv/bin/python -m pip install -e '.[dev]'
+verify	Run make setup build lint test	2026-10-21T05:09:11.4019988Z Obtaining file:///home/runner/work/relay/relay
+verify	Run make setup build lint test	2026-10-21T05:09:11.4029953Z   Installing build dependencies: started
+verify	Run make setup build lint test	2026-10-21T05:09:11.9650836Z   Installing build dependencies: finished with status 'done'
+verify	Run make setup build lint test	2026-10-21T05:09:11.9654916Z   Checking if build backend supports build_editable: started
+verify	Run make setup build lint test	2026-10-21T05:09:12.4238842Z   Checking if build backend supports build_editable: finished with status 'done'
+verify	Run make setup build lint test	2026-10-21T05:09:12.4243950Z   Getting requirements to build editable: started
+verify	Run make setup build lint test	2026-10-21T05:09:12.6846411Z   Getting requirements to build editable: finished with status 'done'
+verify	Run make setup build lint test	2026-10-21T05:09:12.6852129Z   Preparing editable metadata (pyproject.toml): started
+verify	Run make setup build lint test	2026-10-21T05:09:12.8116241Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+verify	Run make setup build lint test	2026-10-21T05:09:13.1202245Z Collecting ruff==0.17.1 (from relay-workflow-sdk==0.1.0)
+verify	Run make setup build lint test	2026-10-21T05:09:13.1725834Z   Downloading ruff-0.17.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.2122117Z Collecting playwright==1.64.0 (from relay-workflow-sdk==0.1.0)
+verify	Run make setup build lint test	2026-10-21T05:09:13.2275901Z   Downloading playwright-1.64.0-py3-none-manylinux1_x86_64.whl.metadata (3.3 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.2598078Z Collecting pyee<15,>=13 (from playwright==1.64.0->relay-workflow-sdk==0.1.0)
+verify	Run make setup build lint test	2026-10-21T05:09:13.2760115Z   Downloading pyee-14.0.0-py3-none-any.whl.metadata (1.8 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.3958214Z Collecting greenlet<4.0.0,>=3.1.1 (from playwright==1.64.0->relay-workflow-sdk==0.1.0)
+verify	Run make setup build lint test	2026-10-21T05:09:13.4112151Z   Downloading greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.4358460Z Collecting typing-extensions (from pyee<15,>=13->playwright==1.64.0->relay-workflow-sdk==0.1.0)
+verify	Run make setup build lint test	2026-10-21T05:09:13.4507779Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.4705557Z Downloading playwright-1.64.0-py3-none-manylinux1_x86_64.whl (48.3 MB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.9055053Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.3/48.3 MB 119.7 MB/s  0:00:00
+verify	Run make setup build lint test	2026-10-21T05:09:13.9208531Z Downloading ruff-0.17.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.4 MB)
+verify	Run make setup build lint test	2026-10-21T05:09:13.9891892Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 153.2 MB/s  0:00:00
+verify	Run make setup build lint test	2026-10-21T05:09:14.0054634Z Downloading greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (623 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:14.0093906Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 623.8/623.8 kB 155.0 MB/s  0:00:00
+verify	Run make setup build lint test	2026-10-21T05:09:14.0241941Z Downloading pyee-14.0.0-py3-none-any.whl (15 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:14.0405383Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+verify	Run make setup build lint test	2026-10-21T05:09:14.0842787Z Building wheels for collected packages: relay-workflow-sdk
+verify	Run make setup build lint test	2026-10-21T05:09:14.0847613Z   Building editable for relay-workflow-sdk (pyproject.toml): started
+verify	Run make setup build lint test	2026-10-21T05:09:14.2332011Z   Building editable for relay-workflow-sdk (pyproject.toml): finished with status 'done'
+verify	Run make setup build lint test	2026-10-21T05:09:14.2335711Z   Created wheel for relay-workflow-sdk: filename=relay_workflow_sdk-0.1.0-0.editable-py3-none-any.whl size=1378 sha256=acac80f98e6258b0d7e8e55cd2bf536ef8f2f7daf1b6799aa69ef6462a42344e
+verify	Run make setup build lint test	2026-10-21T05:09:14.2336926Z   Stored in directory: /tmp/pip-ephem-wheel-cache-h3__sgtn/wheels/a6/05/30/6ce69ef35259a964e04afe99919f3b3ed3c6a482208b6c9d44
+verify	Run make setup build lint test	2026-10-21T05:09:14.2347164Z Successfully built relay-workflow-sdk
+verify	Run make setup build lint test	2026-10-21T05:09:14.2486780Z Installing collected packages: typing-extensions, ruff, relay-workflow-sdk, greenlet, pyee, playwright
+verify	Run make setup build lint test	2026-10-21T05:09:15.0336517Z 
+verify	Run make setup build lint test	2026-10-21T05:09:15.0348473Z Successfully installed greenlet-3.5.6 playwright-1.64.0 pyee-14.0.0 relay-workflow-sdk-0.1.0 ruff-0.17.1 typing-extensions-4.16.0
+verify	Run make setup build lint test	2026-10-21T05:09:15.1328054Z go mod download
+verify	Run make setup build lint test	2026-10-21T05:09:16.9354034Z npm ci --prefix apps/web
+verify	Run make setup build lint test	2026-10-21T05:09:18.8462712Z 
+verify	Run make setup build lint test	2026-10-21T05:09:18.8463870Z added 23 packages, and audited 24 packages in 2s
+verify	Run make setup build lint test	2026-10-21T05:09:18.8464371Z 
+verify	Run make setup build lint test	2026-10-21T05:09:18.8464740Z 6 packages are looking for funding
+verify	Run make setup build lint test	2026-10-21T05:09:18.8465135Z   run `npm fund` for details
+verify	Run make setup build lint test	2026-10-21T05:09:18.8468578Z 
+verify	Run make setup build lint test	2026-10-21T05:09:18.8468701Z found 0 vulnerabilities
+verify	Run make setup build lint test	2026-10-21T05:09:18.8693281Z go build -trimpath -o bin/relay ./cmd/relay
+verify	Run make setup build lint test	2026-10-21T05:09:37.3268313Z npm run build --prefix apps/web
+verify	Run make setup build lint test	2026-10-21T05:09:37.3957006Z 
+verify	Run make setup build lint test	2026-10-21T05:09:37.3957862Z > relay-console@0.1.0 build
+verify	Run make setup build lint test	2026-10-21T05:09:37.3958296Z > tsc --noEmit && vite build
+verify	Run make setup build lint test	2026-10-21T05:09:37.3958950Z 
+verify	Run make setup build lint test	2026-10-21T05:09:38.4509582Z ^[[36mvite v6.4.4 ^[[32mbuilding for production...^[[36m^[[39m
+verify	Run make setup build lint test	2026-10-21T05:09:38.5081766Z transforming...
+verify	Run make setup build lint test	2026-10-21T05:09:39.0564134Z ^[[32m✓^[[39m 28 modules transformed.
+verify	Run make setup build lint test	2026-10-21T05:09:39.1481750Z rendering chunks...
+verify	Run make setup build lint test	2026-10-21T05:09:39.1526462Z computing gzip size...
+verify	Run make setup build lint test	2026-10-21T05:09:39.1602095Z ^[[2mdist/^[[22m^[[32mindex.html                 ^[[39m^[[1m^[[2m  0.44 kB^[[22m^[[1m^[[22m^[[2m │ gzip:  0.31 kB^[[22m
+verify	Run make setup build lint test	2026-10-21T05:09:39.1602771Z ^[[2mdist/^[[22m^[[2massets/^[[22m^[[35mindex-CE6lvqIR.css  ^[[39m^[[1m^[[2m 12.49 kB^[[22m^[[1m^[[22m^[[2m │ gzip:  3.56 kB^[[22m
+verify	Run make setup build lint test	2026-10-21T05:09:39.1603334Z ^[[2mdist/^[[22m^[[2massets/^[[22m^[[36mindex-Ck0jYYba.js   ^[[39m^[[1m^[[2m209.02 kB^[[22m^[[1m^[[22m^[[2m │ gzip: 65.51 kB^[[22m
+verify	Run make setup build lint test	2026-10-21T05:09:39.1603954Z ^[[32m✓ built in 692ms^[[39m
+verify	Run make setup build lint test	2026-10-21T05:09:39.1911181Z .venv/bin/python scripts/check_go_format.py "go"
+verify	Run make setup build lint test	2026-10-21T05:09:39.2252023Z go vet ./...
+verify	Run make setup build lint test	2026-10-21T05:09:59.9875409Z npm run lint --prefix apps/web
+verify	Run make setup build lint test	2026-10-21T05:10:00.0542180Z 
+verify	Run make setup build lint test	2026-10-21T05:10:00.0542950Z > relay-console@0.1.0 lint
+verify	Run make setup build lint test	2026-10-21T05:10:00.0543207Z > tsc --noEmit
+verify	Run make setup build lint test	2026-10-21T05:10:00.0543294Z 
+verify	Run make setup build lint test	2026-10-21T05:10:00.9771190Z npm exec --prefix apps/web -- prettier --check apps/web/src
+verify	Run make setup build lint test	2026-10-21T05:10:01.2596097Z Checking formatting...
+verify	Run make setup build lint test	2026-10-21T05:10:01.5266865Z All matched files use Prettier code style!
+verify	Run make setup build lint test	2026-10-21T05:10:01.5597721Z .venv/bin/python -m ruff check sdk/python scripts
+verify	Run make setup build lint test	2026-10-21T05:10:01.5820904Z All checks passed!
+verify	Run make setup build lint test	2026-10-21T05:10:01.5825555Z .venv/bin/python -m ruff format --check sdk/python scripts
+verify	Run make setup build lint test	2026-10-21T05:10:01.6051576Z 11 files already formatted
+verify	Run make setup build lint test	2026-10-21T05:10:01.6083875Z go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
+verify	Run make setup build lint test	2026-10-21T05:10:37.7336000Z .venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
+verify	Run make setup build lint test	2026-10-21T05:10:37.7507235Z {
+verify	Run make setup build lint test	2026-10-21T05:10:37.7507530Z   "passed": 18,
+verify	Run make setup build lint test	2026-10-21T05:10:37.7507753Z   "failed": 0,
+verify	Run make setup build lint test	2026-10-21T05:10:37.7507969Z   "tests": [
+verify	Run make setup build lint test	2026-10-21T05:10:37.7508279Z     "TestClientPreservesIdempotencyAndSurfacesConflict",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7508558Z     "TestIdempotencyCapacityConflict",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7508794Z     "TestAmbiguousEnqueueRetriesSameRequest",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7509024Z     "TestLeaseFencingAndAtomicEffects",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7509240Z     "TestConcurrentAdmissionAndClaims",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7509455Z     "TestDelayPauseRolloutAndRollback",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7509692Z     "TestDeadLetterReplayPreservesPreviousEffect",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7509952Z     "TestExpiredLeaseCannotHeartbeatOrComplete",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7510331Z     "TestCrashBudgetEventuallyDeadLetters",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7510567Z     "TestBackoffAndCohortProperties",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7510800Z     "TestCookieAuthCSRFValidationAndLogout",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7511035Z     "TestWaitForLockCannotReviveExpiredLease",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7511274Z     "TestEffectAndStepRollbackTogether",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7511509Z     "TestConcurrentCompletionCommitsOnlyOnce",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7511734Z     "TestSDKHTTPAndDatabaseErrors",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7511962Z     "TestEmbeddedServiceCompletesAndShutsDown",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7512173Z     "TestLoginRateLimit",
+verify	Run make setup build lint test	2026-10-21T05:10:37.7512364Z     "TestUnknownRouteDoesNotLeakFiles"
+verify	Run make setup build lint test	2026-10-21T05:10:37.7512530Z   ],
+verify	Run make setup build lint test	2026-10-21T05:10:37.7512656Z   "failures": []
+verify	Run make setup build lint test	2026-10-21T05:10:37.7512780Z }
+verify	Run make scan	﻿2026-10-21T05:10:37.7571655Z ##[group]Run make scan
+verify	Run make scan	2026-10-21T05:10:37.7571843Z ^[[36;1mmake scan^[[0m
+verify	Run make scan	2026-10-21T05:10:37.7625924Z shell: /usr/bin/bash -e {0}
+verify	Run make scan	2026-10-21T05:10:37.7626085Z env:
+verify	Run make scan	2026-10-21T05:10:37.7626638Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run make scan	2026-10-21T05:10:37.7626889Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make scan	2026-10-21T05:10:37.7627145Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Run make scan	2026-10-21T05:10:37.7627402Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make scan	2026-10-21T05:10:37.7627628Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make scan	2026-10-21T05:10:37.7628015Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run make scan	2026-10-21T05:10:37.7628244Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Run make scan	2026-10-21T05:10:37.7628442Z ##[endgroup]
+verify	Run make scan	2026-10-21T05:10:37.7712279Z go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+verify	Run make scan	2026-10-21T05:10:38.0486395Z go: downloading golang.org/x/vuln v1.9.0
+verify	Run make scan	2026-10-21T05:10:38.2442994Z go: downloading golang.org/x/telemetry v0.0.0-20261010193011-f71dc92da45e
+verify	Run make scan	2026-10-21T05:10:38.2491752Z go: downloading golang.org/x/mod v0.42.0
+verify	Run make scan	2026-10-21T05:10:38.2495075Z go: downloading golang.org/x/tools v0.52.0
+verify	Run make scan	2026-10-21T05:10:44.4708859Z === Symbol Results ===
+verify	Run make scan	2026-10-21T05:10:44.4709110Z 
+verify	Run make scan	2026-10-21T05:10:44.4709208Z No vulnerabilities found.
+verify	Run make scan	2026-10-21T05:10:44.4709320Z 
+verify	Run make scan	2026-10-21T05:10:44.4709428Z Your code is affected by 0 vulnerabilities.
+verify	Run make scan	2026-10-21T05:10:44.4709734Z This scan also found 0 vulnerabilities in packages you import and 1
+verify	Run make scan	2026-10-21T05:10:44.4710093Z vulnerability in modules you require, but your code doesn't appear to call these
+verify	Run make scan	2026-10-21T05:10:44.4710631Z vulnerabilities.
+verify	Run make scan	2026-10-21T05:10:44.4710894Z Use '-show verbose' for more details.
+verify	Run make scan	2026-10-21T05:10:44.5764872Z npm audit --prefix apps/web --audit-level=high
+verify	Run make scan	2026-10-21T05:10:44.8602491Z found 0 vulnerabilities
+verify	Short real-process chaos gate	﻿2026-10-21T05:10:44.8735290Z ##[group]Run go run ./cmd/bench --jobs 100 --chaos --out ci-chaos
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8735594Z ^[[36;1mgo run ./cmd/bench --jobs 100 --chaos --out ci-chaos^[[0m
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8788821Z shell: /usr/bin/bash -e {0}
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8788979Z env:
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8789388Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8789626Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8789876Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8790130Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8790485Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8790722Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8790954Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8791173Z   GOPATH: /home/runner/work/relay/relay/.cache/gopath
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8791377Z   GOCACHE: /home/runner/work/relay/relay/.cache/gobuild
+verify	Short real-process chaos gate	2026-10-21T05:10:44.8791593Z ##[endgroup]
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3979234Z {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3979889Z   "duplicate_effects": 0,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3980838Z   "elapsed_hours": 0.0005665501244444445,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3981114Z   "elapsed_seconds": 2.039580448,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3981377Z   "enqueue_start_p50_ms": 206.3345,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3981579Z   "enqueue_start_p99_ms": 630.53834,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3981750Z   "faults": [
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3981879Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3982135Z       "elapsed_seconds": 0.117178013,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3982373Z       "kind": "process_exit_after_claim"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3982558Z     },
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3982750Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3982954Z       "elapsed_seconds": 0.138195109,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3983168Z       "kind": "process_exit_after_commit"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3983337Z     },
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3983453Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3983723Z       "elapsed_seconds": 0.343379556,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3983965Z       "kind": "database_transport_partition_begin"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3984163Z     },
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3984322Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3984520Z       "elapsed_seconds": 0.693718714,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3984744Z       "kind": "database_transport_partition_end"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3984916Z     },
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3985024Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3985280Z       "elapsed_seconds": 0.794462137,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3985499Z       "kind": "database_transport_delay_begin"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3985668Z     },
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3985773Z     {
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3986050Z       "elapsed_seconds": 1.594530591,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3986395Z       "kind": "database_transport_delay_end"
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3986914Z     }
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3987103Z   ],
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3987324Z   "incorrect_receipts": 0,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3987586Z   "lost_workflows": 0,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3991354Z   "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3992097Z   "step_effects": 300,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3992347Z   "workers": 4,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3992596Z   "workflows": 100,
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3992907Z   "workflows_per_second": 49.02969142406683
+verify	Short real-process chaos gate	2026-10-21T05:10:47.3993226Z }
+verify	Fresh clone and Compose storage fault	﻿2026-10-21T05:10:47.4187090Z ##[group]Run git clone --no-local . /tmp/relay-clean
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4187387Z ^[[36;1mgit clone --no-local . /tmp/relay-clean^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4187598Z ^[[36;1mcd /tmp/relay-clean^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4187765Z ^[[36;1mcp .env.example .env^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4187943Z ^[[36;1mmkdir -p docs/results^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4188436Z ^[[36;1mtrap 'docker compose -f compose.yaml -f compose.chaos.yaml logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"' EXIT^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4188991Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml up --build -d^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4189384Z ^[[36;1mfor i in $(seq 1 120); do curl -fsS http://localhost:8080/health && break; sleep 2; done^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4189688Z ^[[36;1mcurl --fail http://localhost:8080/health^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4189975Z ^[[36;1mexport RELAY_API_TOKEN=replace-local-sdk-token-at-least-24-chars^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4190419Z ^[[36;1mpython scripts/smoke.py^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4190726Z ^[[36;1mpython scripts/storage_fault.py^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4190989Z ^[[36;1msleep 6^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4191265Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml logs --no-color otel > docs/results/otel.log^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4191590Z ^[[36;1mgrep -q 'workflow.step' docs/results/otel.log^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4191835Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml down^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4247971Z shell: /usr/bin/bash -e {0}
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4248165Z env:
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4248665Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4248920Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4249186Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4249440Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4249685Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4249925Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4250363Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4250751Z ##[endgroup]
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.4341186Z Cloning into '/tmp/relay-clean'...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:47.9301348Z  Image otel/opentelemetry-collector:0.163.1 Pulling 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.6321220Z  ced244d4d1a4 Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.6321967Z  34f21d36d45c Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.6322479Z  62cedb307e4f Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.7326973Z  ced244d4d1a4 Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.8328014Z  34f21d36d45c Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.8329667Z  62cedb307e4f Downloading 4.194MB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.8368950Z  34f21d36d45c Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:48.9325340Z  62cedb307e4f Downloading 38.43MB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.0320807Z  62cedb307e4f Downloading 38.43MB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.1333802Z  62cedb307e4f Downloading 38.43MB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.2322470Z  62cedb307e4f Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.2339598Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.3344731Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.4347394Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.5349532Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.5661274Z  ced244d4d1a4 Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.5668795Z  62cedb307e4f Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.5673172Z  Image otel/opentelemetry-collector:0.163.1 Pulled 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.7923090Z  Image relay-postgres-chaos-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.7923535Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.7923810Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.7924063Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:49.8617364Z #1 [internal] load local bake definitions
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.0120842Z #1 reading from stdin 1.70kB done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.0121149Z #1 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1939394Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1940374Z #2 [postgres internal] load build definition from postgres.Dockerfile
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1940740Z #2 transferring dockerfile: 347B done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1941250Z #2 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1941333Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1941529Z #3 [worker internal] load build definition from Dockerfile
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1941863Z #3 transferring dockerfile: 633B done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942021Z #3 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942096Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942261Z #4 [postgres internal] load metadata for docker.io/library/postgres:17
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942490Z #4 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942557Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.1942694Z #5 [auth] library/gcc:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3808729Z #5 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3808992Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3809277Z #6 [auth] library/golang:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3809606Z #6 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3809722Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3809939Z #7 [auth] library/node:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3810348Z #7 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3810463Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.3810752Z #8 [init internal] load metadata for docker.io/library/golang:1.27.3-bookworm
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.5765780Z #8 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.5765980Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.5766237Z #9 [api internal] load metadata for gcr.io/distroless/static-debian12:nonroot
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.5766596Z #9 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.6626040Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.6627130Z #8 [init internal] load metadata for docker.io/library/golang:1.27.3-bookworm
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7650091Z #8 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7650547Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7650925Z #10 [postgres internal] load metadata for docker.io/library/gcc:14-bookworm
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7651335Z #10 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7651450Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7651620Z #11 [worker internal] load .dockerignore
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7651961Z #11 transferring context: 138B done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7652224Z #11 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7652339Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7652498Z #12 [postgres internal] load build context
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7652818Z #12 transferring context: 1.08kB done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7653113Z #12 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7653226Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7653513Z #13 [api internal] load metadata for docker.io/library/node:22-bookworm-slim
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7653895Z #13 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7654014Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7654563Z #14 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.7655583Z #14 resolve docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8667441Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8667684Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8667899Z #15 [worker internal] load build context
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8728329Z #15 transferring context: 165.39kB done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8728624Z #15 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8728703Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.8729202Z #14 [api builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9917764Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9918013Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9918500Z #16 [postgres stage-1 1/3] FROM docker.io/library/postgres:17@sha256:c469d92cbb89e123ba7c2c7c1a8815572943584085c37b007bacb43150a8c9e4
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9919478Z #16 resolve docker.io/library/postgres:17@sha256:c469d92cbb89e123ba7c2c7c1a8815572943584085c37b007bacb43150a8c9e4 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9919997Z #16 DONE 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9920699Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9921270Z #17 [init stage-2 1/4] FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9922269Z #17 resolve gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9922820Z #17 DONE 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9922932Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:50.9923474Z #14 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9606313Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9606567Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9607237Z #18 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9608311Z #18 resolve docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9611275Z #18 sha256:26bfb03bfcf4cda9ade76e118c1239bccf4546bf626329aebac61b3ce8da0287 1.78kB / 1.78kB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9612035Z #18 sha256:9288ebdd9645ff1b67a11b23e245cc1aff6f8f7448f6b23ed250786bd80b85a6 9.59kB / 9.59kB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9612834Z #18 sha256:cb5a73f350df833520583b55ef32e4e2dac35764096a7ac3a323270feddc41c5 157.84MB / 157.84MB 3.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9613673Z #18 sha256:13389305062dc769148c32e0f488c061f24c7e3020f7b786b55d4c561ae50b91 2.81MB / 2.81MB 0.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9614399Z #18 sha256:873a4c80287477653c01b20948fc34bb1bacf0f826bcc2ddc3bd2fe25b342d45 211.36MB / 211.36MB 4.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9615137Z #18 sha256:37f838b71c6b82c581b7543a313255b8c99c23cc9d96c1ad6f9f5f208c942553 64.40MB / 64.40MB 2.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9615880Z #18 sha256:c2e76af9483f2d17a3e370639403df2c53a3da1480d533116a8694cd91f15d5a 24.02MB / 24.02MB 1.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9616524Z #18 sha256:ebed137c7c18cb1906fb8314eabc10611ddf49a281f8c1b5eab987a7137f749f 48.49MB / 48.49MB 1.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:54.9617820Z #18 DONE 4.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.1093578Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.1094996Z #14 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.1095938Z #14 sha256:c42ec79d38f93118e728683ce7bb8ffbfa2b4406713e0c670e53ac974b2794cd 126B / 126B 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.1096507Z #14 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 2.10MB / 71.15MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.2594850Z #14 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 35.65MB / 71.15MB 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.2595975Z #14 sha256:68f2074ab7fd11f602b2218e3c94fb7870f11631e99647e34b8d6ab97ad04076 0B / 92.63MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.4093709Z #14 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 71.15MB / 71.15MB 0.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.4095092Z #14 sha256:68f2074ab7fd11f602b2218e3c94fb7870f11631e99647e34b8d6ab97ad04076 33.55MB / 92.63MB 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:55.5596515Z #14 sha256:68f2074ab7fd11f602b2218e3c94fb7870f11631e99647e34b8d6ab97ad04076 92.27MB / 92.63MB 0.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.0003188Z #14 sha256:c42ec79d38f93118e728683ce7bb8ffbfa2b4406713e0c670e53ac974b2794cd 126B / 126B 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.1517841Z #14 sha256:c42ec79d38f93118e728683ce7bb8ffbfa2b4406713e0c670e53ac974b2794cd 126B / 126B 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.1518741Z #14 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 34.60MB / 64.43MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2556239Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2556487Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2556685Z #19 [api stage-2 2/4] WORKDIR /app
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2557041Z #19 DONE 5.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2557164Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2557737Z #20 [init web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2558775Z #20 resolve docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2559988Z #20 sha256:a8de9fa052209313d8e45435a8486e29b20eebaa820e2e7f63a7c3c94b4fa567 448B / 448B 0.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2560876Z #20 sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 49.84MB / 49.84MB 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2561537Z #20 sha256:2cfab517365cfc6b4bd1f8c4cb01754884ef75bc38758b3c41e291c696f019f5 1.71MB / 1.71MB 0.3s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2561998Z #20 sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39 28.25MB / 28.25MB 1.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2562439Z #20 sha256:f0400f4b55b0ad346bf6167a1b64a258e4d73db608c457798ce35e4ffeebfaaf 3.31kB / 3.31kB 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2562890Z #20 DONE 5.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2562963Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2563298Z #14 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.2563810Z #14 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 71.15MB / 71.15MB 1.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.3675530Z #14 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 71.15MB / 71.15MB 1.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.3677351Z #14 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 64.43MB / 64.43MB 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.3678245Z #14 sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 23.87MB / 23.87MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.5171360Z #14 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 18.87MB / 48.52MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:56.6668315Z #14 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 48.52MB / 48.52MB 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:57.0480641Z #14 sha256:68f2074ab7fd11f602b2218e3c94fb7870f11631e99647e34b8d6ab97ad04076 92.63MB / 92.63MB 1.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:57.0481838Z #14 sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 64.43MB / 64.43MB 0.9s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:57.0482723Z #14 sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 23.87MB / 23.87MB 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:57.0483578Z #14 sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 48.52MB / 48.52MB 0.6s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:57.0484274Z #14 extracting sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.1285602Z #14 extracting sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 1.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.3145953Z #14 extracting sha256:8a051559ff62acdfa1af9916c3c67673d946bb71f81cb8f30c565fa647cb6a77 1.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.3147172Z #14 extracting sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.5888474Z #14 extracting sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 0.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.5890021Z #14 extracting sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:58.7552120Z #14 extracting sha256:55f3510f14ae1203443980e2b03e3c4adb950f89becd0189ad5032562ef49ea0 0.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0252761Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0253461Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0254352Z #20 [worker web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0255503Z #20 extracting sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39 0.9s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0256157Z #20 extracting sha256:f0400f4b55b0ad346bf6167a1b64a258e4d73db608c457798ce35e4ffeebfaaf 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0257126Z #20 extracting sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 1.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0257998Z #20 extracting sha256:2cfab517365cfc6b4bd1f8c4cb01754884ef75bc38758b3c41e291c696f019f5 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0258529Z #20 extracting sha256:a8de9fa052209313d8e45435a8486e29b20eebaa820e2e7f63a7c3c94b4fa567 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.0258870Z #20 DONE 7.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.1754573Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:10:59.1755634Z #21 [init web 2/6] WORKDIR /app/apps/web
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3758859Z #21 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3759151Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3759960Z #18 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3761212Z #18 extracting sha256:ebed137c7c18cb1906fb8314eabc10611ddf49a281f8c1b5eab987a7137f749f 2.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3762036Z #18 extracting sha256:c2e76af9483f2d17a3e370639403df2c53a3da1480d533116a8694cd91f15d5a 0.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3762475Z #18 extracting sha256:37f838b71c6b82c581b7543a313255b8c99c23cc9d96c1ad6f9f5f208c942553 1.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3764709Z #18 extracting sha256:873a4c80287477653c01b20948fc34bb1bacf0f826bcc2ddc3bd2fe25b342d45 3.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.3764973Z #18 DONE 11.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4940838Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4942402Z #18 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4943338Z #18 extracting sha256:13389305062dc769148c32e0f488c061f24c7e3020f7b786b55d4c561ae50b91 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4943824Z #18 DONE 11.4s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4943951Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4944527Z #14 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:32fa283222e2905d9fee971f60c842e5c815fdc036cf7ea599bf36bd7ca8f67f
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4945095Z #14 extracting sha256:e0959ba39613fdd89ed3679cb0483740e954fcc9d3e68d882e6f27130ac124e0 1.3s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4945791Z #14 extracting sha256:68f2074ab7fd11f602b2218e3c94fb7870f11631e99647e34b8d6ab97ad04076 1.6s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:03.4946446Z #14 extracting sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.1043418Z #14 extracting sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 2.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.2071763Z #14 extracting sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 2.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.2073089Z #14 extracting sha256:c42ec79d38f93118e728683ce7bb8ffbfa2b4406713e0c670e53ac974b2794cd 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.2073928Z #14 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.3579100Z #14 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.3580413Z #14 DONE 13.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.3580688Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:04.3580902Z #22 [init builder 2/9] WORKDIR /app
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.3082193Z #22 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.3082453Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.3083008Z #18 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.3083762Z #18 extracting sha256:cb5a73f350df833520583b55ef32e4e2dac35764096a7ac3a323270feddc41c5 1.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.3084036Z #18 DONE 13.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4991079Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4992001Z #18 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4992602Z #18 extracting sha256:9288ebdd9645ff1b67a11b23e245cc1aff6f8f7448f6b23ed250786bd80b85a6 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4993054Z #18 extracting sha256:26bfb03bfcf4cda9ade76e118c1239bccf4546bf626329aebac61b3ce8da0287 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4993331Z #18 DONE 13.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4993420Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:05.4993519Z #23 [postgres build 2/4] WORKDIR /src
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.1251855Z #23 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.1252037Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.1252177Z #21 [init web 2/6] WORKDIR /app/apps/web
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.1252397Z #21 DONE 10.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.2754268Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:09.2754982Z #24 [init web 3/6] COPY apps/web/package*.json ./
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.5177737Z #24 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.5180468Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.5180820Z #23 [postgres build 2/4] WORKDIR /src
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.5182712Z #23 DONE 8.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6996505Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6997618Z #22 [worker builder 2/9] WORKDIR /app
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6998136Z #22 DONE 9.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6998390Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6999314Z #24 [api web 3/6] COPY apps/web/package*.json ./
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6999752Z #24 DONE 4.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.6999975Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7000435Z #25 [postgres build 3/4] COPY chaos/slowdisk.c ./
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7000763Z #25 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7000929Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7001131Z #26 [api builder 3/9] COPY go.mod go.sum ./
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7001407Z #26 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7001576Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.7001777Z #27 [api builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.8292362Z #27 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.8292889Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.8293560Z #28 [postgres build 4/4] RUN gcc -shared -fPIC -O2 -Wall -Wextra -Werror slowdisk.c -ldl -o /libslowdisk.so
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.8294618Z #28 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.9795187Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:13.9796997Z #29 [api web 4/6] RUN npm ci
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.5308622Z #29 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.5310568Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.5311354Z #30 [postgres stage-1 2/3] COPY --from=build /libslowdisk.so /opt/libslowdisk.so
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.5311829Z #30 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.6811729Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.6812760Z #31 [postgres stage-1 3/3] RUN mkdir -p /faults && chmod 755 /faults
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.6927212Z #31 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.6927480Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.6927649Z #29 [api web 4/6] RUN npm ci
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8192115Z #29 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8192740Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8193400Z #32 [postgres] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8193999Z #32 exporting layers 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8194804Z #32 exporting manifest sha256:984de5737eab7a25731bc4aaa93103e94feed661e7ef96844e3530d1c6121902 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8195764Z #32 exporting config sha256:2cc6cdaca565ae70a279d63ce4cac42da958d92172e51c10a90d0f09dd947482 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8196780Z #32 exporting attestation manifest sha256:568077024ad183a71ec77f29f72b643549ffdbf03192588687aca48cff6676b6 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8197776Z #32 exporting manifest list sha256:94cd772baa1f66922cd98be631808deac28eb64c629129f8319b97d25dda963d done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8198537Z #32 naming to docker.io/library/relay-postgres-chaos-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8199102Z #32 unpacking to docker.io/library/relay-postgres-chaos-local:latest 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.8199478Z #32 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.9223451Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.9225037Z #33 [postgres] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.9225321Z #33 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.9225409Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:14.9225522Z #29 [api web 4/6] RUN npm ci
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1172409Z #29 1.442 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1172938Z #29 1.442 added 23 packages, and audited 24 packages in 1s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1173319Z #29 1.443 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1173610Z #29 1.443 6 packages are looking for funding
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1173968Z #29 1.443   run `npm fund` for details
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1174228Z #29 1.444 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1174485Z #29 1.444 found 0 vulnerabilities
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1174765Z #29 1.445 npm notice
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1175175Z #29 1.445 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1175779Z #29 1.445 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1176297Z #29 1.445 npm notice To update run: npm install -g npm@12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.1176649Z #29 1.445 npm notice
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.5336032Z #29 DONE 1.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.5336299Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.5336510Z #34 [worker web 5/6] COPY apps/web/ ./
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.8955456Z #34 DONE 0.4s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.8956018Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.8956439Z #35 [worker web 6/6] RUN npm run build
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.9975915Z #35 0.250 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.9976924Z #35 0.250 > relay-console@0.1.0 build
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.9980144Z #35 0.250 > tsc --noEmit && vite build
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:15.9980802Z #35 0.250 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6067678Z #35 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6072422Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6073409Z #27 [worker builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6073950Z #27 DONE 2.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6074077Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6074821Z #36 [init builder 5/9] COPY cmd/ cmd/
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6075132Z #36 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6075387Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6075590Z #37 [worker builder 6/9] COPY internal/ internal/
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.6075907Z #37 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7700990Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7702387Z #38 [worker builder 7/9] COPY migrations/ migrations/
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7703308Z #38 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7703631Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7704056Z #39 [api builder 8/9] COPY sdk/go/ sdk/go/
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7704610Z #39 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7704867Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:16.7705451Z #40 [api builder 9/9] RUN CGO_ENABLED=0 go build -trimpath -o /relay ./cmd/relay
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3587346Z #40 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3587590Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3587801Z #35 [api web 6/6] RUN npm run build
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3588244Z #35 1.840 vite v6.4.4 building for production...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3588608Z #35 1.930 transforming...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3589222Z #35 3.222 ✓ 28 modules transformed.
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3589583Z #35 3.395 rendering chunks...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3589896Z #35 3.403 computing gzip size...
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3590559Z #35 3.414 dist/index.html                   0.44 kB │ gzip:  0.31 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3591176Z #35 3.415 dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.56 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3591806Z #35 3.415 dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.51 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3592222Z #35 3.416 ✓ built in 1.55s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.3592474Z #35 DONE 3.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.5090788Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:19.5092053Z #40 [api builder 9/9] RUN CGO_ENABLED=0 go build -trimpath -o /relay ./cmd/relay
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:37.7391688Z #40 DONE 21.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.2422958Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.2423973Z #41 [worker stage-2 3/4] COPY --from=builder /relay /app/relay
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5621722Z #41 DONE 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5621923Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5622142Z #42 [worker stage-2 4/4] COPY --from=web /app/apps/web/dist /app/web
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5622473Z #42 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5622587Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5622676Z #43 [init] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:38.5622853Z #43 exporting layers
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3342329Z #43 exporting layers 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3343464Z #43 exporting manifest sha256:1c501c78141a05df55fc85bf49dc41e0c3f1dc0b45230cc8cef631ab2bb8522d done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3343954Z #43 exporting config sha256:271a7e2a0ddec0e1af0455aa838d798a0b29b2c8093fe4ae6582e5d36bfac694 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3344535Z #43 exporting attestation manifest sha256:abc5929815dd01ddfd742c41aa69b17050bbb17d46c1ace58f2e925af3d9e901 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3345079Z #43 exporting manifest list sha256:d34d662e00a50fb36997363790326a038c97d6f60ce3640d08de4c3276ce3eb8 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3345440Z #43 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.3345714Z #43 unpacking to docker.io/library/relay-local:latest
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4625975Z #43 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4626459Z #43 DONE 0.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4626566Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4626659Z #44 [api] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4626853Z #44 exporting layers 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4627205Z #44 exporting manifest sha256:12b208117933df849cc3b2384a8f51f2cf23fb04abdee7574e2e82fbb026a4c5 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4627692Z #44 exporting config sha256:0608cbb4b1b816f9a8ae5b0c1f60df73390b1ede14bb4920a661f2ea3847b36f done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4628197Z #44 exporting attestation manifest sha256:1f15a5d6149944a79e8de3b29b2edc770dd5a2c69b955fd526622482e6b6531d 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4628707Z #44 exporting manifest list sha256:43d6a699c2494783242050dfc27119fde73a0cc5e9f1736ad8d79606ff5af501 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4629074Z #44 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4629355Z #44 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4629574Z #44 DONE 0.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4629649Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4629743Z #45 [worker] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4630393Z #45 exporting layers 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4630938Z #45 exporting manifest sha256:56f3d4876aa96524a6de8e639032bdcff2903d223cc39326ebb9b9be8f43a6e0 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4631674Z #45 exporting config sha256:8053e570aa1ff691b73a469649a462d6fd7900680b7b9648cf275439894835b3 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4632493Z #45 exporting attestation manifest sha256:b392382a5051eb4fea5e2ad5a95911987f68a8fb50708048523922c280e93fc5 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4633021Z #45 exporting manifest list sha256:17594927d91200b0e1d3332ea395b3f9a014a40562dc07a39938b037e4c66ea5 done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4633822Z #45 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4634326Z #45 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4634706Z #45 DONE 1.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4634838Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4635047Z #46 [init] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4998471Z #46 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4998721Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4998956Z #47 [api] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4999275Z #47 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4999359Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4999526Z #48 [worker] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.4999807Z #48 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5000103Z  Image relay-postgres-chaos-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5000482Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5000648Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5000801Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5017470Z  Network relay-clean_default Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5256939Z  Network relay-clean_default Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5261541Z  Volume relay-clean_relay-db Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5270656Z  Volume relay-clean_relay-db Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5276983Z  Container relay-clean-otel-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.5277489Z  Container relay-clean-postgres-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.9865789Z  Container relay-clean-postgres-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.9869418Z  Container relay-clean-otel-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:39.9870159Z  Container relay-clean-init-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0112868Z  Container relay-clean-init-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0113606Z  Container relay-clean-worker-2 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0114242Z  Container relay-clean-api-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0117724Z  Container relay-clean-worker-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0370997Z  Container relay-clean-api-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0379297Z  Container relay-clean-worker-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0387478Z  Container relay-clean-worker-2 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0559547Z  Container relay-clean-otel-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.0560775Z  Container relay-clean-postgres-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.1729313Z  Container relay-clean-otel-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.1839053Z  Container relay-clean-postgres-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:40.1839936Z  Container relay-clean-postgres-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:42.6849418Z  Container relay-clean-postgres-1 Healthy 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:42.6849936Z  Container relay-clean-init-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:42.8063524Z  Container relay-clean-init-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:42.8064292Z  Container relay-clean-init-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:42.8064918Z  Container relay-clean-init-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.3079149Z  Container relay-clean-init-1 Exited 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.3080715Z  Container relay-clean-init-1 Exited 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.4445753Z  Container relay-clean-worker-2 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.4446220Z  Container relay-clean-api-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.4446449Z  Container relay-clean-worker-2 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.4461110Z  Container relay-clean-worker-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.4743127Z  Container relay-clean-api-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5637054Z  Container relay-clean-worker-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5845927Z {"status":"ok"}
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5903262Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5904588Z                                  Dload  Upload  Total   Spent   Left   Speed
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5905379Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5911958Z   0      0   0      0   0      0      0      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5912582Z 100     16 100     16   0      0  15701      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5913383Z 100     16 100     16   0      0  15037      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5913898Z 100     16 100     16   0      0  14505      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:43.5915631Z {"status":"ok"}
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0297395Z {
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0297839Z   "sdk_idempotency": true,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0298424Z   "conflict_status": 409,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0298661Z   "run": "2fbe5dde8637b6afca43cf320c18f6ae",
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0298892Z   "completed_steps": 3,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0299061Z   "receipt": 42,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0299241Z   "event_trace_ids_nonzero": true,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0299481Z   "elapsed_seconds": 2.368313142000005
+verify	Fresh clone and Compose storage fault	2026-10-21T05:11:46.0299670Z }
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0679376Z {
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0679884Z   "workflows": 12,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0692950Z   "completed": 12,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0693325Z   "duplicate_effects": 0,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0693639Z   "elapsed_seconds": 19.776349983000017,
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0694288Z   "injection": "LD_PRELOAD delays each real fsync/fdatasync call before invoking libc; not a hardware-disk benchmark"
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:06.0694833Z }
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.2307868Z  Container relay-clean-worker-1 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.2315913Z  Container relay-clean-api-1 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.2316400Z  Container relay-clean-worker-2 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3303072Z  Container relay-clean-worker-2 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3309613Z  Container relay-clean-worker-2 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3431634Z  Container relay-clean-worker-2 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3482730Z  Container relay-clean-worker-1 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3483311Z  Container relay-clean-worker-1 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3578495Z  Container relay-clean-worker-1 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3946467Z  Container relay-clean-api-1 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.3946961Z  Container relay-clean-api-1 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4029028Z  Container relay-clean-api-1 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4029646Z  Container relay-clean-init-1 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4030675Z  Container relay-clean-otel-1 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4036304Z  Container relay-clean-init-1 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4036675Z  Container relay-clean-init-1 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4138997Z  Container relay-clean-init-1 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4139544Z  Container relay-clean-postgres-1 Stopping 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4896416Z  Container relay-clean-otel-1 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.4896899Z  Container relay-clean-otel-1 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5002742Z  Container relay-clean-otel-1 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5184815Z  Container relay-clean-postgres-1 Stopped 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5185316Z  Container relay-clean-postgres-1 Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5270621Z  Container relay-clean-postgres-1 Removed 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5277158Z  Network relay-clean_default Removing 
+verify	Fresh clone and Compose storage fault	2026-10-21T05:12:12.5773810Z  Network relay-clean_default Removed 
+verify	Run actions/upload-artifact@v4	﻿2026-10-21T05:12:12.6375527Z ##[group]Run actions/upload-artifact@v4
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6375724Z with:
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6375852Z   name: relay-ci-evidence
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376126Z   path: docs/results/tests.json
+verify	Run actions/upload-artifact@v4	docs/results/tests.jsonl
+verify	Run actions/upload-artifact@v4	docs/results/ci-chaos*
+verify	Run actions/upload-artifact@v4	docs/results/container-ci/
+verify	Run actions/upload-artifact@v4	
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376422Z   if-no-files-found: warn
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376567Z   compression-level: 6
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376706Z   overwrite: false
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376841Z   include-hidden-files: false
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6376990Z env:
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6377387Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6377630Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6377888Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6378137Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6378521Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6378751Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6379016Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.6379209Z ##[endgroup]
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.7630025Z (node:24270) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.7630741Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.7731107Z With the provided path, there will be 16 files uploaded
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.7731751Z Artifact name is valid!
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:12.7732057Z Root directory input is valid!
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.0571074Z Beginning upload of artifact content to blob storage
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.0860514Z (node:24270) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.2658201Z Uploaded bytes 84748
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.3026069Z Finished uploading artifact content to blob storage!
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.3026716Z SHA256 digest of uploaded artifact zip is 795c55db5712c18f7a58ee82992abf6ace9dfb0b834ea5ecc2bf9eeb9da21004
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.3027977Z Finalizing artifact upload
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.5331119Z Artifact relay-ci-evidence.zip successfully finalized. Artifact ID 12322541759
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.5331682Z Artifact relay-ci-evidence has been successfully uploaded! Final size is 84748 bytes. Artifact ID is 12322541759
+verify	Run actions/upload-artifact@v4	2026-10-21T05:12:13.5335012Z Artifact download URL: https://github.com/rjrddy/relay/actions/runs/39547894095/artifacts/12322541759
+verify	Post Run actions/setup-python@v5	﻿2026-10-21T05:12:13.5508539Z Post job cleanup.
+verify	Post Run actions/setup-python@v5	2026-10-21T05:12:13.6745732Z (node:24303) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Post Run actions/setup-python@v5	2026-10-21T05:12:13.6747506Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Post Run actions/setup-node@v4	﻿2026-10-21T05:12:13.6921062Z Post job cleanup.
+verify	Post Run actions/setup-node@v4	2026-10-21T05:12:13.7928541Z (node:24311) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Post Run actions/setup-node@v4	2026-10-21T05:12:13.7929129Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Post Run actions/setup-node@v4	2026-10-21T05:12:13.7931182Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-3fa1b7ad2a77a55e25f193b5a0fcef64aa5dd6d661602ff18cbc54c8c8251f4c, not saving cache.
+verify	Post Run actions/setup-go@v5	﻿2026-10-21T05:12:13.8037969Z Post job cleanup.
+verify	Post Run actions/setup-go@v5	2026-10-21T05:12:13.9005189Z (node:24319) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify	Post Run actions/setup-go@v5	2026-10-21T05:12:13.9006172Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify	Post Run actions/checkout@v4	﻿2026-10-21T05:12:13.9202256Z Post job cleanup.
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:13.9890655Z [command]/usr/bin/git version
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:13.9932270Z git version 2.55.0
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:13.9963449Z Temporarily overriding HOME='/home/runner/work/_temp/a7de324f-853a-41e9-9548-020318b5a9f6' before making global git config changes
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:13.9964680Z Adding repository directory to the temporary git global config as a safe directory
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:13.9967878Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/relay/relay
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0013609Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0054671Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0358655Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0389664Z http.https://github.com/.extraheader
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0401242Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0447368Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0728910Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Post Run actions/checkout@v4	2026-10-21T05:12:14.0764249Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Stop containers	﻿2026-10-21T05:12:14.1127801Z Print service container logs: 12502b45d1e34af19004d096f32ef20a_postgres17_b3faa2
+verify	Stop containers	2026-10-21T05:12:14.1131361Z ##[command]/usr/bin/docker logs --details b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Stop containers	2026-10-21T05:12:14.1259459Z  initdb: warning: enabling "trust" authentication for local connections
+verify	Stop containers	2026-10-21T05:12:14.1260072Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+verify	Stop containers	2026-10-21T05:12:14.1261221Z  2026-10-21 05:08:55.441 UTC [1] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+verify	Stop containers	2026-10-21T05:12:14.1261845Z  2026-10-21 05:08:55.441 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+verify	Stop containers	2026-10-21T05:12:14.1262171Z  2026-10-21 05:08:55.441 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+verify	Stop containers	2026-10-21T05:12:14.1262537Z  2026-10-21 05:08:55.442 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+verify	Stop containers	2026-10-21T05:12:14.1262991Z  2026-10-21 05:08:55.445 UTC [64] LOG:  database system was shut down at 2026-10-21 05:08:55 UTC
+verify	Stop containers	2026-10-21T05:12:14.1263352Z  2026-10-21 05:08:55.449 UTC [1] LOG:  database system is ready to accept connections
+verify	Stop containers	2026-10-21T05:12:14.1263664Z  2026-10-21 05:10:31.120 UTC [469] ERROR:  injected_after_effect_insert
+verify	Stop containers	2026-10-21T05:12:14.1263995Z  2026-10-21 05:10:31.120 UTC [469] CONTEXT:  PL/pgSQL function reject_completion() line 1 at RAISE
+verify	Stop containers	2026-10-21T05:12:14.1264475Z  2026-10-21 05:10:31.120 UTC [469] STATEMENT:  UPDATE steps SET state='done',result=$3,completed_at=clock_timestamp(),lease_until=NULL WHERE run_id=$1 AND position=$2
+verify	Stop containers	2026-10-21T05:12:14.1264969Z  2026-10-21 05:10:45.695 UTC [549] LOG:  unexpected EOF on client connection with an open transaction
+verify	Stop containers	2026-10-21T05:12:14.1265322Z  The files belonging to this database system will be owned by user "postgres".
+verify	Stop containers	2026-10-21T05:12:14.1265623Z  This user must also own the server process.
+verify	Stop containers	2026-10-21T05:12:14.1265807Z  
+verify	Stop containers	2026-10-21T05:12:14.1266000Z  The database cluster will be initialized with locale "en_US.utf8".
+verify	Stop containers	2026-10-21T05:12:14.1266273Z  The default database encoding has accordingly been set to "UTF8".
+verify	Stop containers	2026-10-21T05:12:14.1266532Z  The default text search configuration will be set to "english".
+verify	Stop containers	2026-10-21T05:12:14.1266737Z  
+verify	Stop containers	2026-10-21T05:12:14.1266868Z  Data page checksums are disabled.
+verify	Stop containers	2026-10-21T05:12:14.1267035Z  
+verify	Stop containers	2026-10-21T05:12:14.1267223Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+verify	Stop containers	2026-10-21T05:12:14.1267515Z  creating subdirectories ... ok
+verify	Stop containers	2026-10-21T05:12:14.1267713Z  selecting dynamic shared memory implementation ... posix
+verify	Stop containers	2026-10-21T05:12:14.1267935Z  selecting default "max_connections" ... 100
+verify	Stop containers	2026-10-21T05:12:14.1268138Z  selecting default "shared_buffers" ... 128MB
+verify	Stop containers	2026-10-21T05:12:14.1268326Z  selecting default time zone ... Etc/UTC
+verify	Stop containers	2026-10-21T05:12:14.1268514Z  creating configuration files ... ok
+verify	Stop containers	2026-10-21T05:12:14.1268686Z  running bootstrap script ... ok
+verify	Stop containers	2026-10-21T05:12:14.1268878Z  performing post-bootstrap initialization ... ok
+verify	Stop containers	2026-10-21T05:12:14.1269067Z  syncing data to disk ... ok
+verify	Stop containers	2026-10-21T05:12:14.1269211Z  
+verify	Stop containers	2026-10-21T05:12:14.1269321Z  
+verify	Stop containers	2026-10-21T05:12:14.1269467Z  Success. You can now start the database server using:
+verify	Stop containers	2026-10-21T05:12:14.1269657Z  
+verify	Stop containers	2026-10-21T05:12:14.1269808Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+verify	Stop containers	2026-10-21T05:12:14.1270000Z  
+verify	Stop containers	2026-10-21T05:12:14.1271080Z  waiting for server to start....2026-10-21 05:08:55.141 UTC [48] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+verify	Stop containers	2026-10-21T05:12:14.1272003Z  2026-10-21 05:08:55.141 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+verify	Stop containers	2026-10-21T05:12:14.1272494Z  2026-10-21 05:08:55.143 UTC [51] LOG:  database system was shut down at 2026-10-21 05:08:54 UTC
+verify	Stop containers	2026-10-21T05:12:14.1272829Z  2026-10-21 05:08:55.147 UTC [48] LOG:  database system is ready to accept connections
+verify	Stop containers	2026-10-21T05:12:14.1273295Z   done
+verify	Stop containers	2026-10-21T05:12:14.1273422Z  server started
+verify	Stop containers	2026-10-21T05:12:14.1273563Z  CREATE DATABASE
+verify	Stop containers	2026-10-21T05:12:14.1273690Z  
+verify	Stop containers	2026-10-21T05:12:14.1273808Z  
+verify	Stop containers	2026-10-21T05:12:14.1274011Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+verify	Stop containers	2026-10-21T05:12:14.1274270Z  
+verify	Stop containers	2026-10-21T05:12:14.1274501Z  waiting for server to shut down...2026-10-21 05:08:55.325 UTC [48] LOG:  received fast shutdown request
+verify	Stop containers	2026-10-21T05:12:14.1274839Z  .2026-10-21 05:08:55.326 UTC [48] LOG:  aborting any active transactions
+verify	Stop containers	2026-10-21T05:12:14.1275204Z  2026-10-21 05:08:55.328 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+verify	Stop containers	2026-10-21T05:12:14.1275549Z  2026-10-21 05:08:55.328 UTC [49] LOG:  shutting down
+verify	Stop containers	2026-10-21T05:12:14.1275804Z  2026-10-21 05:08:55.328 UTC [49] LOG:  checkpoint starting: shutdown immediate
+verify	Stop containers	2026-10-21T05:12:14.1276493Z  2026-10-21 05:08:55.418 UTC [49] LOG:  checkpoint complete: wrote 925 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.059 s, sync=0.031 s, total=0.091 s; sync files=301, longest=0.030 s, average=0.001 s; distance=4256 kB, estimate=4256 kB; lsn=0/19179B0, redo lsn=0/19179B0
+verify	Stop containers	2026-10-21T05:12:14.1277170Z  2026-10-21 05:08:55.425 UTC [48] LOG:  database system is shut down
+verify	Stop containers	2026-10-21T05:12:14.1277383Z   done
+verify	Stop containers	2026-10-21T05:12:14.1277517Z  server stopped
+verify	Stop containers	2026-10-21T05:12:14.1277649Z  
+verify	Stop containers	2026-10-21T05:12:14.1277813Z  PostgreSQL init process complete; ready for start up.
+verify	Stop containers	2026-10-21T05:12:14.1278020Z  
+verify	Stop containers	2026-10-21T05:12:14.1294613Z Stop and remove container: 12502b45d1e34af19004d096f32ef20a_postgres17_b3faa2
+verify	Stop containers	2026-10-21T05:12:14.1299265Z ##[command]/usr/bin/docker rm --force b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Stop containers	2026-10-21T05:12:14.2474113Z b5e1398f2ed1d641fa91c4e10f70664a82ca63ed947991bbed960e6a1067942d
+verify	Stop containers	2026-10-21T05:12:14.2507288Z Remove container network: github_network_0e98f6414b9a4437a402ff7a3343e283
+verify	Stop containers	2026-10-21T05:12:14.2510509Z ##[command]/usr/bin/docker network rm github_network_0e98f6414b9a4437a402ff7a3343e283
+verify	Stop containers	2026-10-21T05:12:14.3194078Z github_network_0e98f6414b9a4437a402ff7a3343e283
+verify	Complete job	﻿2026-10-21T05:12:14.3268110Z Cleaning up orphan processes
+verify	Complete job	2026-10-21T05:12:14.3540651Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-go@v5, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,56 @@
+/tmp/relay-toolchain/go/bin/go build -trimpath -o bin/relay ./cmd/relay
+npm run build --prefix apps/web
+
+> relay-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.44 kB │ gzip:  0.31 kB
+dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.57 kB
+dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
+✓ built in 435ms
+.venv/bin/python scripts/check_go_format.py "/tmp/relay-toolchain/go/bin/go"
+/tmp/relay-toolchain/go/bin/go vet ./...
+npm run lint --prefix apps/web
+
+> relay-console@0.1.0 lint
+> tsc --noEmit
+
+npm exec --prefix apps/web -- prettier --check apps/web/src
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m ruff check sdk/python scripts
+All checks passed!
+.venv/bin/python -m ruff format --check sdk/python scripts
+11 files already formatted
+/tmp/relay-toolchain/go/bin/go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
+.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
+{
+  "passed": 18,
+  "failed": 0,
+  "tests": [
+    "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestAmbiguousEnqueueRetriesSameRequest",
+    "TestIdempotencyCapacityConflict",
+    "TestLeaseFencingAndAtomicEffects",
+    "TestConcurrentAdmissionAndClaims",
+    "TestDelayPauseRolloutAndRollback",
+    "TestDeadLetterReplayPreservesPreviousEffect",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
+    "TestCrashBudgetEventuallyDeadLetters",
+    "TestBackoffAndCohortProperties",
+    "TestWaitForLockCannotReviveExpiredLease",
+    "TestEffectAndStepRollbackTogether",
+    "TestConcurrentCompletionCommitsOnlyOnce",
+    "TestCookieAuthCSRFValidationAndLogout",
+    "TestSDKHTTPAndDatabaseErrors",
+    "TestEmbeddedServiceCompletesAndShutsDown",
+    "TestLoginRateLimit",
+    "TestUnknownRouteDoesNotLeakFiles"
+  ],
+  "failures": []
+}

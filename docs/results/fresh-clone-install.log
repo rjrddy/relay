@@ -1,0 +1,111 @@
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+Requirement already satisfied: pip in ./.venv/lib/python3.13/site-packages (25.0)
+Collecting pip
+  Using cached pip-26.2.2-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.2.2-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.0
+    Uninstalling pip-25.0:
+      Successfully uninstalled pip-25.0
+Successfully installed pip-26.2.2
+.venv/bin/python -m pip install -e '.[dev]'
+Obtaining file:///private/tmp/relay-fresh-clone
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting ruff==0.17.1 (from relay-workflow-sdk==0.1.0)
+  Using cached ruff-0.17.1-py3-none-macosx_11_0_arm64.whl.metadata (20 kB)
+Collecting playwright==1.64.0 (from relay-workflow-sdk==0.1.0)
+  Using cached playwright-1.64.0-py3-none-macosx_11_0_arm64.whl.metadata (3.3 kB)
+Collecting pyee<15,>=13 (from playwright==1.64.0->relay-workflow-sdk==0.1.0)
+  Using cached pyee-14.0.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting greenlet<4.0.0,>=3.1.1 (from playwright==1.64.0->relay-workflow-sdk==0.1.0)
+  Using cached greenlet-3.5.6-cp313-cp313-macosx_11_0_universal2.whl.metadata (3.8 kB)
+Collecting typing-extensions (from pyee<15,>=13->playwright==1.64.0->relay-workflow-sdk==0.1.0)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Using cached playwright-1.64.0-py3-none-macosx_11_0_arm64.whl (43.0 MB)
+Using cached ruff-0.17.1-py3-none-macosx_11_0_arm64.whl (9.3 MB)
+Using cached greenlet-3.5.6-cp313-cp313-macosx_11_0_universal2.whl (294 kB)
+Using cached pyee-14.0.0-py3-none-any.whl (15 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Building wheels for collected packages: relay-workflow-sdk
+  Building editable for relay-workflow-sdk (pyproject.toml): started
+  Building editable for relay-workflow-sdk (pyproject.toml): finished with status 'done'
+  Created wheel for relay-workflow-sdk: filename=relay_workflow_sdk-0.1.0-0.editable-py3-none-any.whl size=1385 sha256=2690f5aaaa052d09856683e3af5690383bec98760bb7183ac95effcfae64e5cd
+  Stored in directory: /private/var/folders/tx/r4bmp29x58v41hgmtzrwwx3h0000gn/T/pip-ephem-wheel-cache-fh5g3xaw/wheels/b4/ca/f7/a28491c56b1fa9f9705253f4d1980523e3b60f040243a280d1
+Successfully built relay-workflow-sdk
+Installing collected packages: typing-extensions, ruff, relay-workflow-sdk, greenlet, pyee, playwright
+
+Successfully installed greenlet-3.5.6 playwright-1.64.0 pyee-14.0.0 relay-workflow-sdk-0.1.0 ruff-0.17.1 typing-extensions-4.16.0
+/tmp/relay-toolchain/go/bin/go mod download
+npm ci --prefix apps/web
+
+added 22 packages, and audited 23 packages in 967ms
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+/tmp/relay-toolchain/go/bin/go build -trimpath -o bin/relay ./cmd/relay
+npm run build --prefix apps/web
+
+> relay-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.44 kB │ gzip:  0.31 kB
+dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.57 kB
+dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
+✓ built in 477ms
+.venv/bin/python scripts/check_go_format.py "/tmp/relay-toolchain/go/bin/go"
+/tmp/relay-toolchain/go/bin/go vet ./...
+npm run lint --prefix apps/web
+
+> relay-console@0.1.0 lint
+> tsc --noEmit
+
+npm exec --prefix apps/web -- prettier --check apps/web/src
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m ruff check sdk/python scripts
+All checks passed!
+.venv/bin/python -m ruff format --check sdk/python scripts
+9 files already formatted
+/tmp/relay-toolchain/go/bin/go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
+.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
+{
+  "passed": 18,
+  "failed": 0,
+  "tests": [
+    "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestAmbiguousEnqueueRetriesSameRequest",
+    "TestIdempotencyCapacityConflict",
+    "TestLeaseFencingAndAtomicEffects",
+    "TestConcurrentAdmissionAndClaims",
+    "TestDelayPauseRolloutAndRollback",
+    "TestDeadLetterReplayPreservesPreviousEffect",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
+    "TestCrashBudgetEventuallyDeadLetters",
+    "TestBackoffAndCohortProperties",
+    "TestWaitForLockCannotReviveExpiredLease",
+    "TestEffectAndStepRollbackTogether",
+    "TestConcurrentCompletionCommitsOnlyOnce",
+    "TestCookieAuthCSRFValidationAndLogout",
+    "TestSDKHTTPAndDatabaseErrors",
+    "TestEmbeddedServiceCompletesAndShutsDown",
+    "TestLoginRateLimit",
+    "TestUnknownRouteDoesNotLeakFiles"
+  ],
+  "failures": []
+}

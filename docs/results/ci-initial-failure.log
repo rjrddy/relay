@@ -1,0 +1,446 @@
+verify	Fresh clone and Compose storage fault	﻿2026-10-21T03:58:46.3137381Z ##[group]Run git clone --no-local . /tmp/relay-clean
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3137816Z ^[[36;1mgit clone --no-local . /tmp/relay-clean^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3138126Z ^[[36;1mcd /tmp/relay-clean^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3138378Z ^[[36;1mcp .env.example .env^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3138628Z ^[[36;1mmkdir -p docs/results^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3139341Z ^[[36;1mtrap 'docker compose -f compose.yaml -f compose.chaos.yaml logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"' EXIT^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3140182Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml up --build -d^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3140766Z ^[[36;1mfor i in $(seq 1 120); do curl -fsS http://localhost:8080/health && break; sleep 2; done^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3141252Z ^[[36;1mcurl --fail http://localhost:8080/health^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3141685Z ^[[36;1mexport RELAY_API_TOKEN=replace-local-sdk-token-at-least-24-chars^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3142087Z ^[[36;1mpython scripts/smoke.py^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3142402Z ^[[36;1mpython scripts/storage_fault.py^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3142667Z ^[[36;1msleep 6^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3143096Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml logs --no-color otel > docs/results/otel.log^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3143641Z ^[[36;1mgrep -q 'workflow.step' docs/results/otel.log^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3144061Z ^[[36;1mdocker compose -f compose.yaml -f compose.chaos.yaml down^[[0m
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3211389Z shell: /usr/bin/bash -e {0}
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3211661Z env:
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3212397Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3213051Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3213652Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3214092Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3214747Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3215146Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3215706Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3216106Z ##[endgroup]
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.3329458Z Cloning into '/tmp/relay-clean'...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:46.5534992Z  Image otel/opentelemetry-collector:0.163.1 Pulling 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.1838902Z  ced244d4d1a4 Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.1839554Z  34f21d36d45c Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.1840711Z  62cedb307e4f Pulling fs layer 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.2565270Z  34f21d36d45c Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.2578898Z  34f21d36d45c Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.3582373Z  ced244d4d1a4 Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.3583239Z  62cedb307e4f Downloading 1.049MB
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.3601202Z  34f21d36d45c Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.4572074Z  62cedb307e4f Downloading 32.51MB
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.5563142Z  62cedb307e4f Download complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.5592790Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.6587900Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.7587672Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.8600090Z  62cedb307e4f Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.9575894Z  ced244d4d1a4 Extracting 1B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.9607432Z  62cedb307e4f Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.9724057Z  ced244d4d1a4 Pull complete 0B
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:47.9731204Z  Image otel/opentelemetry-collector:0.163.1 Pulled 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.2085377Z  Image relay-postgres-chaos-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.2086123Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.2086512Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.2087243Z  Image relay-local Building 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.2815570Z #1 [internal] load local bake definitions
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.3861634Z #1 reading from stdin 1.70kB done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.3862379Z #1 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.3862689Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.3863375Z #2 [init internal] load build definition from Dockerfile
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.3864200Z #2 transferring dockerfile:
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4896691Z #2 transferring dockerfile: 633B done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4897476Z #2 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4897805Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4898357Z #3 [postgres internal] load build definition from postgres.Dockerfile
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4899457Z #3 transferring dockerfile: 347B done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4900224Z #3 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4900493Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4901008Z #4 [postgres internal] load metadata for docker.io/library/postgres:17
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4901514Z #4 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4901701Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.4901979Z #5 [auth] library/golang:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6531043Z #5 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6531360Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6531775Z #6 [auth] library/node:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6532454Z #6 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6532651Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6532932Z #7 [auth] library/gcc:pull token for registry-1.docker.io
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6533360Z #7 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6533616Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:48.6534078Z #8 [worker internal] load metadata for docker.io/library/golang:1.27.3-bookworm
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0264960Z #8 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0265679Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0266456Z #9 [worker internal] load metadata for gcr.io/distroless/static-debian12:nonroot
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0267434Z #9 DONE 0.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0267792Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0268500Z #10 [worker internal] load metadata for docker.io/library/node:22-bookworm-slim
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0269464Z #10 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0269921Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0270599Z #11 [postgres internal] load metadata for docker.io/library/gcc:14-bookworm
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0271751Z #11 DONE 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0272017Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0272424Z #12 [api internal] load .dockerignore
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0273151Z #12 transferring context: 138B done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0273801Z #12 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0274123Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0274783Z #13 [postgres internal] load build context
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0275406Z #13 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0275713Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0276860Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0278855Z #14 resolve docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0280009Z #14 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0280314Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0281505Z #15 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:5c3e9b43cfd3bb95c7937462e29d87ada57b481a96fa23ad0eb61778d7a00110
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.0283623Z #15 resolve docker.io/library/golang:1.27.3-bookworm@sha256:5c3e9b43cfd3bb95c7937462e29d87ada57b481a96fa23ad0eb61778d7a00110 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1504363Z #15 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1504879Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1505325Z #13 [postgres internal] load build context
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1506126Z #13 transferring context: 1.08kB done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1506886Z #13 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1507267Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1507599Z #16 [api internal] load build context
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1508529Z #16 transferring context: 153.14kB 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.1509152Z #16 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.2998037Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.3000576Z #17 [worker web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.3003331Z #17 resolve docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.3005572Z #17 sha256:a8de9fa052209313d8e45435a8486e29b20eebaa820e2e7f63a7c3c94b4fa567 448B / 448B 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.3007391Z #17 sha256:2cfab517365cfc6b4bd1f8c4cb01754884ef75bc38758b3c41e291c696f019f5 1.71MB / 1.71MB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4620291Z #17 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4620806Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4622135Z #18 [api stage-2 1/4] FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4625060Z #18 resolve gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4626105Z #18 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4626271Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4626942Z #17 [worker web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4628009Z #17 sha256:2cfab517365cfc6b4bd1f8c4cb01754884ef75bc38758b3c41e291c696f019f5 1.71MB / 1.71MB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4629485Z #17 sha256:f0400f4b55b0ad346bf6167a1b64a258e4d73db608c457798ce35e4ffeebfaaf 3.31kB / 3.31kB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4630455Z #17 sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 16.78MB / 49.84MB 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.4631454Z #17 sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39 9.44MB / 28.25MB 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.5644742Z #17 sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39 28.25MB / 28.25MB 0.3s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.5647022Z #17 extracting sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.7133659Z #17 sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 32.51MB / 49.84MB 0.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:49.8587585Z #17 sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 49.84MB / 49.84MB 0.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3119976Z #17 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3120832Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3122110Z #19 [api stage-2 2/4] WORKDIR /app
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3123207Z #19 DONE 0.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3123554Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3124983Z #20 [postgres stage-1 1/3] FROM docker.io/library/postgres:17@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3127177Z #20 resolve docker.io/library/postgres:17@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3128376Z #20 DONE 1.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3128757Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3129903Z #17 [worker web 1/6] FROM docker.io/library/node:22-bookworm-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:50.3131876Z #17 sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 49.84MB / 49.84MB 1.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:51.6536882Z #17 extracting sha256:7fd1ebe418b5079d4aa36f416af9b143d127bc75b0155d71cb5fd559b5e04d39 2.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:51.6538771Z #17 extracting sha256:f0400f4b55b0ad346bf6167a1b64a258e4d73db608c457798ce35e4ffeebfaaf 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:51.6540718Z #17 extracting sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.2782456Z #17 extracting sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 1.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5013342Z #17 extracting sha256:d22c69a95cf463f4cb74462bd2899597ce505d82bd4c01ceddf7845e12f13856 1.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5014408Z #17 extracting sha256:2cfab517365cfc6b4bd1f8c4cb01754884ef75bc38758b3c41e291c696f019f5 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5015999Z #17 extracting sha256:a8de9fa052209313d8e45435a8486e29b20eebaa820e2e7f63a7c3c94b4fa567 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5016761Z #17 DONE 4.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5016912Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5017671Z #15 [api builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:5c3e9b43cfd3bb95c7937462e29d87ada57b481a96fa23ad0eb61778d7a00110
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5113376Z #15 sha256:8cb71386cfcfc55b27b559f73c6d5c0cdcb93b83be8281314116e271cc42cea6 48.52MB / 48.52MB 0.9s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5115782Z #15 sha256:4e719d00958068356eef129420b1f2925a02e18b285896ce9c565093b4632484 125B / 125B 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5118080Z #15 sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 71.15MB / 71.15MB 0.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5120796Z #15 sha256:fa45e3b1b86c0206d233caccfac20fec9a556a6d39753ce30c874228fff54fc8 92.63MB / 92.63MB 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5123577Z #15 extracting sha256:8cb71386cfcfc55b27b559f73c6d5c0cdcb93b83be8281314116e271cc42cea6 2.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5126577Z #15 sha256:a4edf9c328e814bd91b20c8e2211065489ebf15a16c7663d68a880660dfc897d 23.87MB / 23.87MB 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5128547Z #15 sha256:c6c71fff0869aa9bd48cf80d66e30b83adc9a3fe5e77dd9aaf266282c6ec64ff 66.72MB / 66.72MB 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.5130167Z #15 extracting sha256:a4edf9c328e814bd91b20c8e2211065489ebf15a16c7663d68a880660dfc897d
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.7560328Z #15 extracting sha256:a4edf9c328e814bd91b20c8e2211065489ebf15a16c7663d68a880660dfc897d 0.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9069247Z #15 extracting sha256:a4edf9c328e814bd91b20c8e2211065489ebf15a16c7663d68a880660dfc897d 0.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9072917Z #15 extracting sha256:c6c71fff0869aa9bd48cf80d66e30b83adc9a3fe5e77dd9aaf266282c6ec64ff
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9088771Z #15 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9090310Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9091899Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9094286Z #14 sha256:26bfb03bfcf4cda9ade76e118c1239bccf4546bf626329aebac61b3ce8da0287 1.78kB / 1.78kB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9107299Z #14 sha256:9288ebdd9645ff1b67a11b23e245cc1aff6f8f7448f6b23ed250786bd80b85a6 9.59kB / 9.59kB 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9109152Z #14 sha256:cb5a73f350df833520583b55ef32e4e2dac35764096a7ac3a323270feddc41c5 157.84MB / 157.84MB 1.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9111843Z #14 sha256:13389305062dc769148c32e0f488c061f24c7e3020f7b786b55d4c561ae50b91 2.81MB / 2.81MB 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9113470Z #14 sha256:873a4c80287477653c01b20948fc34bb1bacf0f826bcc2ddc3bd2fe25b342d45 211.36MB / 211.36MB 1.9s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9118537Z #14 sha256:37f838b71c6b82c581b7543a313255b8c99c23cc9d96c1ad6f9f5f208c942553 64.40MB / 64.40MB 0.6s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9120726Z #14 sha256:c2e76af9483f2d17a3e370639403df2c53a3da1480d533116a8694cd91f15d5a 24.02MB / 24.02MB 0.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9122432Z #14 sha256:ebed137c7c18cb1906fb8314eabc10611ddf49a281f8c1b5eab987a7137f749f 48.49MB / 48.49MB 0.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9124215Z #14 extracting sha256:ebed137c7c18cb1906fb8314eabc10611ddf49a281f8c1b5eab987a7137f749f 2.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:53.9149450Z #14 DONE 4.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.0596076Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.0597961Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.0606602Z #14 extracting sha256:c2e76af9483f2d17a3e370639403df2c53a3da1480d533116a8694cd91f15d5a
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7360933Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7361315Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7361723Z #21 [init web 2/6] WORKDIR /app/apps/web
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7362312Z #21 DONE 1.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7362546Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7363607Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7365566Z #14 extracting sha256:c2e76af9483f2d17a3e370639403df2c53a3da1480d533116a8694cd91f15d5a 0.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:54.7366930Z #14 extracting sha256:37f838b71c6b82c581b7543a313255b8c99c23cc9d96c1ad6f9f5f208c942553
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.1035018Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.1039249Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.1039995Z #22 [worker web 3/6] COPY apps/web/package*.json ./
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.1040630Z #22 DONE 0.4s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.2537378Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:55.2538324Z #23 [worker web 4/6] RUN npm ci
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:56.9913355Z #23 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:56.9913858Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:56.9915952Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:56.9917683Z #14 extracting sha256:37f838b71c6b82c581b7543a313255b8c99c23cc9d96c1ad6f9f5f208c942553 2.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:56.9918562Z #14 DONE 8.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1410682Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1411511Z #23 [worker web 4/6] RUN npm ci
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1412447Z #23 2.188 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1413158Z #23 2.188 added 23 packages, and audited 24 packages in 2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1414225Z #23 2.188 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1416305Z #23 2.188 6 packages are looking for funding
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.1419961Z #23 2.188   run `npm fund` for details
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2963057Z #23 2.190 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2963761Z #23 2.190 found 0 vulnerabilities
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2964384Z #23 2.191 npm notice
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2965469Z #23 2.191 npm notice New major version of npm available! 10.9.9 -> 12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2966688Z #23 2.191 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2967745Z #23 2.191 npm notice To update run: npm install -g npm@12.2.0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:57.2968562Z #23 2.191 npm notice
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:58.7138902Z #23 DONE 3.6s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:58.7139452Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:58.7140504Z #24 [init web 5/6] COPY apps/web/ ./
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.1638134Z #24 DONE 0.4s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.1638597Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.3311633Z #25 [worker web 6/6] RUN npm run build
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.3312376Z #25 0.314 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.3312919Z #25 0.314 > relay-console@0.1.0 build
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.3313586Z #25 0.314 > tsc --noEmit && vite build
+verify	Fresh clone and Compose storage fault	2026-10-21T03:58:59.3314068Z #25 0.314 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:01.7342432Z #25 2.607 vite v6.4.4 building for production...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:01.7343546Z #25 2.720 transforming...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:02.9325245Z #25 3.919 ✓ 28 modules transformed.
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.1364995Z #25 4.123 rendering chunks...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.3113392Z #25 4.136 computing gzip size...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.3114901Z #25 4.147 dist/index.html                   0.44 kB │ gzip:  0.31 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.3116037Z #25 4.147 dist/assets/index-BcHCSRF2.css   12.30 kB │ gzip:  3.51 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.3117463Z #25 4.147 dist/assets/index-DzgTyRGh.js   207.73 kB │ gzip: 65.08 kB
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.3118233Z #25 4.148 ✓ built in 1.50s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.7487373Z #25 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.7488761Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.7489951Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.7491706Z #14 extracting sha256:873a4c80287477653c01b20948fc34bb1bacf0f826bcc2ddc3bd2fe25b342d45 6.8s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.7492583Z #14 DONE 14.7s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8601271Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8603680Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8605656Z #14 extracting sha256:13389305062dc769148c32e0f488c061f24c7e3020f7b786b55d4c561ae50b91 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8606531Z #14 DONE 14.9s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8606772Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8607928Z #15 [worker builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:5c3e9b43cfd3bb95c7937462e29d87ada57b481a96fa23ad0eb61778d7a00110
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8609642Z #15 extracting sha256:c6c71fff0869aa9bd48cf80d66e30b83adc9a3fe5e77dd9aaf266282c6ec64ff 2.7s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8611065Z #15 extracting sha256:fa45e3b1b86c0206d233caccfac20fec9a556a6d39753ce30c874228fff54fc8 2.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:03.8612415Z #15 extracting sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.0102197Z #15 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.0102534Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.0103218Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.0104280Z #14 extracting sha256:cb5a73f350df833520583b55ef32e4e2dac35764096a7ac3a323270feddc41c5
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4728985Z #14 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4729433Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4730820Z #15 [init builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:5c3e9b43cfd3bb95c7937462e29d87ada57b481a96fa23ad0eb61778d7a00110
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4732645Z #15 extracting sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b 5.4s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4734012Z #15 extracting sha256:4e719d00958068356eef129420b1f2925a02e18b285896ce9c565093b4632484 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4735571Z #15 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.4736692Z #15 DONE 15.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.6239081Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:04.6239786Z #26 [init builder 2/9] WORKDIR /app
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6611560Z #26 DONE 1.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6611960Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6612366Z #25 [worker web 6/6] RUN npm run build
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6612855Z #25 DONE 6.5s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6613058Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.6613353Z #27 [api builder 3/9] COPY go.mod go.sum ./
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.8126882Z #27 DONE 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.8127210Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:05.8127544Z #28 [init builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.3222955Z #28 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.3223280Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.3224415Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.3226154Z #14 extracting sha256:cb5a73f350df833520583b55ef32e4e2dac35764096a7ac3a323270feddc41c5 2.5s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.3226933Z #14 DONE 17.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4226659Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4228545Z #14 [postgres build 1/4] FROM docker.io/library/gcc:14-bookworm@sha256:5e927c284bf55a7dc796262e311a0703344f62f41f5621eb56843111b1d37e15
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4230348Z #14 extracting sha256:9288ebdd9645ff1b67a11b23e245cc1aff6f8f7448f6b23ed250786bd80b85a6 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4231949Z #14 extracting sha256:26bfb03bfcf4cda9ade76e118c1239bccf4546bf626329aebac61b3ce8da0287 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4232757Z #14 DONE 17.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4233109Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4233761Z #29 [postgres build 2/4] WORKDIR /src
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4235105Z #29 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4235260Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4235490Z #30 [postgres build 3/4] COPY chaos/slowdisk.c ./
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4235822Z #30 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4235948Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.4236412Z #31 [postgres build 4/4] RUN gcc -shared -fPIC -O2 -Wall -Wextra -Werror slowdisk.c -ldl -o /libslowdisk.so
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.6185689Z #31 DONE 0.2s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.6186007Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:06.6186358Z #28 [init builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.4421082Z #28 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.4421964Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.4423119Z #32 [postgres stage-1 2/3] COPY --from=build /libslowdisk.so /opt/libslowdisk.so
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.4435719Z #32 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.5474872Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.5477467Z #33 [postgres stage-1 3/3] RUN mkdir -p /faults && chmod 755 /faults
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.5478815Z #33 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.5479327Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.5479876Z #28 [init builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9516219Z #28 ...
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9517187Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9518029Z #34 [postgres] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9519066Z #34 exporting layers 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9520424Z #34 exporting manifest sha256:cf47649c6b466c177eca68e3fa05d86087c8c313eff5f8c07508ced9cf41f6d7 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9522170Z #34 exporting config sha256:0301129d91a7b7c2b3b7bfcc6e8cc15bb41f95d2e511b05bb193657b2870e882 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9523973Z #34 exporting attestation manifest sha256:39fda133e8c2f8cd5ad487480d16e7b8dc96df9e5e0a29eb5534fb6e60294857 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9526247Z #34 exporting manifest list sha256:062191f0ac9181845da802a191211672bdaa33b0dd62f78f1867f667cb586189 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9527816Z #34 naming to docker.io/library/relay-postgres-chaos-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9529178Z #34 unpacking to docker.io/library/relay-postgres-chaos-local:latest 0.1s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:07.9530144Z #34 DONE 0.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.1124268Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.1126264Z #35 [postgres] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.1127334Z #35 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.1127850Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.1128376Z #28 [init builder 4/9] RUN go mod download
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4231116Z #28 DONE 2.7s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4231775Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4232321Z #36 [worker builder 5/9] COPY cmd/ cmd/
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4233068Z #36 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4233481Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4234295Z #37 [init builder 6/9] COPY internal/ internal/
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4235866Z #37 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4236113Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4236487Z #38 [api builder 7/9] COPY migrations/ migrations/
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4237081Z #38 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4237313Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.4237641Z #39 [init builder 8/9] COPY sdk/go/ sdk/go/
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.5739661Z #39 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.5740041Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:08.5740663Z #40 [api builder 9/9] RUN CGO_ENABLED=0 go build -trimpath -o /relay ./cmd/relay
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:35.9517839Z #40 DONE 27.4s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.5810691Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.5811727Z #41 [worker stage-2 3/4] COPY --from=builder /relay /app/relay
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7945878Z #41 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7946262Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7946824Z #42 [init stage-2 4/4] COPY --from=web /app/apps/web/dist /app/web
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7947402Z #42 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7947620Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7948016Z #43 [worker] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:36.7948515Z #43 exporting layers
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.6464156Z #43 exporting layers 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8487636Z #43 exporting manifest sha256:fcb828b6f891463d1d4e44d031b009c63caeaf78bcb622f943d3202d3cdf0691 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8489190Z #43 exporting config sha256:28195a19a54bfb6939f7e304c2a991e3d28288996abe7e933fe760fdcd7b7d90 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8490812Z #43 exporting attestation manifest sha256:3d7ee88168cd17afecd87fe7a65b4b294215caf6a7da0bb0685a03e834e69639 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8492416Z #43 exporting manifest list sha256:28564d6731e62d8765e6e88eb399baecb4292916cfbc0b937433fcd0aa085d6a done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8493946Z #43 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:37.8494940Z #43 unpacking to docker.io/library/relay-local:latest
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1075674Z #43 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1076446Z #43 DONE 1.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1076661Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1076936Z #44 [init] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1077521Z #44 exporting layers 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1078649Z #44 exporting manifest sha256:e2462c435a2630839d7e66f663ef1c58ac1dfb96a9f8af07db21e496be20647a 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1080111Z #44 exporting config sha256:5540760e9dc1be0d74c3a6f776925cc55ae17132163e49ef9f7e4cca6b1ee721 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1081719Z #44 exporting attestation manifest sha256:49bd2e129e29d9d756ce7a63a26fb4baeb780724727ee318eedbae0ba493d33a 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1083271Z #44 exporting manifest list sha256:6fa790a28f3b22638f12b205e4b0758f9106bde4850ea0f0819c38bc447a7009 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1084368Z #44 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1085460Z #44 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1086067Z #44 DONE 1.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1086273Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1086494Z #45 [api] exporting to image
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1087017Z #45 exporting layers 1.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1088042Z #45 exporting manifest sha256:677e61a4ff4790e6bfd437370155c8171353b61d549ae2aaeddff2ec70738661 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1089468Z #45 exporting config sha256:90485041f3bbf909ba8962a49c1494f9fc92b7c2a3b712d0376ac74979d2f861 done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1091107Z #45 exporting attestation manifest sha256:966dc3c5bc534eb76e6aaabcbc5661d686b19f9b1d60ad063314715450394b5c 0.0s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1092654Z #45 exporting manifest list sha256:038f2771f6e78e44e7e1801ad373ac155e81ce4ce9d558b3632323bf8407ec2d done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1093712Z #45 naming to docker.io/library/relay-local:latest done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1105089Z #45 unpacking to docker.io/library/relay-local:latest 0.2s done
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1105891Z #45 DONE 1.3s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1415493Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.1416476Z #46 [init] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2013351Z #46 DONE 0.1s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2014229Z  Image relay-postgres-chaos-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2015015Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2015404Z #47 [api] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2016948Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2017397Z #47 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2017896Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2018168Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2018408Z  Image relay-local Built 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2019052Z #48 [worker] resolving provenance for metadata file
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2019623Z #48 DONE 0.0s
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2034636Z  Network relay-clean_default Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2335682Z  Network relay-clean_default Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2340182Z  Volume relay-clean_relay-db Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2351386Z  Volume relay-clean_relay-db Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2357736Z  Container relay-clean-otel-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.2358945Z  Container relay-clean-postgres-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3022871Z  Container relay-clean-postgres-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3023581Z  Container relay-clean-otel-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3024264Z  Container relay-clean-init-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3399403Z  Container relay-clean-init-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3400570Z  Container relay-clean-api-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3401673Z  Container relay-clean-worker-1 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3402729Z  Container relay-clean-worker-2 Creating 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3924313Z  Container relay-clean-worker-2 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3925354Z  Container relay-clean-worker-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.3936145Z  Container relay-clean-api-1 Created 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.4295551Z  Container relay-clean-otel-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.4296994Z  Container relay-clean-postgres-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.5771377Z  Container relay-clean-otel-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.5935187Z  Container relay-clean-postgres-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:38.5937164Z  Container relay-clean-postgres-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.0955548Z  Container relay-clean-postgres-1 Healthy 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.0956296Z  Container relay-clean-init-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.2677183Z  Container relay-clean-init-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.2678531Z  Container relay-clean-init-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.2679760Z  Container relay-clean-init-1 Waiting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.7700606Z  Container relay-clean-init-1 Exited 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.7701377Z  Container relay-clean-worker-2 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.7701947Z  Container relay-clean-init-1 Exited 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.7702318Z  Container relay-clean-api-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.9232941Z  Container relay-clean-worker-2 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.9234332Z  Container relay-clean-worker-1 Starting 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:41.9594115Z  Container relay-clean-api-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:42.0698846Z  Container relay-clean-worker-1 Started 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:42.0935752Z curl: (56) Recv failure: Connection reset by peer
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1068145Z {"status":"ok"}
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1129408Z   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1130515Z                                  Dload  Upload  Total   Spent   Left   Speed
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1130978Z 
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1138672Z   0      0   0      0   0      0      0      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1139601Z 100     16 100     16   0      0  16048      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1140506Z 100     16 100     16   0      0  15094      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1141358Z 100     16 100     16   0      0  14171      0                              0
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.1141970Z {"status":"ok"}
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6987083Z {
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6987591Z   "sdk_idempotency": true,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6988054Z   "conflict_status": 409,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6988603Z   "run": "3e7a95b5392781c2d3e5efc5411c5ff4",
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6989392Z   "completed_steps": 3,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6989749Z   "receipt": 42,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6990152Z   "event_trace_ids_nonzero": true,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6990631Z   "elapsed_seconds": 0.14108845900000233
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:44.6991040Z }
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1016938Z Traceback (most recent call last):
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1024001Z   File "/tmp/relay-clean/scripts/storage_fault.py", line 17, in <module>
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1025670Z     runs=[client.enqueue('storage-'+uuid4().hex,i,fail_until=1,max_attempts=8) for i in range(12)]
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1026940Z           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1027685Z   File "/tmp/relay-clean/sdk/python/relay_sdk.py", line 33, in enqueue
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1028317Z     return self._call('POST', '/api/runs', {'key':key, 'input':{'value':value,
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1028952Z            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1029592Z         'fail_until':fail_until, 'permanent_failure':False, 'work_ms':work_ms},
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1030174Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1030666Z         'delay_ms':delay_ms, 'max_attempts':max_attempts})
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1031127Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1031616Z   File "/tmp/relay-clean/sdk/python/relay_sdk.py", line 29, in _call
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1032135Z     raise APIError(error.code, message) from None
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.1032711Z relay_sdk.APIError: (503, 'database unavailable; retry with the same idempotency key')
+verify	Fresh clone and Compose storage fault	2026-10-21T03:59:50.2416258Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,2 @@
+ERROR: canceling statement due to statement timeout (SQLSTATE 57014)
+exit status 1

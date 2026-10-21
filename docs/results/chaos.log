@@ -1,0 +1,40 @@
+{
+  "duplicate_effects": 0,
+  "elapsed_hours": 0.016685131724722222,
+  "elapsed_seconds": 60.066474209,
+  "enqueue_start_p50_ms": 3.0905,
+  "enqueue_start_p99_ms": 2600.29272,
+  "faults": [
+    {
+      "elapsed_seconds": 0.479687917,
+      "kind": "process_exit_after_claim"
+    },
+    {
+      "elapsed_seconds": 0.504445084,
+      "kind": "process_exit_after_commit"
+    },
+    {
+      "elapsed_seconds": 0.709537709,
+      "kind": "database_transport_partition_begin"
+    },
+    {
+      "elapsed_seconds": 1.0604695,
+      "kind": "database_transport_partition_end"
+    },
+    {
+      "elapsed_seconds": 1.160505834,
+      "kind": "database_transport_delay_begin"
+    },
+    {
+      "elapsed_seconds": 1.960906,
+      "kind": "database_transport_delay_end"
+    }
+  ],
+  "incorrect_receipts": 0,
+  "lost_workflows": 0,
+  "scope": "Go engine admission through all ordered Postgres effects, including drain; no HTTP API timing; transport delay is not disk delay",
+  "step_effects": 4272,
+  "workers": 4,
+  "workflows": 1424,
+  "workflows_per_second": 23.707068189906117
+}

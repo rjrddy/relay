@@ -1,23 +1,28 @@
 GO ?= go
-PY ?= python3
+PY ?= .venv/bin/python
 export GOPATH := $(CURDIR)/.cache/gopath
 export GOCACHE := $(CURDIR)/.cache/gobuild
 .PHONY: setup build lint test bench bench-long demo scan
 setup:
+	python3 -m venv .venv
+	$(PY) -m pip install --upgrade pip
+	$(PY) -m pip install -e '.[dev]'
 	$(GO) mod download
 	npm ci --prefix apps/web
 build:
 	$(GO) build -trimpath -o bin/relay ./cmd/relay
 	npm run build --prefix apps/web
 lint:
-	@test -z "$$($(GO) fmt ./...)" || (echo 'Go files were not formatted'; exit 1)
+	$(PY) scripts/check_go_format.py "$(GO)"
 	$(GO) vet ./...
 	npm run lint --prefix apps/web
 	npm exec --prefix apps/web -- prettier --check apps/web/src
-	$(PY) -m compileall -q sdk/python scripts
+	$(PY) -m ruff check sdk/python scripts
+	$(PY) -m ruff format --check sdk/python scripts
 test:
-	$(GO) test -race -count=1 -json ./... > /tmp/relay-tests.json
-	$(PY) scripts/test_summary.py /tmp/relay-tests.json
+	@mkdir -p docs/results
+	$(GO) test -race -count=1 -json ./... > docs/results/tests.jsonl || ($(PY) scripts/test_summary.py docs/results/tests.jsonl; exit 1)
+	$(PY) scripts/test_summary.py docs/results/tests.jsonl
 bench: build
 	$(GO) run ./cmd/bench --jobs 100 --out load-100
 	$(GO) run ./cmd/bench --jobs 500 --out load-500

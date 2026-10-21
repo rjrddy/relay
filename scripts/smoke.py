@@ -35,7 +35,7 @@ while True:
     time.sleep(0.1)
 assert len(detail["effects"]) == 3 and detail["effects"][-1]["result"] == 42
 assert all(e["trace_id"] != "0" * 32 for e in detail["events"])
-with urllib.request.urlopen(base + "/") as response:
+with urllib.request.urlopen(base + os.environ.get("RELAY_CONSOLE_PATH", "/")) as response:
     html = response.read().decode()
     assert '<div id="root">' in html
 result = {

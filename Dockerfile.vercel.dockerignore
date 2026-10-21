@@ -1,0 +1,13 @@
+.git
+.cache
+.venv
+.env
+.env.*
+apps/web/node_modules
+apps/web/dist
+bin
+**/__pycache__
+docs/results/*worker*
+docs/results/*events*
+docs/results/linux-storage
+docs/results/ci-code.log

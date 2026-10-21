@@ -30,15 +30,16 @@ type session struct {
 	CSRF    string
 }
 type Server struct {
-	Engine    *engine.Engine
-	salt      []byte
-	verifier  []byte
-	tokenHash [32]byte
-	Secure    bool
-	Web       string
-	mu        sync.Mutex
-	sessions  map[string]session
-	budgets   map[string][]time.Time
+	DurableSessions bool
+	Engine          *engine.Engine
+	salt            []byte
+	verifier        []byte
+	tokenHash       [32]byte
+	Secure          bool
+	Web             string
+	mu              sync.Mutex
+	sessions        map[string]session
+	budgets         map[string][]time.Time
 }
 
 func New(e *engine.Engine, password, token, web string, secure bool) (*Server, error) {
@@ -119,13 +120,11 @@ func (s *Server) authenticate(w http.ResponseWriter, r *http.Request) bool {
 			reject(w, 401, "sign in required")
 			return false
 		}
-		s.mu.Lock()
-		v, ok := s.sessions[cookie.Value]
-		if ok && time.Now().After(v.Expires) {
-			delete(s.sessions, cookie.Value)
-			ok = false
+		v, ok, lookupErr := s.getSession(r.Context(), cookie.Value)
+		if lookupErr != nil {
+			reject(w, 503, "session store unavailable")
+			return false
 		}
-		s.mu.Unlock()
 		if !ok {
 			reject(w, 401, "session expired")
 			return false
@@ -168,19 +167,14 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	token, csrf := engine.ID()+engine.ID(), engine.ID()
-	s.mu.Lock()
-	for k, v := range s.sessions {
-		if time.Now().After(v.Expires) {
-			delete(s.sessions, k)
+	if err := s.storeSession(r.Context(), token, session{time.Now().Add(time.Hour), csrf}); err != nil {
+		if errors.Is(err, errSessionCapacity) {
+			reject(w, 429, "session capacity")
+		} else {
+			reject(w, 503, "session store unavailable")
 		}
-	}
-	if len(s.sessions) >= 100 {
-		s.mu.Unlock()
-		reject(w, 429, "session capacity")
 		return
 	}
-	s.sessions[token] = session{time.Now().Add(time.Hour), csrf}
-	s.mu.Unlock()
 	http.SetCookie(w, &http.Cookie{Name: "relay_session", Value: token, Path: "/", HttpOnly: true, SameSite: http.SameSiteStrictMode, Secure: s.Secure, MaxAge: 3600})
 	send(w, 200, map[string]string{"csrf": csrf})
 }
@@ -250,16 +244,19 @@ func (s *Server) Handler() http.Handler {
 			reject(w, 400, "cookie session required")
 			return
 		}
-		s.mu.Lock()
-		v := s.sessions[cookie.Value]
-		s.mu.Unlock()
+		v, ok, err := s.getSession(r.Context(), cookie.Value)
+		if err != nil || !ok {
+			reject(w, 503, "session unavailable")
+			return
+		}
 		send(w, 200, map[string]string{"csrf": v.CSRF})
 	}))
 	mux.HandleFunc("POST /api/logout", s.auth(func(w http.ResponseWriter, r *http.Request) {
 		if c, err := r.Cookie("relay_session"); err == nil {
-			s.mu.Lock()
-			delete(s.sessions, c.Value)
-			s.mu.Unlock()
+			if err := s.deleteSession(r.Context(), c.Value); err != nil {
+				reject(w, 503, "logout store unavailable")
+				return
+			}
 		}
 		http.SetCookie(w, &http.Cookie{Name: "relay_session", Path: "/", MaxAge: -1, HttpOnly: true, SameSite: http.SameSiteStrictMode, Secure: s.Secure})
 		send(w, 200, map[string]bool{"ok": true})

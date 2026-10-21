@@ -164,3 +164,48 @@ func TestUnknownRouteDoesNotLeakFiles(t *testing.T) {
 		t.Fatal(fmt.Sprint(r.StatusCode))
 	}
 }
+
+func TestDurableSessionsAcrossInstancesAndLogout(t *testing.T) {
+	t.Setenv("RELAY_TEST_DURABLE", "1")
+	first, client, e := testServer(t)
+	a, err := New(e, "synthetic-operator-password", "synthetic-sdk-token-for-tests", "../../../apps/web/dist", false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := New(e, "synthetic-operator-password", "synthetic-sdk-token-for-tests", "../../../apps/web/dist", false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = a.EnableDurableSessions(context.Background()); err != nil {
+		t.Fatal(err)
+	}
+	if err = b.EnableDurableSessions(context.Background()); err != nil {
+		t.Fatal(err)
+	}
+	x := httptest.NewServer(a.Handler())
+	defer x.Close()
+	y := httptest.NewServer(b.Handler())
+	defer y.Close()
+	status, body := call(t, client, "POST", x.URL, "/api/login", `{"password":"synthetic-operator-password"}`, "")
+	if status != 200 {
+		t.Fatal(status, body)
+	}
+	csrf := body["csrf"].(string)
+	status, _ = call(t, client, "GET", y.URL, "/api/session", "", "")
+	if status != 200 {
+		t.Fatal("session did not cross instance", status)
+	}
+	status, _ = call(t, client, "POST", y.URL, "/api/logout", `{}`, csrf)
+	if status != 200 {
+		t.Fatal(status)
+	}
+	status, _ = call(t, client, "GET", x.URL, "/api/session", "", "")
+	if status != 401 {
+		t.Fatal("logout not shared", status)
+	}
+	var stored int
+	if err = e.Pool.QueryRow(context.Background(), "SELECT count(*) FROM relay_operator_sessions").Scan(&stored); err != nil || stored != 0 {
+		t.Fatal(err, stored)
+	}
+	_ = first
+}

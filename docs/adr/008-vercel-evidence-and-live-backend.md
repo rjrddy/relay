@@ -9,3 +9,5 @@ Decision: publish recorded evidence at https://relay-brown-six.vercel.app with c
 Tradeoffs: the public site is useful immediately and honest about its scope, but visitors cannot submit new durable workflows there yet. This remains a partial live demo. The hour audit export gap remains independent of hosting.
 
 Sources: https://vercel.com/docs/functions/runtimes/go and https://vercel.com/docs/daemons, checked during implementation.
+
+Live preparation now includes cmd/hosted, Dockerfile.vercel and deploy/vercel-live.json. The hosted entrypoint explicitly selects its own relay_vercel_v1 schema and serializes schema initialization. Hashed cookie sessions live in a separate auth table so API instances share login/logout. The production config runs a dedicated worker daemon; worker progress does not depend on an open browser tab. Native entrypoint smoke and shared-session tests passed. External activation remains pending the user's DATABASE_URL; the static evidence site stays active meanwhile.

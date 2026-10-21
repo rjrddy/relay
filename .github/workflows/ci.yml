@@ -56,6 +56,19 @@ jobs:
           docker compose -f compose.yaml -f compose.chaos.yaml logs --no-color otel > docs/results/otel.log
           grep -q 'workflow.step' docs/results/otel.log
           docker compose -f compose.yaml -f compose.chaos.yaml down
+      - name: Vercel image and independent daemon smoke
+        run: |
+          docker build -f Dockerfile.vercel -t relay-vercel .
+          mkdir -p docs/results/hosted-ci
+          trap 'docker logs relay-hosted-api > docs/results/hosted-ci/api.log 2>&1; docker logs relay-hosted-worker > docs/results/hosted-ci/worker.log 2>&1; docker stop relay-hosted-api relay-hosted-worker' EXIT
+          docker run -d --name relay-hosted-api --network host -e DATABASE_URL="$TEST_DATABASE_URL" -e RELAY_PASSWORD=synthetic-hosted-ci-password -e RELAY_API_TOKEN=synthetic-hosted-ci-token-only-123456 -e PORT=18083 relay-vercel
+          docker run -d --name relay-hosted-worker --network host -e DATABASE_URL="$TEST_DATABASE_URL" relay-vercel worker
+          for i in $(seq 1 60); do curl -fsS http://localhost:18083/health && break; sleep 1; done
+          export RELAY_URL=http://localhost:18083
+          export RELAY_API_TOKEN=synthetic-hosted-ci-token-only-123456
+          export RELAY_CONSOLE_PATH=/console/
+          export SMOKE_OUTPUT=docs/results/hosted-ci/http.json
+          .venv/bin/python scripts/smoke.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -65,3 +78,4 @@ jobs:
             docs/results/tests.jsonl
             docs/results/ci-chaos*
             docs/results/container-ci/
+            docs/results/hosted-ci/

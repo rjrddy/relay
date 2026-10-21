@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {"relay": {"root": ".", "runtime": "container", "entrypoint": "Dockerfile.vercel"}},
+  "rewrites": [{"source": "/(.*)", "destination": {"service": "relay"}}],
+  "daemons": {
+    "worker": {"root": ".", "entrypoint": "Dockerfile.vercel", "command": ["/app/relay-hosted", "worker"], "instances": {"iad1": 1}, "resources": {"requests": {"memory": "1Gi"}}}
+  }
+}

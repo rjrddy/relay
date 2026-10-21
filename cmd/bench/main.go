@@ -107,7 +107,14 @@ func run() error {
 	if _, err = admin.Pool.Exec(ctx, "CREATE SCHEMA "+schema); err != nil {
 		return err
 	}
-	defer admin.Pool.Exec(context.Background(), "DROP SCHEMA "+schema+" CASCADE")
+	success := false
+	defer func() {
+		if success {
+			admin.Pool.Exec(context.Background(), "DROP SCHEMA "+schema+" CASCADE")
+		} else {
+			fmt.Fprintln(os.Stderr, "retained isolated benchmark schema for recovery:", schema)
+		}
+	}()
 	u, err := url.Parse(dsn)
 	if err != nil {
 		return err
@@ -274,34 +281,61 @@ func run() error {
 	encoded, _ := json.MarshalIndent(summary, "", "  ")
 	os.WriteFile(filepath.Join("docs/results", *out+".json"), append(encoded, '\n'), 0644)
 	os.WriteFile(filepath.Join("docs/results", *out+"-reconciliation.json"), append(raw, '\n'), 0644)
-	rows, err := e.Pool.Query(ctx, "SELECT row_to_json(x) FROM events x ORDER BY seq")
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
+	// Export in bounded keyset pages, separate from the measurement deadline.
+	// A single long stream inherits statement_timeout and can fail under client backpressure.
+	exportCtx, exportCancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer exportCancel()
 	file, err := os.Create(filepath.Join("docs/results", *out+"-events.jsonl.gz"))
 	if err != nil {
 		return err
 	}
 	gz := gzip.NewWriter(file)
-	for rows.Next() {
-		var raw []byte
-		if err = rows.Scan(&raw); err != nil {
+	lastSequence := int64(0)
+	for {
+		rows, err := e.Pool.Query(exportCtx, "SELECT seq,row_to_json(x) FROM events x WHERE seq>$1 ORDER BY seq LIMIT 1000", lastSequence)
+		if err != nil {
+			gz.Close()
+			file.Close()
 			return err
 		}
-		if _, err = gz.Write(append(raw, '\n')); err != nil {
+		count := 0
+		for rows.Next() {
+			var raw []byte
+			var sequence int64
+			if err = rows.Scan(&sequence, &raw); err != nil {
+				rows.Close()
+				gz.Close()
+				file.Close()
+				return err
+			}
+			if _, err = gz.Write(append(raw, '\n')); err != nil {
+				rows.Close()
+				gz.Close()
+				file.Close()
+				return err
+			}
+			lastSequence = sequence
+			count++
+		}
+		err = rows.Err()
+		rows.Close()
+		if err != nil {
+			gz.Close()
+			file.Close()
 			return err
 		}
-	}
-	if err = rows.Err(); err != nil {
-		return err
+		if count == 0 {
+			break
+		}
 	}
 	if err = gz.Close(); err != nil {
+		file.Close()
 		return err
 	}
 	if err = file.Close(); err != nil {
 		return err
 	}
+	success = true
 	fmt.Println(string(encoded))
 	return nil
 }

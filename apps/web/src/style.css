@@ -1029,3 +1029,14 @@ td {
     margin: 10px 16px 20px;
   }
 }
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.notice code {
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}

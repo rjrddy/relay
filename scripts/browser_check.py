@@ -24,6 +24,30 @@ with sync_playwright() as p:
     page.get_by_label("Operator password").fill(os.environ["RELAY_PASSWORD"])
     page.get_by_role("button", name="Enter workspace").click()
     page.get_by_role("heading", name="Every step accounted for.").wait_for()
+    ambiguous = {}
+
+    def lose_ack(route):
+        if route.request.method != "POST":
+            route.continue_()
+            return
+        response = route.fetch()
+        ambiguous["id"] = response.json()["id"]
+        ambiguous["key"] = route.request.post_data_json["key"]
+        route.fulfill(status=503, json={"error": "injected acknowledgement loss after admission"})
+
+    page.route("**/api/runs", lose_ack)
+    page.get_by_role("button", name="Enqueue workflow", exact=False).click()
+    page.get_by_role("button", name="Retry pending workflow", exact=False).wait_for()
+    page.unroute("**/api/runs", lose_ack)
+    page.reload()
+    with page.expect_response(
+        lambda r: r.url.endswith("/api/runs") and r.request.method == "POST"
+    ) as retry:
+        page.get_by_role("button", name="Retry pending workflow", exact=False).click()
+    acknowledged = retry.value.json()
+    assert acknowledged["id"] == ambiguous["id"] and not acknowledged["created"]
+    observed = page.evaluate("async()=> (await fetch('/api/runs')).json()")
+    assert sum(r["idem_key"] == ambiguous["key"] for r in observed) == 1
     page.get_by_role("button", name="Pause dispatch", exact=True).click()
     page.get_by_text("Dispatch paused", exact=True).wait_for()
     page.get_by_label("Failure injection").select_option("2")
@@ -91,6 +115,7 @@ with sync_playwright() as p:
         "run": run,
         "actions": [
             "login",
+            "lost admission acknowledgement recovered after reload",
             "pause",
             "enqueue while paused",
             "resume",
@@ -108,6 +133,7 @@ with sync_playwright() as p:
         "mobile_overflow": mobile_overflow,
         "final_receipt": detail["effects"][-1]["result"],
         "completed_prefix_preserved": True,
+        "ambiguous_admission_deduplicated": True,
         "effects": len(detail["effects"]),
         "elapsed_seconds": time.monotonic() - started,
     }

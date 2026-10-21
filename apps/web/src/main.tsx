@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 type Input = { value: number; fail_until: number; work_ms: number };
+type Submission = {
+  key: string;
+  input: Input & { permanent_failure: boolean };
+  delay_ms: number;
+  max_attempts: number;
+};
 type Run = {
   id: string;
   idem_key: string;
@@ -73,6 +79,8 @@ function App() {
     [delay, setDelay] = useState(0),
     [fault, setFault] = useState(0),
     [rollout, setRollout] = useState(100);
+  const pending = useRef<Submission | null>(null);
+  const [unresolved, setUnresolved] = useState("");
   const call = async (path: string, method = "GET", body?: object) => {
     const r = await fetch("/api/" + path, {
       method,
@@ -81,7 +89,10 @@ function App() {
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     const data = await r.json();
-    if (!r.ok) throw Error(data.error || "Request failed");
+    if (!r.ok) {
+      if (r.status === 401 && path !== "login") setCsrf("");
+      throw Error(data.error || "Request failed");
+    }
     return data;
   };
   const refresh = async () => {
@@ -111,6 +122,25 @@ function App() {
     }
   };
   useEffect(() => {
+    try {
+      const saved = JSON.parse(
+        sessionStorage.getItem("relay-pending") || "null",
+      );
+      if (
+        saved &&
+        typeof saved.key === "string" &&
+        saved.key.length <= 128 &&
+        Number.isSafeInteger(saved.input?.value)
+      ) {
+        pending.current = saved;
+        setUnresolved(saved.key);
+        setValue(saved.input.value);
+        setFault(saved.input.fail_until);
+        setDelay(saved.delay_ms);
+      }
+    } catch {
+      sessionStorage.removeItem("relay-pending");
+    }
     fetch("/api/session")
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
@@ -131,27 +161,38 @@ function App() {
     if (config) setRollout(config.rollout);
   }, [config?.version]);
   const enqueue = async (burst = false) => {
-    let last = "";
+    let last = "",
+      created = true;
     for (let i = 0; i < (burst ? 10 : 1); i++) {
       const f = burst ? (i % 3 === 0 ? 1 : 0) : fault;
-      const r = await call("runs", "POST", {
-        key: "console-" + crypto.randomUUID(),
-        input: {
-          value: burst ? 100 + i : value,
-          fail_until: f,
-          permanent_failure: false,
-          work_ms: 250,
-        },
-        delay_ms: burst ? (i % 3) * 500 : delay,
-        max_attempts: f === 2 ? 2 : 4,
-      });
+      if (!pending.current)
+        pending.current = {
+          key: "console-" + crypto.randomUUID(),
+          input: {
+            value: burst ? 100 + i : value,
+            fail_until: f,
+            permanent_failure: false,
+            work_ms: 250,
+          },
+          delay_ms: burst ? (i % 3) * 500 : delay,
+          max_attempts: f === 2 ? 2 : 4,
+        };
+      sessionStorage.setItem("relay-pending", JSON.stringify(pending.current));
+      setUnresolved(pending.current.key);
+      const r = await call("runs", "POST", pending.current);
+      pending.current = null;
+      sessionStorage.removeItem("relay-pending");
+      setUnresolved("");
       last = r.id;
+      created = r.created;
+      setSelected(last);
     }
-    setSelected(last);
     setNotice(
       burst
-        ? "Synthetic burst admitted. Workers will claim eligible steps."
-        : "Workflow admitted with an immutable input and idempotency key.",
+        ? "Synthetic burst acknowledged. Workers will claim eligible steps."
+        : created
+          ? "Workflow admitted with an immutable input and idempotency key."
+          : "Existing workflow acknowledged; no duplicate admitted.",
     );
   };
   if (!csrf)
@@ -306,44 +347,54 @@ function App() {
                 action(() => enqueue());
               }}
             >
-              <div className="fields">
-                <label htmlFor="value">
-                  Input value
-                  <input
-                    id="value"
-                    type="number"
-                    min={-1000000}
-                    max={1000000}
-                    value={value}
-                    onChange={(e) => setValue(Number(e.target.value))}
-                    required
-                  />
-                </label>
-                <label htmlFor="delay">
-                  Schedule delay
-                  <select
-                    id="delay"
-                    value={delay}
-                    onChange={(e) => setDelay(Number(e.target.value))}
-                  >
-                    <option value={0}>Immediately</option>
-                    <option value={2000}>After 2 seconds</option>
-                    <option value={10000}>After 10 seconds</option>
-                  </select>
-                </label>
-                <label htmlFor="fault">
-                  Failure injection
-                  <select
-                    id="fault"
-                    value={fault}
-                    onChange={(e) => setFault(Number(e.target.value))}
-                  >
-                    <option value={0}>None</option>
-                    <option value={1}>Retry first calculate claim</option>
-                    <option value={2}>Exhaust budget → dead letter</option>
-                  </select>
-                </label>
-              </div>
+              {unresolved && (
+                <p className="notice" role="status">
+                  Admission is awaiting acknowledgement. Retry preserves the
+                  original input and key, including after reload.
+                  <br />
+                  <code>{unresolved}</code>
+                </p>
+              )}
+              <fieldset disabled={busy || Boolean(unresolved)}>
+                <div className="fields">
+                  <label htmlFor="value">
+                    Input value
+                    <input
+                      id="value"
+                      type="number"
+                      min={-1000000}
+                      max={1000000}
+                      value={value}
+                      onChange={(e) => setValue(Number(e.target.value))}
+                      required
+                    />
+                  </label>
+                  <label htmlFor="delay">
+                    Schedule delay
+                    <select
+                      id="delay"
+                      value={delay}
+                      onChange={(e) => setDelay(Number(e.target.value))}
+                    >
+                      <option value={0}>Immediately</option>
+                      <option value={2000}>After 2 seconds</option>
+                      <option value={10000}>After 10 seconds</option>
+                    </select>
+                  </label>
+                  <label htmlFor="fault">
+                    Failure injection
+                    <select
+                      id="fault"
+                      value={fault}
+                      onChange={(e) => setFault(Number(e.target.value))}
+                    >
+                      <option value={0}>None</option>
+                      <option value={1}>Retry first calculate claim</option>
+                      <option value={2}>Exhaust budget → dead letter</option>
+                    </select>
+                  </label>
+                </div>
+              </fieldset>
               <div className="pipeline">
                 <span>Validate</span>
                 <i>→</i>
@@ -352,11 +403,15 @@ function App() {
                 <span>Receipt</span>
               </div>
               <div className="form-actions">
-                <button disabled={busy}>↗ Enqueue workflow</button>
+                <button disabled={busy}>
+                  {unresolved
+                    ? "↗ Retry pending workflow"
+                    : "↗ Enqueue workflow"}
+                </button>
                 <button
                   type="button"
                   className="secondary"
-                  disabled={busy}
+                  disabled={busy || Boolean(unresolved)}
                   onClick={() => action(() => enqueue(true))}
                 >
                   Admit demo burst

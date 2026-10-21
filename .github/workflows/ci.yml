@@ -1,0 +1,63 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: relaytest
+          POSTGRES_PASSWORD: synthetic-ci-database-only
+          POSTGRES_DB: relaytest
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U relaytest -d relaytest"
+          --health-interval 2s --health-timeout 2s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgres://relaytest:synthetic-ci-database-only@127.0.0.1:5432/relaytest?sslmode=disable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: make setup build lint test
+      - run: make scan
+      - name: Short real-process chaos gate
+        run: go run ./cmd/bench --jobs 100 --chaos --out ci-chaos
+        env:
+          GOPATH: ${{ github.workspace }}/.cache/gopath
+          GOCACHE: ${{ github.workspace }}/.cache/gobuild
+      - name: Fresh clone and Compose storage fault
+        run: |
+          git clone --no-local . /tmp/relay-clean
+          cd /tmp/relay-clean
+          cp .env.example .env
+          mkdir -p docs/results
+          trap 'docker compose -f compose.yaml -f compose.chaos.yaml logs --no-color > docs/results/compose.log; cp -r docs/results "$GITHUB_WORKSPACE/docs/results/container-ci"' EXIT
+          docker compose -f compose.yaml -f compose.chaos.yaml up --build -d
+          for i in $(seq 1 120); do curl -fsS http://localhost:8080/health && break; sleep 2; done
+          curl --fail http://localhost:8080/health
+          export RELAY_API_TOKEN=replace-local-sdk-token-at-least-24-chars
+          python scripts/smoke.py
+          python scripts/storage_fault.py
+          sleep 6
+          docker compose -f compose.yaml -f compose.chaos.yaml logs --no-color otel > docs/results/otel.log
+          grep -q 'workflow.step' docs/results/otel.log
+          docker compose -f compose.yaml -f compose.chaos.yaml down
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relay-ci-evidence
+          path: docs/results/

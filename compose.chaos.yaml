@@ -1,0 +1,7 @@
+# Test-only storage-call instrumentation. Normal Compose uses stock Postgres.
+services:
+  postgres:
+    image: relay-postgres-chaos-local
+    build:
+      context: .
+      dockerfile: chaos/postgres.Dockerfile

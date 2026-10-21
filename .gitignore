@@ -12,3 +12,4 @@ __pycache__/
 .ruff_cache/
 data/
 *.egg-info/
+docs/results/demo/

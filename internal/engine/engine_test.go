@@ -102,6 +102,8 @@ func TestLeaseFencingAndAtomicEffects(t *testing.T) {
 	}
 	if err := e.Complete(ctx, *a, 999); !errors.Is(err, ErrFenced) {
 		t.Fatal(err)
+	} else {
+		t.Logf("stale_completion_blocked: %v", err)
 	}
 	if err := e.Heartbeat(ctx, *a); !errors.Is(err, ErrFenced) {
 		t.Fatal(err)

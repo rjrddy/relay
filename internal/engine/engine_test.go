@@ -331,3 +331,57 @@ func TestWaitForLockCannotReviveExpiredLease(t *testing.T) {
 		t.Fatal("expired lease revived after lock wait", err)
 	}
 }
+
+func TestEffectAndStepRollbackTogether(t *testing.T) {
+	e := fixture(t)
+	ctx := context.Background()
+	enqueue(t, e, "rollback")
+	j := claim(t, e, "a")
+	_, err := e.Pool.Exec(ctx, `CREATE FUNCTION reject_completion() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.state='done' THEN RAISE EXCEPTION 'injected_after_effect_insert'; END IF; RETURN NEW; END $$;
+ CREATE TRIGGER reject_completion BEFORE UPDATE ON steps FOR EACH ROW EXECUTE FUNCTION reject_completion()`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = e.Complete(ctx, *j, 7); err == nil {
+		t.Fatal("injected failure not observed")
+	}
+	var effects int
+	e.Pool.QueryRow(ctx, "SELECT count(*) FROM effects WHERE run_id=$1", j.RunID).Scan(&effects)
+	if effects != 0 {
+		t.Fatal("orphan effect escaped rollback")
+	}
+	e.Pool.Exec(ctx, "DROP TRIGGER reject_completion ON steps")
+	if err = e.Complete(ctx, *j, 7); err != nil {
+		t.Fatal("same lease could not recover after rollback", err)
+	}
+}
+func TestConcurrentCompletionCommitsOnlyOnce(t *testing.T) {
+	e := fixture(t)
+	ctx := context.Background()
+	enqueue(t, e, "duplicate-ack")
+	j := claim(t, e, "a")
+	results := make(chan error, 8)
+	var wg sync.WaitGroup
+	for i := 0; i < 8; i++ {
+		wg.Add(1)
+		go func() { defer wg.Done(); results <- e.Complete(ctx, *j, 7) }()
+	}
+	wg.Wait()
+	close(results)
+	successes := 0
+	fenced := 0
+	for err := range results {
+		if err == nil {
+			successes++
+		} else if errors.Is(err, ErrFenced) {
+			fenced++
+		} else {
+			t.Fatal(err)
+		}
+	}
+	var effects int
+	e.Pool.QueryRow(ctx, "SELECT count(*) FROM effects WHERE run_id=$1", j.RunID).Scan(&effects)
+	if successes != 1 || fenced != 7 || effects != 1 {
+		t.Fatal(successes, fenced, effects)
+	}
+}

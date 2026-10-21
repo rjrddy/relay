@@ -54,6 +54,17 @@ with sync_playwright() as p:
     assert acknowledged["id"] == ambiguous["id"] and not acknowledged["created"]
     observed = page.evaluate("async()=> (await fetch('/api/runs')).json()")
     assert sum(r["idem_key"] == ambiguous["key"] for r in observed) == 1
+
+    def wait_state(run_id, state):
+        deadline = time.monotonic() + 60
+        while True:
+            detail = page.evaluate("async(id)=>(await fetch('/api/runs/'+id)).json()", run_id)
+            if detail.get("run", {}).get("state") == state:
+                return detail
+            if time.monotonic() > deadline:
+                raise AssertionError(f"Workflow did not reach {state}: {detail}")
+            page.wait_for_timeout(250)
+
     page.get_by_role("button", name="Pause dispatch", exact=True).click()
     page.get_by_text("Dispatch paused", exact=True).wait_for()
     page.get_by_label("Failure injection").select_option("2")
@@ -63,23 +74,15 @@ with sync_playwright() as p:
         page.get_by_role("button", name="Enqueue workflow", exact=False).click()
     run = response.value.json()["id"]
     page.get_by_role("button", name="Resume dispatch", exact=True).click()
-    page.wait_for_function(
-        """async (id)=>{const r=await fetch('/api/runs/'+id);const d=await r.json();return d.run.state==='dead';}""",
-        arg=run,
-        timeout=60000,
-    )
-    before_replay = page.evaluate("async(id)=>(await fetch('/api/runs/'+id)).json()", run)
+    before_replay = wait_state(run, "dead")
+    (out / "browser-before-replay.json").write_text(json.dumps(before_replay, indent=2) + "\n")
     prefix = before_replay["effects"]
-    assert len(prefix) == 1 and prefix[0]["position"] == 0
+    assert len(prefix) == 1 and prefix[0]["position"] == 0, repr(prefix)
     replay = page.get_by_role("button", name="Replay failed step", exact=True)
     replay.wait_for()
     page.wait_for_timeout(1600)
     replay.click()
-    page.wait_for_function(
-        """async (id)=>{const r=await fetch('/api/runs/'+id);const d=await r.json();return d.run.state==='done';}""",
-        arg=run,
-        timeout=60000,
-    )
+    wait_state(run, "done")
     page.locator("#rollout").focus()
     page.keyboard.press("Home")
     for _ in range(50):
@@ -89,9 +92,10 @@ with sync_playwright() as p:
     control = page.evaluate("async()=> (await fetch('/api/control')).json()")
     assert control["rollout"] == 50
     page.get_by_role("button", name="Rollback previous", exact=False).click()
-    page.wait_for_function(
-        "async()=>{const c=await(await fetch('/api/control')).json();return c.rollout===100;}"
-    )
+    deadline = time.monotonic() + 15
+    while page.evaluate("async()=> (await fetch('/api/control')).json()")["rollout"] != 100:
+        assert time.monotonic() < deadline, "rollout rollback deadline"
+        page.wait_for_timeout(250)
     page.get_by_role("button", name="Admit demo burst", exact=True).click()
     page.wait_for_timeout(700)
     page.evaluate("scrollTo(0,0)")

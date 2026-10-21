@@ -1040,3 +1040,12 @@ fieldset {
   font-size: 10px;
   overflow-wrap: anywhere;
 }
+.table-wrap {
+  max-height: 480px;
+  overflow: auto;
+}
+.table-wrap thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

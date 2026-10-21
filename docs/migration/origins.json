@@ -1,0 +1,22 @@
+[
+  {
+    "id": "P7",
+    "head": "7ff9f53c355299212dcb3a02311f7f362f9ffb38",
+    "repo": "https://github.com/rjrddy/p7-reliable-job-runner"
+  },
+  {
+    "id": "X1",
+    "head": "37995b8f6bd8277ecf1dd0c554d0eef13e48343f",
+    "repo": "https://github.com/rjrddy/x1-high-volume-message-sender"
+  },
+  {
+    "id": "X2",
+    "head": "63f79511c8b3e365739a7e7db72070dfea6eb9a4",
+    "repo": "https://github.com/rjrddy/x2-remote-config-and-staged-rollout-service"
+  },
+  {
+    "id": "M5",
+    "head": "c012209381d5acc78e89246cdc12b546e1956032",
+    "repo": "https://github.com/rjrddy/m5-distributed-kv-store-with-failure-injection"
+  }
+]

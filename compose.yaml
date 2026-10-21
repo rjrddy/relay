@@ -1,0 +1,59 @@
+x-app: &app
+  image: relay-local
+  build: .
+  init: true
+  environment: &app-env
+    DATABASE_URL: postgres://relay:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/relay?sslmode=disable
+    RELAY_PASSWORD: ${RELAY_PASSWORD:?Set RELAY_PASSWORD}
+    RELAY_API_TOKEN: ${RELAY_API_TOKEN:?Set RELAY_API_TOKEN}
+    COOKIE_SECURE: "0"
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://otel:4318
+    OTEL_EXPORTER_OTLP_INSECURE: "true"
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: relay
+      POSTGRES_DB: relay
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes:
+      - relay-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U relay -d relay"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+  init:
+    <<: *app
+    command: ["seed"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+  api:
+    <<: *app
+    command: ["serve"]
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      otel:
+        condition: service_started
+  worker:
+    <<: *app
+    command: ["worker"]
+    deploy:
+      replicas: 2
+    restart: unless-stopped
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      otel:
+        condition: service_started
+  otel:
+    image: otel/opentelemetry-collector:0.123.0
+    command: ["--config=/etc/otel.yaml"]
+    volumes:
+      - ./observability/otel.yaml:/etc/otel.yaml:ro
+volumes:
+  relay-db:

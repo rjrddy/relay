@@ -17,6 +17,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/rjrddy/relay/internal/engine"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
@@ -204,8 +205,34 @@ func respond(w http.ResponseWriter, value any, err error) {
 	case engine.IsNotFound(err):
 		status, message = 404, "not found"
 	}
+	category := "request_rejected"
+	var postgres *pgconn.PgError
+	if errors.As(err, &postgres) {
+		category = "postgres_" + postgres.Code
+	}
+	slog.Warn("operation_rejected", "status", status, "category", category, "trace_id", w.Header().Get("X-Trace-Id"))
 	reject(w, status, message)
 }
+
+type responseLog struct {
+	http.ResponseWriter
+	status int
+}
+
+func (w *responseLog) WriteHeader(status int) {
+	if w.status == 0 {
+		w.status = status
+		w.ResponseWriter.WriteHeader(status)
+	}
+}
+func (w *responseLog) Write(body []byte) (int, error) {
+	if w.status == 0 {
+		w.WriteHeader(http.StatusOK)
+	}
+	return w.ResponseWriter.Write(body)
+}
+func (w *responseLog) Unwrap() http.ResponseWriter { return w.ResponseWriter }
+
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
@@ -323,7 +350,13 @@ func (s *Server) Handler() http.Handler {
 		w.Header().Set("X-Frame-Options", "DENY")
 		w.Header().Set("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'")
 		w.Header().Set("X-Trace-Id", span.SpanContext().TraceID().String())
-		mux.ServeHTTP(w, r.WithContext(ctx))
-		slog.Info("http_completed", "method", r.Method, "trace_id", trace.SpanContextFromContext(ctx).TraceID().String())
+		scoped := r.WithContext(ctx)
+		logged := &responseLog{ResponseWriter: w}
+		mux.ServeHTTP(logged, scoped)
+		status := logged.status
+		if status == 0 {
+			status = http.StatusOK
+		}
+		slog.Info("http_completed", "method", r.Method, "status", status, "route", scoped.Pattern, "trace_id", trace.SpanContextFromContext(ctx).TraceID().String())
 	})
 }

@@ -1,11 +1,219 @@
 From /Users/rajreddy/dev/outreach/flagships/relay
-   1b2afdb..798cb13  main       -> origin/main
-error: The following untracked working tree files would be overwritten by merge:
-	docs/results/tests.json
-	docs/results/tests.jsonl
-Please move or remove them before you merge.
-Aborting
-Updating 1b2afdb..798cb13
+   798cb13..388848b  main       -> origin/main
+Updating 1b2afdb..388848b
+Fast-forward
+ .github/workflows/ci.yml                         |   14 +
+ .gitignore                                       |    3 +
+ .vercelignore                                    |   10 +
+ Dockerfile.hosted                                |   27 +
+ Dockerfile.hosted.dockerignore                   |   13 +
+ README.md                                        |   89 +
+ cmd/hosted/main.go                               |  154 +
+ cmd/hosted/main_test.go                          |   44 +
+ deploy/showcase/app.js                           |    7 +
+ deploy/showcase/build.mjs                        |    8 +
+ deploy/showcase/index.html                       |    1 +
+ deploy/showcase/style.css                        |    1 +
+ deploy/vercel-live.json                          |    8 +
+ docs/QUALITY.md                                  |   27 +
+ docs/VERCEL.md                                   |   18 +
+ docs/adr/008-vercel-evidence-and-live-backend.md |   13 +
+ docs/results/browser-before-replay.json          |  164 +
+ docs/results/browser.json                        |   26 +
+ docs/results/browser.log                         |   26 +
+ docs/results/campaign-source.json                |   15 +
+ docs/results/chaos-crash-claim.jsonl.gz          |  Bin 0 -> 148 bytes
+ docs/results/chaos-crash-commit.jsonl.gz         |  Bin 0 -> 149 bytes
+ docs/results/chaos-events.jsonl.gz               |  Bin 0 -> 322201 bytes
+ docs/results/chaos-hour-crash-claim.jsonl.gz     |  Bin 0 -> 148 bytes
+ docs/results/chaos-hour-crash-commit.jsonl.gz    |  Bin 0 -> 149 bytes
+ docs/results/chaos-hour-events-prefix.jsonl.gz   |  Bin 0 -> 5719758 bytes
+ docs/results/chaos-hour-events.partial.gz        |  Bin 0 -> 5263672 bytes
+ docs/results/chaos-hour-reconciliation.json      |    1 +
+ docs/results/chaos-hour-worker-0.jsonl.gz        |  Bin 0 -> 1289027 bytes
+ docs/results/chaos-hour-worker-1.jsonl.gz        |  Bin 0 -> 1312875 bytes
+ docs/results/chaos-hour-worker-2.jsonl.gz        |  Bin 0 -> 1305161 bytes
+ docs/results/chaos-hour-worker-3.jsonl.gz        |  Bin 0 -> 1312159 bytes
+ docs/results/chaos-hour.json                     | 1864 +++++++
+ docs/results/chaos-hour.log                      |    2 +
+ docs/results/chaos-reconciliation.json           |    1 +
+ docs/results/chaos-worker-0.jsonl.gz             |  Bin 0 -> 32390 bytes
+ docs/results/chaos-worker-1.jsonl.gz             |  Bin 0 -> 32524 bytes
+ docs/results/chaos-worker-2.jsonl.gz             |  Bin 0 -> 33075 bytes
+ docs/results/chaos-worker-3.jsonl.gz             |  Bin 0 -> 32838 bytes
+ docs/results/chaos.json                          |   56 +
+ docs/results/chaos.log                           |   40 +
+ docs/results/checks.json                         |   18 +
+ docs/results/checks.log                          |  163 +
+ docs/results/ci-code.json                        |    1 +
+ docs/results/ci-code.log                         | 1120 ++++
+ docs/results/ci-initial-failure.log              |  446 ++
+ docs/results/ci-storage-pass.log                 | 1131 ++++
+ docs/results/console-desktop.png                 |  Bin 0 -> 229273 bytes
+ docs/results/console-mobile.png                  |  Bin 0 -> 188527 bytes
+ docs/results/database-environment.json           |    1 +
+ docs/results/demo-probe.json                     |    6 +
+ docs/results/demo.webm                           |  Bin 0 -> 10427817 bytes
+ docs/results/export-recovery-fix.patch           |   94 +
+ docs/results/fresh-clone-final.log               |   64 +
+ docs/results/fresh-clone-install.log             |  111 +
+ docs/results/fresh-clone.json                    |   11 +
+ docs/results/hosted-native.json                  |   11 +
+ docs/results/hosted-native.log                   |   12 +
+ docs/results/hosting-readiness.json              |   14 +
+ docs/results/hour-export-status.json             |   10 +
+ docs/results/hour-progress.jsonl                 |    9 +
+ docs/results/independent-audit.json              |   25 +
+ docs/results/linux-storage/compose.log           |    0
+ docs/results/linux-storage/http-smoke.json       |    9 +
+ docs/results/linux-storage/otel.log              | 5982 ++++++++++++++++++++++
+ docs/results/linux-storage/storage-fault.json    | 2409 +++++++++
+ docs/results/linux-storage/storage-fault.log     |  187 +
+ docs/results/load-100-events.jsonl.gz            |  Bin 0 -> 29926 bytes
+ docs/results/load-100-reconciliation.json        |    1 +
+ docs/results/load-100-worker-0.jsonl.gz          |  Bin 0 -> 3209 bytes
+ docs/results/load-100-worker-1.jsonl.gz          |  Bin 0 -> 3186 bytes
+ docs/results/load-100-worker-2.jsonl.gz          |  Bin 0 -> 3298 bytes
+ docs/results/load-100-worker-3.jsonl.gz          |  Bin 0 -> 3033 bytes
+ docs/results/load-100.json                       |   15 +
+ docs/results/load-1000-events.jsonl.gz           |  Bin 0 -> 311681 bytes
+ docs/results/load-1000-reconciliation.json       |    1 +
+ docs/results/load-1000-worker-0.jsonl.gz         |  Bin 0 -> 36692 bytes
+ docs/results/load-1000-worker-1.jsonl.gz         |  Bin 0 -> 36699 bytes
+ docs/results/load-1000-worker-2.jsonl.gz         |  Bin 0 -> 37235 bytes
+ docs/results/load-1000-worker-3.jsonl.gz         |  Bin 0 -> 36819 bytes
+ docs/results/load-1000.json                      |   15 +
+ docs/results/load-500-events.jsonl.gz            |  Bin 0 -> 156299 bytes
+ docs/results/load-500-reconciliation.json        |    1 +
+ docs/results/load-500-worker-0.jsonl.gz          |  Bin 0 -> 16783 bytes
+ docs/results/load-500-worker-1.jsonl.gz          |  Bin 0 -> 16716 bytes
+ docs/results/load-500-worker-2.jsonl.gz          |  Bin 0 -> 16403 bytes
+ docs/results/load-500-worker-3.jsonl.gz          |  Bin 0 -> 16629 bytes
+ docs/results/load-500.json                       |   15 +
+ docs/results/manifest.json                       |  309 ++
+ docs/results/npm-audit.json                      |   22 +
+ docs/results/security-verbose.log                |   66 +
+ docs/results/security.log                        |   16 +
+ docs/results/tests.json                          |   27 +
+ docs/results/tests.jsonl                         |  145 +
+ docs/results/toolchain-source.json               |    6 +
+ docs/results/vercel-adapter-checks.log           |   43 +
+ docs/results/vercel-desktop.png                  |  Bin 0 -> 485594 bytes
+ docs/results/vercel-live-readiness.log           |    5 +
+ docs/results/vercel-mobile.png                   |  Bin 0 -> 292191 bytes
+ docs/results/vercel.json                         |    9 +
+ internal/server/durable_sessions.go              |   92 +
+ internal/server/server.go                        |   59 +-
+ internal/server/server_test.go                   |   45 +
+ scripts/finalize_results.py                      |   22 +-
+ scripts/hosted_smoke.py                          |   75 +
+ scripts/prepare_vercel_live.py                   |   50 +
+ scripts/render_readme.py                         |   11 +-
+ scripts/smoke.py                                 |    2 +-
+ vercel.json                                      |    8 +
+ 109 files changed, 15480 insertions(+), 46 deletions(-)
+ create mode 100644 .vercelignore
+ create mode 100644 Dockerfile.hosted
+ create mode 100644 Dockerfile.hosted.dockerignore
+ create mode 100644 README.md
+ create mode 100644 cmd/hosted/main.go
+ create mode 100644 cmd/hosted/main_test.go
+ create mode 100644 deploy/showcase/app.js
+ create mode 100644 deploy/showcase/build.mjs
+ create mode 100644 deploy/showcase/index.html
+ create mode 100644 deploy/showcase/style.css
+ create mode 100644 deploy/vercel-live.json
+ create mode 100644 docs/QUALITY.md
+ create mode 100644 docs/VERCEL.md
+ create mode 100644 docs/adr/008-vercel-evidence-and-live-backend.md
+ create mode 100644 docs/results/browser-before-replay.json
+ create mode 100644 docs/results/browser.json
+ create mode 100644 docs/results/browser.log
+ create mode 100644 docs/results/campaign-source.json
+ create mode 100644 docs/results/chaos-crash-claim.jsonl.gz
+ create mode 100644 docs/results/chaos-crash-commit.jsonl.gz
+ create mode 100644 docs/results/chaos-events.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-crash-claim.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-crash-commit.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-events-prefix.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-events.partial.gz
+ create mode 100644 docs/results/chaos-hour-reconciliation.json
+ create mode 100644 docs/results/chaos-hour-worker-0.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-worker-1.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-worker-2.jsonl.gz
+ create mode 100644 docs/results/chaos-hour-worker-3.jsonl.gz
+ create mode 100644 docs/results/chaos-hour.json
+ create mode 100644 docs/results/chaos-hour.log
+ create mode 100644 docs/results/chaos-reconciliation.json
+ create mode 100644 docs/results/chaos-worker-0.jsonl.gz
+ create mode 100644 docs/results/chaos-worker-1.jsonl.gz
+ create mode 100644 docs/results/chaos-worker-2.jsonl.gz
+ create mode 100644 docs/results/chaos-worker-3.jsonl.gz
+ create mode 100644 docs/results/chaos.json
+ create mode 100644 docs/results/chaos.log
+ create mode 100644 docs/results/checks.json
+ create mode 100644 docs/results/checks.log
+ create mode 100644 docs/results/ci-code.json
+ create mode 100644 docs/results/ci-code.log
+ create mode 100644 docs/results/ci-initial-failure.log
+ create mode 100644 docs/results/ci-storage-pass.log
+ create mode 100644 docs/results/console-desktop.png
+ create mode 100644 docs/results/console-mobile.png
+ create mode 100644 docs/results/database-environment.json
+ create mode 100644 docs/results/demo-probe.json
+ create mode 100644 docs/results/demo.webm
+ create mode 100644 docs/results/export-recovery-fix.patch
+ create mode 100644 docs/results/fresh-clone-final.log
+ create mode 100644 docs/results/fresh-clone-install.log
+ create mode 100644 docs/results/fresh-clone.json
+ create mode 100644 docs/results/hosted-native.json
+ create mode 100644 docs/results/hosted-native.log
+ create mode 100644 docs/results/hosting-readiness.json
+ create mode 100644 docs/results/hour-export-status.json
+ create mode 100644 docs/results/hour-progress.jsonl
+ create mode 100644 docs/results/independent-audit.json
+ create mode 100644 docs/results/linux-storage/compose.log
+ create mode 100644 docs/results/linux-storage/http-smoke.json
+ create mode 100644 docs/results/linux-storage/otel.log
+ create mode 100644 docs/results/linux-storage/storage-fault.json
+ create mode 100644 docs/results/linux-storage/storage-fault.log
+ create mode 100644 docs/results/load-100-events.jsonl.gz
+ create mode 100644 docs/results/load-100-reconciliation.json
+ create mode 100644 docs/results/load-100-worker-0.jsonl.gz
+ create mode 100644 docs/results/load-100-worker-1.jsonl.gz
+ create mode 100644 docs/results/load-100-worker-2.jsonl.gz
+ create mode 100644 docs/results/load-100-worker-3.jsonl.gz
+ create mode 100644 docs/results/load-100.json
+ create mode 100644 docs/results/load-1000-events.jsonl.gz
+ create mode 100644 docs/results/load-1000-reconciliation.json
+ create mode 100644 docs/results/load-1000-worker-0.jsonl.gz
+ create mode 100644 docs/results/load-1000-worker-1.jsonl.gz
+ create mode 100644 docs/results/load-1000-worker-2.jsonl.gz
+ create mode 100644 docs/results/load-1000-worker-3.jsonl.gz
+ create mode 100644 docs/results/load-1000.json
+ create mode 100644 docs/results/load-500-events.jsonl.gz
+ create mode 100644 docs/results/load-500-reconciliation.json
+ create mode 100644 docs/results/load-500-worker-0.jsonl.gz
+ create mode 100644 docs/results/load-500-worker-1.jsonl.gz
+ create mode 100644 docs/results/load-500-worker-2.jsonl.gz
+ create mode 100644 docs/results/load-500-worker-3.jsonl.gz
+ create mode 100644 docs/results/load-500.json
+ create mode 100644 docs/results/manifest.json
+ create mode 100644 docs/results/npm-audit.json
+ create mode 100644 docs/results/security-verbose.log
+ create mode 100644 docs/results/security.log
+ create mode 100644 docs/results/tests.json
+ create mode 100644 docs/results/tests.jsonl
+ create mode 100644 docs/results/toolchain-source.json
+ create mode 100644 docs/results/vercel-adapter-checks.log
+ create mode 100644 docs/results/vercel-desktop.png
+ create mode 100644 docs/results/vercel-live-readiness.log
+ create mode 100644 docs/results/vercel-mobile.png
+ create mode 100644 docs/results/vercel.json
+ create mode 100644 internal/server/durable_sessions.go
+ create mode 100644 scripts/hosted_smoke.py
+ create mode 100644 scripts/prepare_vercel_live.py
+ create mode 100644 vercel.json
 /tmp/relay-toolchain/go/bin/go build -trimpath -o bin/relay ./cmd/relay
 npm run build --prefix apps/web
 
@@ -20,7 +228,7 @@ computing gzip size...
 dist/index.html                   0.44 kB │ gzip:  0.31 kB
 dist/assets/index-CE6lvqIR.css   12.49 kB │ gzip:  3.57 kB
 dist/assets/index-Ck0jYYba.js   209.02 kB │ gzip: 65.42 kB
-✓ built in 675ms
+✓ built in 432ms
 .venv/bin/python scripts/check_go_format.py "/tmp/relay-toolchain/go/bin/go"
 /tmp/relay-toolchain/go/bin/go vet ./...
 npm run lint --prefix apps/web
@@ -34,20 +242,21 @@ All matched files use Prettier code style!
 .venv/bin/python -m ruff check sdk/python scripts
 All checks passed!
 .venv/bin/python -m ruff format --check sdk/python scripts
-11 files already formatted
+13 files already formatted
 /tmp/relay-toolchain/go/bin/go test -race -count=1 -json ./... > docs/results/tests.jsonl || (.venv/bin/python scripts/test_summary.py docs/results/tests.jsonl; exit 1)
 .venv/bin/python scripts/test_summary.py docs/results/tests.jsonl
 {
-  "passed": 18,
+  "passed": 20,
   "failed": 0,
   "tests": [
+    "TestHostedSchemaIsolatedAndReentrant",
     "TestIdempotencyCapacityConflict",
     "TestLeaseFencingAndAtomicEffects",
     "TestConcurrentAdmissionAndClaims",
     "TestDelayPauseRolloutAndRollback",
     "TestDeadLetterReplayPreservesPreviousEffect",
-    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestClientPreservesIdempotencyAndSurfacesConflict",
+    "TestExpiredLeaseCannotHeartbeatOrComplete",
     "TestCrashBudgetEventuallyDeadLetters",
     "TestBackoffAndCohortProperties",
     "TestAmbiguousEnqueueRetriesSameRequest",
@@ -58,7 +267,8 @@ All checks passed!
     "TestSDKHTTPAndDatabaseErrors",
     "TestEmbeddedServiceCompletesAndShutsDown",
     "TestLoginRateLimit",
-    "TestUnknownRouteDoesNotLeakFiles"
+    "TestUnknownRouteDoesNotLeakFiles",
+    "TestDurableSessionsAcrossInstancesAndLogout"
   ],
   "failures": []
 }

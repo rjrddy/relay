@@ -30,7 +30,7 @@ with sync_playwright() as p:
     with page.expect_response(
         lambda r: r.url.endswith("/api/runs") and r.request.method == "POST"
     ) as response:
-        page.get_by_role("button", name="Enqueue workflow", exact=True).click()
+        page.get_by_role("button", name="Enqueue workflow", exact=False).click()
     run = response.value.json()["id"]
     page.get_by_role("button", name="Resume dispatch", exact=True).click()
     page.wait_for_function(

@@ -13,12 +13,15 @@ from relay_sdk import Client
 
 compose = ["docker", "compose", "-f", "compose.yaml", "-f", "compose.chaos.yaml"]
 client = Client("http://127.0.0.1:8080", os.environ["RELAY_API_TOKEN"])
+# Admission may correctly return 503 under a storage stall. Stage the immutable scheduled
+# jobs before activation so this experiment isolates worker durability, not admission SLOs.
+runs = [
+    client.enqueue("storage-" + uuid4().hex, i, fail_until=1, max_attempts=8, delay_ms=5000)
+    for i in range(12)
+]
 subprocess.run(compose + ["exec", "-T", "postgres", "touch", "/faults/slow-disk"], check=True)
 started = time.monotonic()
 try:
-    runs = [
-        client.enqueue("storage-" + uuid4().hex, i, fail_until=1, max_attempts=8) for i in range(12)
-    ]
     for run in runs:
         while True:
             row = client.run(run["id"])

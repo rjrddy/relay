@@ -1,6 +1,8 @@
-"""Standard-library SDK. Retry an ambiguous enqueue using the exact same key and payload."""
+"""Standard-library SDK with bounded, idempotent enqueue retries."""
 
+import hashlib
 import json
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -11,6 +13,9 @@ from dataclasses import dataclass
 class APIError(Exception):
     status: int
     message: str
+
+    def __str__(self) -> str:
+        return f"Relay HTTP {self.status}: {self.message}"
 
 
 class Client:
@@ -43,21 +48,29 @@ class Client:
         max_attempts: int = 3,
         work_ms: int = 0,
     ) -> dict:
-        return self._call(
-            "POST",
-            "/api/runs",
-            {
-                "key": key,
-                "input": {
-                    "value": value,
-                    "fail_until": fail_until,
-                    "permanent_failure": False,
-                    "work_ms": work_ms,
-                },
-                "delay_ms": delay_ms,
-                "max_attempts": max_attempts,
+        payload = {
+            "key": key,
+            "input": {
+                "value": value,
+                "fail_until": fail_until,
+                "permanent_failure": False,
+                "work_ms": work_ms,
             },
-        )
+            "delay_ms": delay_ms,
+            "max_attempts": max_attempts,
+        }
+        for attempt in range(5):
+            try:
+                return self._call("POST", "/api/runs", payload)
+            except APIError as error:
+                if error.status not in (429, 502, 503, 504) or attempt == 4:
+                    raise
+            except (urllib.error.URLError, TimeoutError):
+                if attempt == 4:
+                    raise
+            jitter = int.from_bytes(hashlib.sha256(key.encode()).digest()[:2], "big") % 41
+            time.sleep((100 * 2**attempt + jitter) / 1000)
+        raise RuntimeError("unreachable retry state")
 
     def run(self, run_id: str) -> dict:
         return self._call("GET", "/api/runs/" + urllib.parse.quote(run_id, safe=""))

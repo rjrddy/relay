@@ -106,7 +106,6 @@ function App() {
     setMetrics(m);
     setConfig(c);
     setVersions(v);
-    if (selected) setDetail(await call("runs/" + selected));
   };
   const action = async (f: () => Promise<void>) => {
     setError("");
@@ -156,6 +155,25 @@ function App() {
       1500,
     );
     return () => clearInterval(timer);
+  }, [csrf]);
+  useEffect(() => {
+    setDetail(null);
+    if (!csrf || !selected) return;
+    let active = true;
+    const load = async () => {
+      try {
+        const data = await call("runs/" + selected);
+        if (active) setDetail(data);
+      } catch (e) {
+        if (active) setError(String(e));
+      }
+    };
+    load();
+    const timer = setInterval(load, 1500);
+    return () => {
+      active = false;
+      clearInterval(timer);
+    };
   }, [csrf, selected]);
   useEffect(() => {
     if (config) setRollout(config.rollout);
@@ -567,7 +585,14 @@ function App() {
         <div className="two-col detail-grid">
           <section className="panel" id="detail">
             <div className="panel-title">
-              <h2>Execution timeline</h2>
+              <h2>
+                Execution timeline
+                {detail && (
+                  <small className="mono">
+                    Run {detail.run.id.slice(0, 10)}
+                  </small>
+                )}
+              </h2>
               {detail && (
                 <button
                   className="secondary"
@@ -632,8 +657,9 @@ function App() {
               </>
             ) : (
               <p className="empty">
-                Select a workflow to inspect its steps, lease epochs and
-                trace-linked events.
+                {selected
+                  ? "Loading persisted workflow history…"
+                  : "Select a workflow to inspect its steps, lease epochs and trace-linked events."}
               </p>
             )}
           </section>

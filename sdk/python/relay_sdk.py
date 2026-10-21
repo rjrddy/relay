@@ -36,7 +36,8 @@ class Client:
             with urllib.request.urlopen(request, timeout=self.timeout) as response:
                 return json.load(response)
         except urllib.error.HTTPError as error:
-            message = json.load(error).get("error", "request failed")
+            with error:
+                message = json.load(error).get("error", "request failed")
             raise APIError(error.code, message) from None
 
     def enqueue(

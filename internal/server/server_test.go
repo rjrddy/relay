@@ -47,7 +47,19 @@ func testServer(t *testing.T) (*httptest.Server, *http.Client, *engine.Engine) {
 	s := httptest.NewServer(app.Handler())
 	jar, _ := cookiejar.New(nil)
 	client := &http.Client{Jar: jar}
-	t.Cleanup(func() { s.Close(); e.Pool.Exec(context.Background(), "DROP SCHEMA "+schema+" CASCADE"); e.Pool.Close() })
+	t.Cleanup(func() {
+		s.Close()
+		e.Pool.Close()
+		cleanup, err := engine.Open(context.Background(), dsn)
+		if err != nil {
+			t.Error(err)
+			return
+		}
+		defer cleanup.Pool.Close()
+		if _, err = cleanup.Pool.Exec(context.Background(), "DROP SCHEMA "+schema+" CASCADE"); err != nil {
+			t.Error(err)
+		}
+	})
 	return s, client, e
 }
 func call(t *testing.T, c *http.Client, method, base, path, body, csrf string) (int, map[string]any) {

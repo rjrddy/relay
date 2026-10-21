@@ -58,7 +58,7 @@ jobs:
           docker compose -f compose.yaml -f compose.chaos.yaml down
       - name: Vercel image and independent daemon smoke
         run: |
-          docker build -f Dockerfile.vercel -t relay-vercel .
+          docker build -f Dockerfile.hosted -t relay-vercel .
           mkdir -p docs/results/hosted-ci
           trap 'docker logs relay-hosted-api > docs/results/hosted-ci/api.log 2>&1; docker logs relay-hosted-worker > docs/results/hosted-ci/worker.log 2>&1; docker stop relay-hosted-api relay-hosted-worker' EXIT
           docker run -d --name relay-hosted-api --network host -e DATABASE_URL="$TEST_DATABASE_URL" -e RELAY_PASSWORD=synthetic-hosted-ci-password -e RELAY_API_TOKEN=synthetic-hosted-ci-token-only-123456 -e PORT=18083 relay-vercel

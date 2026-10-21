@@ -108,7 +108,7 @@ func (w *Worker) handle(parent context.Context, j engine.Job) {
 			w.Hook("commit", j)
 		}
 	}
-	outcome := "committed"
+	outcome := "transition_committed"
 	if err != nil {
 		outcome = "not_committed"
 		span.SetStatus(codes.Error, "database operation did not acknowledge completion")

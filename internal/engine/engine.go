@@ -220,6 +220,9 @@ func (e *Engine) Claim(ctx context.Context, owner string) (*Job, error) {
 	if err = json.Unmarshal(raw, &j.Input); err != nil {
 		return nil, err
 	}
+	ctx = propagation.TraceContext{}.Extract(ctx, propagation.MapCarrier{"traceparent": j.Traceparent})
+	ctx, claimSpan := otel.Tracer("relay").Start(ctx, "workflow.claim")
+	defer claimSpan.End()
 	if j.Attempt >= j.MaxAttempts {
 		if err = dead(ctx, tx, j, "attempts_exhausted"); err != nil {
 			return nil, err

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"math/rand"
 	"os"
 	"sync"
 	"testing"
@@ -303,8 +304,30 @@ func TestBackoffAndCohortProperties(t *testing.T) {
 		j := Job{RunID: fmt.Sprint(id), Position: 1, Attempt: int(attempt%10) + 1}
 		a := Backoff(j)
 		return a == Backoff(j) && a >= 25*time.Millisecond && a <= 6401*time.Millisecond && Cohort(j.RunID) >= 0 && Cohort(j.RunID) < 100
-	}, &quick.Config{MaxCount: 1000})
+	}, &quick.Config{MaxCount: 1000, Rand: rand.New(rand.NewSource(42))})
 	if err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestWaitForLockCannotReviveExpiredLease(t *testing.T) {
+	e := fixture(t)
+	ctx := context.Background()
+	e.Lease = 80 * time.Millisecond
+	enqueue(t, e, "locked")
+	j := claim(t, e, "a")
+	tx, err := e.Pool.Begin(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err = tx.Exec(ctx, "SELECT * FROM steps WHERE run_id=$1 AND position=0 FOR UPDATE", j.RunID); err != nil {
+		t.Fatal(err)
+	}
+	result := make(chan error, 1)
+	go func() { result <- e.Heartbeat(ctx, *j) }()
+	time.Sleep(110 * time.Millisecond)
+	tx.Commit(ctx)
+	if err = <-result; !errors.Is(err, ErrFenced) {
+		t.Fatal("expired lease revived after lock wait", err)
 	}
 }

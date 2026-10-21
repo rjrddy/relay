@@ -1,0 +1,38 @@
+"""Standard-library SDK. Retry an ambiguous enqueue using the exact same key and payload."""
+import json
+import urllib.error
+import urllib.parse
+import urllib.request
+from dataclasses import dataclass
+
+
+@dataclass
+class APIError(Exception):
+    status: int
+    message: str
+
+
+class Client:
+    def __init__(self, base_url: str, token: str, timeout: float = 10) -> None:
+        self.base_url = base_url.rstrip('/')
+        self.token, self.timeout = token, timeout
+
+    def _call(self, method: str, path: str, payload: dict | None = None) -> dict:
+        body = json.dumps(payload).encode() if payload is not None else None
+        request = urllib.request.Request(self.base_url+path, data=body, method=method,
+            headers={'Authorization':f'Bearer {self.token}', 'Content-Type':'application/json'})
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            message = json.load(error).get('error', 'request failed')
+            raise APIError(error.code, message) from None
+
+    def enqueue(self, key: str, value: int, *, delay_ms: int = 0, fail_until: int = 0,
+                max_attempts: int = 3, work_ms: int = 0) -> dict:
+        return self._call('POST', '/api/runs', {'key':key, 'input':{'value':value,
+            'fail_until':fail_until, 'permanent_failure':False, 'work_ms':work_ms},
+            'delay_ms':delay_ms, 'max_attempts':max_attempts})
+
+    def run(self, run_id: str) -> dict:
+        return self._call('GET', '/api/runs/'+urllib.parse.quote(run_id, safe=''))

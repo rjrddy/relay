@@ -94,7 +94,7 @@ func (e *Engine) Metrics(ctx context.Context) (json.RawMessage, error) {
  'effects',(SELECT count(*) FROM effects),
  'retries',(SELECT count(*) FROM events WHERE kind='retry_scheduled'),
  'claims',(SELECT count(*) FROM events WHERE kind='claimed'),
- 'reclaims',(SELECT count(*) FROM steps WHERE epoch>1),
+ 'repeated_claim_steps',(SELECT count(*) FROM steps WHERE epoch>1),
  'enqueue_start_p50_ms',(SELECT coalesce(percentile_cont(.5) WITHIN GROUP (ORDER BY extract(epoch FROM (s.first_started-r.enqueued_at))*1000),0) FROM runs r JOIN steps s ON r.id=s.run_id AND s.position=0 WHERE s.first_started IS NOT NULL),
  'enqueue_start_p99_ms',(SELECT coalesce(percentile_cont(.99) WITHIN GROUP (ORDER BY extract(epoch FROM (s.first_started-r.enqueued_at))*1000),0) FROM runs r JOIN steps s ON r.id=s.run_id AND s.position=0 WHERE s.first_started IS NOT NULL),
  'latency_samples',(SELECT coalesce(jsonb_agg(ms),'[]'::jsonb) FROM (SELECT extract(epoch FROM (s.first_started-r.enqueued_at))*1000 AS ms FROM runs r JOIN steps s ON r.id=s.run_id AND s.position=0 WHERE s.first_started IS NOT NULL ORDER BY r.enqueued_at DESC LIMIT 100) q))`)

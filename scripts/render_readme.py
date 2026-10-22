@@ -64,7 +64,7 @@ Caught failures are retained: a stale completion is rejected by the fenced-lease
 
 ![Relay console](docs/results/ui-redesign/console-cover.png)
 
-[Visual design references and UI checks](docs/UI.md) · [Redesigned console recording](docs/results/ui-redesign/demo.webm). Historical benchmark evidence remains separate.
+[Visual design references and UI checks](docs/UI.md) · [Redesigned console recording](docs/results/ui-redesign/demo.webm). Historical benchmark evidence remains separate. CI caught and retained a [missing hosted-image media input](docs/results/ui-redesign/initial-hosted-image-failure.log); the packaging manifest now includes the redesigned recording and poster.
 
 ## Architecture
 

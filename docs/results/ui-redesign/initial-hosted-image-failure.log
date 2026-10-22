@@ -1,0 +1,154 @@
+verify	Vercel image and independent daemon smoke	﻿2026-10-22T13:39:20.6975796Z ##[group]Run docker build -f Dockerfile.hosted -t relay-vercel .
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6976265Z ^[[36;1mdocker build -f Dockerfile.hosted -t relay-vercel .^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6976766Z ^[[36;1mmkdir -p docs/results/hosted-ci^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6977437Z ^[[36;1mtrap 'docker logs relay-hosted-api > docs/results/hosted-ci/api.log 2>&1; docker logs relay-hosted-worker > docs/results/hosted-ci/worker.log 2>&1; docker stop relay-hosted-api relay-hosted-worker' EXIT^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6978555Z ^[[36;1mdocker run -d --name relay-hosted-api --network host -e DATABASE_URL="$TEST_DATABASE_URL" -e RELAY_PASSWORD=synthetic-hosted-ci-password -e RELAY_API_TOKEN=synthetic-hosted-ci-token-only-123456 -e PORT=18083 relay-vercel^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6979456Z ^[[36;1mdocker run -d --name relay-hosted-worker --network host -e DATABASE_URL="$TEST_DATABASE_URL" relay-vercel worker^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6980024Z ^[[36;1mfor i in $(seq 1 60); do curl -fsS http://localhost:18083/health && break; sleep 1; done^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6980457Z ^[[36;1mexport RELAY_URL=http://localhost:18083^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6980796Z ^[[36;1mexport RELAY_API_TOKEN=synthetic-hosted-ci-token-only-123456^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6981109Z ^[[36;1mexport RELAY_CONSOLE_PATH=/console/^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6981397Z ^[[36;1mexport SMOKE_OUTPUT=docs/results/hosted-ci/http.json^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.6981686Z ^[[36;1m.venv/bin/python scripts/smoke.py^[[0m
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7036899Z shell: /usr/bin/bash -e {0}
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7037121Z env:
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7037595Z   TEST_DATABASE_URL: ***127.0.0.1:5432/relaytest?sslmode=disable
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7037961Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7038337Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7038695Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7039002Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7039315Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7039623Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.7039885Z ##[endgroup]
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.8507408Z #0 building with "default" instance using docker driver
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.8507838Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:20.8508040Z #1 [internal] load build definition from Dockerfile.hosted
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.0083185Z #1 transferring dockerfile: 1.35kB done
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.0083538Z #1 DONE 0.0s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.0083655Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.0083913Z #2 [internal] load metadata for gcr.io/distroless/static-debian12:nonroot
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.1362708Z #2 ...
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.1362961Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.1363390Z #3 [internal] load metadata for docker.io/library/golang:1.27.3-bookworm
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.1363753Z #3 DONE 0.3s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3331225Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3331979Z #4 [internal] load metadata for docker.io/library/node:22-bookworm-slim
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3332496Z #4 DONE 0.3s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3332637Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3333028Z #2 [internal] load metadata for gcr.io/distroless/static-debian12:nonroot
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3333460Z #2 DONE 0.3s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3333594Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3334333Z #5 [stage-2 1/5] FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3335357Z #5 resolve gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab done
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3335818Z #5 DONE 0.0s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3335935Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3336380Z #6 [builder 1/9] FROM docker.io/library/golang:1.27.3-bookworm@sha256:972b4110ba0f47539a975c31e52c64765e1ff19f2d74469ae4a595c6676e80a5
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3337833Z #6 resolve docker.io/library/golang:1.27.3-bookworm@sha256:972b4110ba0f47539a975c31e52c64765e1ff19f2d74469ae4a595c6676e80a5 0.0s done
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3338299Z #6 DONE 0.0s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3338404Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3338838Z #7 [web  1/10] FROM docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3339901Z #7 resolve docker.io/library/node:22-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d 0.0s done
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340373Z #7 DONE 0.0s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340468Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340582Z #8 [stage-2 2/5] WORKDIR /app
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340782Z #8 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340875Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3340997Z #9 [internal] load build context
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.3691387Z #9 transferring context:
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.5823544Z #9 transferring context: 19.78MB 0.1s done
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.5882578Z #9 DONE 0.4s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7409776Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7410459Z #10 [web  5/10] COPY apps/web/ ./
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7410842Z #10 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7410975Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7411207Z #11 [web  3/10] COPY apps/web/package*.json ./
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7411552Z #11 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7411687Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7411903Z #12 [web  2/10] WORKDIR /app/apps/web
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412218Z #12 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412342Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412435Z #13 [web  4/10] RUN npm ci
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412631Z #13 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412715Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7412834Z #14 [web  6/10] RUN npm run build
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413050Z #14 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413145Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413264Z #15 [builder 2/9] WORKDIR /app
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413467Z #15 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413565Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413688Z #16 [builder 4/9] RUN go mod download
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7413918Z #16 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414004Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414132Z #17 [builder 6/9] COPY internal/ internal/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414368Z #17 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414458Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414584Z #18 [builder 3/9] COPY go.mod go.sum ./
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414799Z #18 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414887Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7414996Z #19 [builder 5/9] COPY cmd/ cmd/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415199Z #19 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415283Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415432Z #20 [builder 7/9] COPY migrations/ migrations/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415666Z #20 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415759Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7415882Z #21 [builder 8/9] COPY sdk/go/ sdk/go/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7416086Z #21 CACHED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7416175Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:21.7416441Z #22 [builder 9/9] RUN CGO_ENABLED=0 go build -trimpath -o /relay-hosted ./cmd/hosted
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.0134010Z #22 ...
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.0135016Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.0135441Z #23 [web  7/10] WORKDIR /app
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.0135913Z #23 DONE 0.4s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1632939Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1640628Z #24 [web  8/10] COPY deploy/showcase/ deploy/showcase/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1641928Z #24 DONE 0.0s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1642190Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1644005Z #25 [web  9/10] COPY docs/results/chaos-hour.json docs/results/chaos-hour-reconciliation.json docs/results/independent-audit.json docs/results/tests.json docs/results/load-100.json docs/results/load-500.json docs/results/load-1000.json docs/results/hour-export-status.json docs/results/demo.webm docs/results/console-desktop.png docs/results/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1645290Z #25 DONE 0.1s
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1645449Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.1645887Z #22 [builder 9/9] RUN CGO_ENABLED=0 go build -trimpath -o /relay-hosted ./cmd/hosted
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5505721Z #22 CANCELED
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5508645Z 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5509307Z #26 [web 10/10] RUN node deploy/showcase/build.mjs
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5509899Z #26 0.242 node:fs:3100
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5510350Z #26 0.242   binding.copyFile(
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5510906Z #26 0.242           ^
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5511257Z #26 0.242 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5513566Z #26 0.242 Error: ENOENT: no such file or directory, copyfile 'docs/results/ui-redesign/demo.webm' -> 'deploy/showcase/dist/demo.webm'
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5514531Z #26 0.242     at copyFileSync (node:fs:3100:11)
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5515123Z #26 0.242     at file:///app/deploy/showcase/build.mjs:25:3
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5519676Z #26 0.242     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5524026Z #26 0.242     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5525000Z #26 0.242     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5525616Z #26 0.242   errno: -2,
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5525865Z #26 0.242   code: 'ENOENT',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5526119Z #26 0.242   syscall: 'copyfile',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5526968Z #26 0.242   path: 'docs/results/ui-redesign/demo.webm',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5527391Z #26 0.242   dest: 'deploy/showcase/dist/demo.webm'
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5527659Z #26 0.242 }
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5527817Z #26 0.242 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5528007Z #26 0.242 Node.js v22.23.4
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5528753Z #26 ERROR: process "/bin/sh -c node deploy/showcase/build.mjs" did not complete successfully: exit code: 1
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5625304Z ------
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5625748Z  > [web 10/10] RUN node deploy/showcase/build.mjs:
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5626627Z 0.242     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5627512Z 0.242     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5628100Z 0.242   errno: -2,
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5628427Z 0.242   code: 'ENOENT',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5628745Z 0.242   syscall: 'copyfile',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5629160Z 0.242   path: 'docs/results/ui-redesign/demo.webm',
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5629678Z 0.242   dest: 'deploy/showcase/dist/demo.webm'
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5630048Z 0.242 }
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5630293Z 0.242 
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5630562Z 0.242 Node.js v22.23.4
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5630823Z ------
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5639882Z Dockerfile.hosted:10
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5640316Z --------------------
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5640754Z    8 |     COPY deploy/showcase/ deploy/showcase/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5642404Z    9 |     COPY docs/results/chaos-hour.json docs/results/chaos-hour-reconciliation.json docs/results/independent-audit.json docs/results/tests.json docs/results/load-100.json docs/results/load-500.json docs/results/load-1000.json docs/results/hour-export-status.json docs/results/demo.webm docs/results/console-desktop.png docs/results/
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5644036Z   10 | >>> RUN node deploy/showcase/build.mjs
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5644470Z   11 |     FROM golang:1.27.3-bookworm AS builder
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5644782Z   12 |     WORKDIR /app
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5645095Z --------------------
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5645894Z ERROR: failed to build: failed to solve: process "/bin/sh -c node deploy/showcase/build.mjs" did not complete successfully: exit code: 1
+verify	Vercel image and independent daemon smoke	2026-10-22T13:39:22.5710192Z ##[error]Process completed with exit code 1.

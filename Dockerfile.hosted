@@ -6,7 +6,8 @@ COPY apps/web/ ./
 RUN npm run build
 WORKDIR /app
 COPY deploy/showcase/ deploy/showcase/
-COPY docs/results/chaos-hour.json docs/results/chaos-hour-reconciliation.json docs/results/independent-audit.json docs/results/tests.json docs/results/load-100.json docs/results/load-500.json docs/results/load-1000.json docs/results/hour-export-status.json docs/results/demo.webm docs/results/console-desktop.png docs/results/
+COPY docs/results/chaos-hour.json docs/results/chaos-hour-reconciliation.json docs/results/independent-audit.json docs/results/tests.json docs/results/load-100.json docs/results/load-500.json docs/results/load-1000.json docs/results/hour-export-status.json docs/results/
+COPY docs/results/ui-redesign/demo.webm docs/results/ui-redesign/console-cover.png docs/results/ui-redesign/
 RUN node deploy/showcase/build.mjs
 FROM golang:1.27.3-bookworm AS builder
 WORKDIR /app

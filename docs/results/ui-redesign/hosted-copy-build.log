@@ -1,0 +1,2 @@
+Reproduced explicit Docker COPY inputs in an isolated temporary stage; ran the actual evidence builder. Full Docker verification remains the CI gate.
+Built evidence site from saved measurements; live engine remains unhosted.

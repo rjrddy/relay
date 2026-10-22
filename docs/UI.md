@@ -38,3 +38,5 @@ Public evidence preview: [desktop](results/ui-redesign/site-desktop.png), [mobil
 Final build, lint and existing test suites pass. The redesigned console was exercised against actual isolated local services, not mocked counters. The public-page previews use saved evidence and the new actual recording. The local proof was captured before publication. The repository CI workflow reports the currently pushed revision; README lists the public URL where available.
 
 The initial capture encoded 89.60 seconds and failed the minimum-duration gate; [the raw probe](results/ui-redesign/initial-demo-probe.json) is retained. A longer real capture passed with 97.96 seconds. No frames were padded or fabricated.
+
+CI caught an incomplete hosted-image COPY manifest after the recording path changed. [The actual failing container build](results/ui-redesign/initial-hosted-image-failure.log) is retained. Dockerfile.hosted now supplies the new recording and poster explicitly; [the isolated copy-stage builder](results/ui-redesign/hosted-copy-build.log) passes. The unchanged CI container smoke gate verifies the real image and independent daemon.

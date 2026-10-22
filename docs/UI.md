@@ -35,6 +35,6 @@ Public evidence preview: [desktop](results/ui-redesign/site-desktop.png), [mobil
 
 ## Verification disposition
 
-Final build, lint and existing test suites pass. The redesigned console was exercised against actual isolated local services, not mocked counters. The public-page previews use saved evidence and the new actual recording. Remote CI for these UI commits awaits publishing approval.
+Final build, lint and existing test suites pass. The redesigned console was exercised against actual isolated local services, not mocked counters. The public-page previews use saved evidence and the new actual recording. The local proof was captured before publication. The repository CI workflow reports the currently pushed revision; README lists the public URL where available.
 
 The initial capture encoded 89.60 seconds and failed the minimum-duration gate; [the raw probe](results/ui-redesign/initial-demo-probe.json) is retained. A longer real capture passed with 97.96 seconds. No frames were padded or fabricated.

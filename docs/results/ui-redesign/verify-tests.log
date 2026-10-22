@@ -1,0 +1,89 @@
+Project: Relay
+Command: go test -race -count=1 -v ./...
+?   	github.com/rjrddy/relay/cmd/bench	[no test files]
+=== RUN   TestHostedSchemaIsolatedAndReentrant
+--- PASS: TestHostedSchemaIsolatedAndReentrant (0.05s)
+PASS
+ok  	github.com/rjrddy/relay/cmd/hosted	1.345s
+=== RUN   TestEmbeddedServiceCompletesAndShutsDown
+--- PASS: TestEmbeddedServiceCompletesAndShutsDown (4.92s)
+PASS
+ok  	github.com/rjrddy/relay/cmd/relay	6.243s
+=== RUN   TestIdempotencyCapacityConflict
+--- PASS: TestIdempotencyCapacityConflict (0.03s)
+=== RUN   TestLeaseFencingAndAtomicEffects
+    engine_test.go:106: stale_completion_blocked: lease lost or expired
+--- PASS: TestLeaseFencingAndAtomicEffects (0.13s)
+=== RUN   TestConcurrentAdmissionAndClaims
+--- PASS: TestConcurrentAdmissionAndClaims (0.03s)
+=== RUN   TestDelayPauseRolloutAndRollback
+--- PASS: TestDelayPauseRolloutAndRollback (0.13s)
+=== RUN   TestDeadLetterReplayPreservesPreviousEffect
+--- PASS: TestDeadLetterReplayPreservesPreviousEffect (0.06s)
+=== RUN   TestExpiredLeaseCannotHeartbeatOrComplete
+--- PASS: TestExpiredLeaseCannotHeartbeatOrComplete (0.10s)
+=== RUN   TestCrashBudgetEventuallyDeadLetters
+--- PASS: TestCrashBudgetEventuallyDeadLetters (0.09s)
+=== RUN   TestBackoffAndCohortProperties
+--- PASS: TestBackoffAndCohortProperties (0.03s)
+=== RUN   TestWaitForLockCannotReviveExpiredLease
+--- PASS: TestWaitForLockCannotReviveExpiredLease (0.17s)
+=== RUN   TestEffectAndStepRollbackTogether
+--- PASS: TestEffectAndStepRollbackTogether (0.05s)
+=== RUN   TestConcurrentCompletionCommitsOnlyOnce
+--- PASS: TestConcurrentCompletionCommitsOnlyOnce (0.04s)
+PASS
+ok  	github.com/rjrddy/relay/internal/engine	2.393s
+?   	github.com/rjrddy/relay/internal/faultproxy	[no test files]
+=== RUN   TestCookieAuthCSRFValidationAndLogout
+2026/10/22 01:12:32 INFO http_completed method=GET status=401 route="GET /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=200 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=403 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=200 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=400 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=400 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=422 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=POST status=200 route="POST /api/logout" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:33 INFO http_completed method=GET status=401 route="GET /api/runs" trace_id=00000000000000000000000000000000
+--- PASS: TestCookieAuthCSRFValidationAndLogout (1.24s)
+=== RUN   TestSDKHTTPAndDatabaseErrors
+2026/10/22 01:12:34 INFO http_completed method=POST status=200 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 INFO http_completed method=POST status=200 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 WARN operation_rejected status=409 category=request_rejected trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 INFO http_completed method=POST status=409 route="POST /api/runs" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 INFO http_completed method=GET status=200 route="GET /api/runs/{id}" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 WARN operation_rejected status=503 category=request_rejected trace_id=00000000000000000000000000000000
+2026/10/22 01:12:34 INFO http_completed method=GET status=503 route="GET /api/metrics" trace_id=00000000000000000000000000000000
+--- PASS: TestSDKHTTPAndDatabaseErrors (0.59s)
+=== RUN   TestLoginRateLimit
+2026/10/22 01:12:35 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:35 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:36 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:36 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:37 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:37 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:38 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:38 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:39 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:39 INFO http_completed method=POST status=401 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:39 INFO http_completed method=POST status=429 route="POST /api/login" trace_id=00000000000000000000000000000000
+--- PASS: TestLoginRateLimit (5.66s)
+=== RUN   TestUnknownRouteDoesNotLeakFiles
+2026/10/22 01:12:40 INFO http_completed method=GET status=404 route="GET /" trace_id=00000000000000000000000000000000
+--- PASS: TestUnknownRouteDoesNotLeakFiles (0.52s)
+=== RUN   TestDurableSessionsAcrossInstancesAndLogout
+2026/10/22 01:12:42 INFO http_completed method=POST status=200 route="POST /api/login" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:42 INFO http_completed method=GET status=200 route="GET /api/session" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:42 INFO http_completed method=POST status=200 route="POST /api/logout" trace_id=00000000000000000000000000000000
+2026/10/22 01:12:42 INFO http_completed method=GET status=401 route="GET /api/session" trace_id=00000000000000000000000000000000
+--- PASS: TestDurableSessionsAcrossInstancesAndLogout (2.02s)
+PASS
+ok  	github.com/rjrddy/relay/internal/server	11.821s
+?   	github.com/rjrddy/relay/internal/worker	[no test files]
+?   	github.com/rjrddy/relay/migrations	[no test files]
+=== RUN   TestClientPreservesIdempotencyAndSurfacesConflict
+--- PASS: TestClientPreservesIdempotencyAndSurfacesConflict (0.00s)
+=== RUN   TestAmbiguousEnqueueRetriesSameRequest
+--- PASS: TestAmbiguousEnqueueRetriesSameRequest (0.14s)
+PASS
+ok  	github.com/rjrddy/relay/sdk/go	2.188s

@@ -35,7 +35,9 @@ The chaos harness terminates real worker processes after claim and after commit,
 
 Caught failures are retained: a stale completion is rejected by the fenced-lease test in raw test output; [the initial real storage-fault gate](docs/results/ci-initial-failure.log) caught an unhandled admission failure. SDK retries now preserve immutable keys. The passing storage test admits scheduled jobs before activating its fault and proves worker durability; it does **not** reinterpret the earlier error as a successful admission-latency test.
 
-![Relay operations console](docs/results/console-desktop.png)
+![Relay console](docs/results/ui-redesign/console-cover.png)
+
+[Visual design references and UI checks](docs/UI.md) · [Redesigned console recording](docs/results/ui-redesign/demo.webm). Historical benchmark evidence remains separate.
 
 ## Architecture
 

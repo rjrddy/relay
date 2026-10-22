@@ -1,0 +1,17 @@
+Project: Relay
+Command: make build
+go build -trimpath -o bin/relay ./cmd/relay
+npm run build --prefix apps/web
+
+> relay-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.44 kB │ gzip:  0.31 kB
+dist/assets/index-4IgqM_tx.css    9.76 kB │ gzip:  2.95 kB
+dist/assets/index-Da6nj__V.js   209.06 kB │ gzip: 65.50 kB
+✓ built in 554ms

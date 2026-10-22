@@ -1,7 +1,60 @@
-const data=await fetch('/proof.json').then(r=>{if(!r.ok)throw Error('Evidence unavailable');return r.json()});
-const n=value=>Number(value).toLocaleString('en-US');
-const metrics=[[n(data.campaign.workflows),'workflows reconciled'],[n(data.campaign.step_effects),'internal effects committed'],[`${data.campaign.enqueue_start_p99_ms.toFixed(2)} ms`,'database first-claim p99'],[`${data.campaign.lost_workflows} / ${data.campaign.duplicate_effects}`,'lost workflows / duplicate effects']];
-for(const [value,label] of metrics){const el=document.createElement('div');el.className='metric';const strong=document.createElement('strong');strong.textContent=value;const span=document.createElement('span');span.textContent=label;el.append(strong,span);document.querySelector('#metrics').append(el)}
-function table(id,rows){const body=document.querySelector(id);body.replaceChildren();for(const cells of rows){const tr=document.createElement('tr');for(const value of cells){const td=document.createElement('td');td.textContent=value;tr.append(td)}body.append(tr)}}
-table('#loads',data.loads.map(r=>[n(r.workflows),n(r.step_effects),r.workflows_per_second.toFixed(2),r.enqueue_start_p99_ms.toFixed(2)+' ms']));
-const render=()=>{const query=document.querySelector('#filter').value.toLowerCase();table('#rows',data.rows.filter(r=>(r.key+' '+r.run).toLowerCase().includes(query)).map(r=>[r.key,r.run,r.enqueue_start_ms.toFixed(3)+' ms']))};document.querySelector('#filter').addEventListener('input',render);render();
+const data = await fetch("/proof.json").then((r) => {
+  if (!r.ok) throw Error("Evidence unavailable");
+  return r.json();
+});
+const n = (value) => Number(value).toLocaleString("en-US");
+const metrics = [
+  [n(data.campaign.workflows), "workflows reconciled"],
+  [n(data.campaign.step_effects), "internal effects committed"],
+  [
+    `${data.campaign.enqueue_start_p99_ms.toFixed(2)} ms`,
+    "database first-claim p99",
+  ],
+  [
+    `${data.campaign.lost_workflows} / ${data.campaign.duplicate_effects}`,
+    "lost workflows / duplicate effects",
+  ],
+];
+for (const [value, label] of metrics) {
+  const el = document.createElement("div");
+  el.className = "metric";
+  const strong = document.createElement("strong");
+  strong.textContent = value;
+  const span = document.createElement("span");
+  span.textContent = label;
+  el.append(strong, span);
+  document.querySelector("#metrics").append(el);
+}
+function table(id, rows) {
+  const body = document.querySelector(id);
+  body.replaceChildren();
+  for (const cells of rows) {
+    const tr = document.createElement("tr");
+    for (const value of cells) {
+      const td = document.createElement("td");
+      td.textContent = value;
+      tr.append(td);
+    }
+    body.append(tr);
+  }
+}
+table(
+  "#loads",
+  data.loads.map((r) => [
+    n(r.workflows),
+    n(r.step_effects),
+    r.workflows_per_second.toFixed(2),
+    r.enqueue_start_p99_ms.toFixed(2) + " ms",
+  ]),
+);
+const render = () => {
+  const query = document.querySelector("#filter").value.toLowerCase();
+  table(
+    "#rows",
+    data.rows
+      .filter((r) => (r.key + " " + r.run).toLowerCase().includes(query))
+      .map((r) => [r.key, r.run, r.enqueue_start_ms.toFixed(3) + " ms"]),
+  );
+};
+document.querySelector("#filter").addEventListener("input", render);
+render();

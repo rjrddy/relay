@@ -1,0 +1,4 @@
+Project: Relay
+Command: /opt/homebrew/Cellar/postgresql@14/14.14/bin/pg_ctl -D /tmp/relay-pg-native -l /tmp/relay-pg-native-audit.log -o -p 55439 -k /tmp/relay-pg-socket -h 127.0.0.1 start
+waiting for server to start.... done
+server started

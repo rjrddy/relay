@@ -1,0 +1,2 @@
+Command: /opt/homebrew/Cellar/postgresql@14/14.14/bin/psql -h 127.0.0.1 -p 55439 -U rajreddy -d postgres -v ON_ERROR_STOP=1 -c CREATE DATABASE relay_ui_1792649239
+CREATE DATABASE

@@ -1,0 +1,15 @@
+Command: make lint
+.venv/bin/python scripts/check_go_format.py "go"
+go vet ./...
+npm run lint --prefix apps/web
+
+> relay-console@0.1.0 lint
+> tsc --noEmit
+
+npm exec --prefix apps/web -- prettier --check apps/web/src
+Checking formatting...
+All matched files use Prettier code style!
+.venv/bin/python -m ruff check sdk/python scripts
+All checks passed!
+.venv/bin/python -m ruff format --check sdk/python scripts
+13 files already formatted

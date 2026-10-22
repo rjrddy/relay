@@ -1,0 +1,9 @@
+{
+  "project": "Relay",
+  "real_service_browser_flow": "pass",
+  "desktop_and_phone_layout": "pass",
+  "recording_seconds": 97.96,
+  "recording_gate_passed": true,
+  "historical_benchmarks_rerun": false,
+  "publication": "pending explicit approval"
+}

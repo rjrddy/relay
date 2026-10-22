@@ -1,0 +1,3 @@
+Command: /opt/homebrew/Cellar/postgresql@14/14.14/bin/pg_ctl -D /tmp/relay-pg-native -m fast stop
+waiting for server to shut down.... done
+server stopped

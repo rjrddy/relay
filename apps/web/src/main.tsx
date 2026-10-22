@@ -219,7 +219,7 @@ function App() {
         <div className="brand">
           <span className="logo">↗</span> RELAY
         </div>
-        <p className="eyebrow">DURABLE WORKFLOW OPERATIONS</p>
+        <p className="eyebrow">RELAY / THE DISPATCH OFFICE</p>
         <h1>
           Work survives.
           <br />
@@ -263,11 +263,11 @@ function App() {
   const latencies = metrics?.latency_samples ?? [];
   return (
     <div className="shell">
-      <aside>
+      <aside aria-label="Dispatch navigation">
         <div className="brand">
           <span className="logo">↗</span> RELAY
         </div>
-        <p className="eyebrow">CONTROL PLANE</p>
+        <p className="eyebrow">DISPATCH OFFICE</p>
         <a href="#overview" className="selected">
           ◈ &nbsp; Workflow overview
         </a>
@@ -300,11 +300,11 @@ function App() {
         </header>
         <section className="title">
           <div>
-            <p className="eyebrow">ADMIT. EXECUTE. RECONCILE.</p>
+            <p className="eyebrow">DEPARTURES / WORKFLOW DISPATCH</p>
             <h1>
               Every step accounted for<span>.</span>
             </h1>
-            <p>Durable orchestration with a visible failure boundary.</p>
+            <p>Follow the work from admission to its final receipt.</p>
           </div>
           <span className={"status " + (config?.paused ? "paused" : "")}>
             <span className="dot" />

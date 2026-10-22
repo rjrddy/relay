@@ -5,5 +5,13 @@
   "recording_seconds": 97.96,
   "recording_gate_passed": true,
   "historical_benchmarks_rerun": false,
-  "publication": "pending explicit approval"
+  "publication": "pending explicit approval",
+  "fresh_clone_frontend_check": {
+    "name": "Relay",
+    "pass": true,
+    "source_commit": "97ed366207d8875f66cf59f95ee07ce4b6017155",
+    "clone": "/tmp/flagship-ui-clones-q6zy8d1a/relay",
+    "scope": "Independent frontend dependency install, lint, build; public evidence package where present. No new full backend container claim."
+  },
+  "full_backend_fresh_clone_rerun": false
 }

@@ -1,0 +1,38 @@
+
+Command: git clone --no-local /Users/rajreddy/dev/outreach/flagships/relay /tmp/flagship-ui-clones-q6zy8d1a/relay
+Cloning into '/tmp/flagship-ui-clones-q6zy8d1a/relay'...
+
+Command: npm --prefix apps/web ci --prefer-offline
+
+added 22 packages, and audited 23 packages in 920ms
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Command: npm --prefix apps/web run lint
+
+> relay-console@0.1.0 lint
+> tsc --noEmit
+
+
+Command: npm --prefix apps/web run build
+
+> relay-console@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.4 building for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.44 kB │ gzip:  0.31 kB
+dist/assets/index-4IgqM_tx.css    9.76 kB │ gzip:  2.95 kB
+dist/assets/index-Da6nj__V.js   209.06 kB │ gzip: 65.50 kB
+✓ built in 574ms
+
+Command: node deploy/showcase/build.mjs
+Built evidence site from saved measurements; live engine remains unhosted.
+
+PASS: independent clone frontend install/lint/build; evidence site packaged where present. Backend fresh-clone runtime was not rerun by this UI check.

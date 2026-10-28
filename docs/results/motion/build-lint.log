@@ -1,6 +1,6 @@
-src/motion.ts 76ms
-src/main.tsx 85ms (unchanged)
-src/style.css 57ms (unchanged)
+src/motion.ts 62ms
+src/main.tsx 59ms (unchanged)
+src/style.css 48ms (unchanged)
 
 > relay-console@0.1.0 lint
 > tsc --noEmit
@@ -14,8 +14,8 @@ transforming...
 ✓ 29 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/index.html                   0.44 kB │ gzip:  0.31 kB
+dist/index.html                   0.44 kB │ gzip:  0.30 kB
 dist/assets/index-CvdlrqmG.css    9.90 kB │ gzip:  2.96 kB
-dist/assets/index-NPXbsxSO.js   212.73 kB │ gzip: 66.88 kB
-✓ built in 489ms
+dist/assets/index-aD1r0XXn.js   212.73 kB │ gzip: 66.90 kB
+✓ built in 591ms
 Built evidence site from saved measurements; live engine remains unhosted.

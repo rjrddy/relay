@@ -23,3 +23,5 @@ The existing public evidence page is covered by `showcase-contract.json`, `showc
 A syntax gate caught an incorrect source splice during development. It was corrected before publication; the failing output is retained in `docs/results/motion/caught-syntax-failure.log`. The technical-notes fold is native and initially open; toggling is immediate and works with motion disabled.
 
 Button feedback begins when click targeting is committed, so the first press does not shrink a hitbox underneath the pointer. Editable/dragging surfaces are excluded. Backend APIs, ranking/math policies, measurements, and document source data were not changed.
+
+Connected controls recoil only with their immediate previous/next matching siblings. The left sibling moves left, the right moves right; distant controls do not react. The runtime reads sibling references, not geometry.

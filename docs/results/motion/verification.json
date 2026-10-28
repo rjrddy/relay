@@ -2,9 +2,9 @@
   "project": "relay",
   "motion_profile": "Queue escapement",
   "source_sha256": {
-    "apps/web/src/motion.ts": "72215bc3a1dc44fdfb10e87b30406e6e4bdce894f152c85ba22932a3484ce556",
+    "apps/web/src/motion.ts": "0e1f07f58694b716902a3880e28db82ed519f078692e37cccf441b3ec00986fb",
     "apps/web/src/style.css": "2c5630c3755961408f4f02f4eaa607ded36b658d6315405a811abf889858e090",
-    "deploy/showcase/app.js": "7a6a0b27233293b1ba512117a4ae75e10c1b4628c42a9927cadf6696ca3ade59"
+    "deploy/showcase/app.js": "c5de6713da5544406f0882a9e87ff9a4a4dd5662a5db30e2a1a820ee1b447d33"
   },
   "frontend_build_lint": "passed",
   "motion_contract": "passed",

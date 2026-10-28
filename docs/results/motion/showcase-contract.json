@@ -1,0 +1,106 @@
+{
+  "project": "relay-showcase",
+  "scope": "Synthetic DOM using actual shipped motion module",
+  "noEntranceAnimation": true,
+  "unchangedNodeReplacementIgnored": true,
+  "observedAnimations": [
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "id": "contract-key",
+      "frames": [
+        {
+          "transform": "translateX(2px)"
+        },
+        {
+          "transform": "translateX(-0.4px)",
+          "offset": 0.65
+        },
+        {
+          "transform": "translateX(0)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 112
+    },
+    {
+      "tag": "TD",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleY(0.55)"
+        },
+        {
+          "transform": "scaleY(1)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 153.09999990463257
+    },
+    {
+      "tag": "TD",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "translateX(6px)"
+        },
+        {
+          "transform": "translateX(-1.2px)",
+          "offset": 0.65
+        },
+        {
+          "transform": "translateX(0)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 153.09999990463257
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "scaleY(0.55)"
+        },
+        {
+          "transform": "scaleY(1)"
+        }
+      ],
+      "options": {
+        "duration": 180,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 153.09999990463257
+    }
+  ],
+  "transformOpacityOnly": true,
+  "zeroDelay": true,
+  "immediatePointerAndKeyboard": true,
+  "edgeClickTargetStableUntilActivation": true,
+  "disabledAndEditorExcluded": true,
+  "liveReducedMotionCancellation": true,
+  "reEnable": true,
+  "pagehideCleanup": true,
+  "pageErrors": [],
+  "initialReducedMotion": true
+}

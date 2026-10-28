@@ -71,6 +71,9 @@ For native setup, SDK examples, test-database configuration and benchmark comman
 
 ## Decisions and limits
 
+Contextual motion uses finite transform-only responses to real controls and changed evidence, with live reduced-motion cancellation. See [motion design and validation](docs/MOTION.md); frame rate is not measured.
+
+
 Read [DESIGN.md](docs/DESIGN.md), [ADRs](docs/adr), [migration provenance](docs/migration/relay.md), [INTERVIEW.md](INTERVIEW.md), [DRILL.md](docs/DRILL.md) and [quality report](docs/QUALITY.md).
 
 - Execution is at least once. The one-effect guarantee applies to uniquely keyed internal Postgres effects committed with step state, not arbitrary HTTP/email/payment tools.

@@ -1,0 +1,40 @@
+{
+  "surface": "relay",
+  "source": "flagships/relay/apps/web/dist",
+  "scope": "Actual built UI/control/reduced-motion smoke; backend unavailable for static console previews except Fit. Separate live workflows verify ten backends.",
+  "controlResponse": true,
+  "offlineActionsRemainDisabled": false,
+  "liveReducedMotion": true,
+  "pageErrors": [],
+  "mobileOverflow": false,
+  "widths": [
+    1440,
+    390
+  ],
+  "animations": [
+    {
+      "tag": "BUTTON",
+      "cls": "",
+      "id": "",
+      "frames": [
+        {
+          "transform": "translateX(2px)"
+        },
+        {
+          "transform": "translateX(-0.4px)",
+          "offset": 0.65
+        },
+        {
+          "transform": "translateX(0)"
+        }
+      ],
+      "options": {
+        "duration": 160,
+        "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "iterations": 1,
+        "fill": "none"
+      },
+      "at": 426.2000000476837
+    }
+  ]
+}

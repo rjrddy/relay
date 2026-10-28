@@ -1,0 +1,18 @@
+{
+  "project": "relay",
+  "motion_profile": "Queue escapement",
+  "source_sha256": {
+    "apps/web/src/motion.ts": "72215bc3a1dc44fdfb10e87b30406e6e4bdce894f152c85ba22932a3484ce556",
+    "apps/web/src/style.css": "2c5630c3755961408f4f02f4eaa607ded36b658d6315405a811abf889858e090",
+    "deploy/showcase/app.js": "7a6a0b27233293b1ba512117a4ae75e10c1b4628c42a9927cadf6696ca3ade59"
+  },
+  "frontend_build_lint": "passed",
+  "motion_contract": "passed",
+  "built_page_smoke": "passed",
+  "live_backend_browser": "not rerun; actual console entry state and public saved evidence checked",
+  "showcase_contract": "passed",
+  "compositor_properties_only": true,
+  "live_reduced_motion_cancellation": true,
+  "fps": "not measured",
+  "new_dependencies": 0
+}
